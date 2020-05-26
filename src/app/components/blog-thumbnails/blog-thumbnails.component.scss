@@ -1,0 +1,35 @@
+.blog-thumbnail {
+    margin: 10px 5px !important;
+    ion-img {
+        img {
+            border-radius: 3px !important;
+        }
+    }
+    ion-item {
+        --padding-start: 5px !important;
+        ion-label {
+            white-space: pre-wrap;
+            h1 {
+                font-size: 18px;
+                font-weight: bold;
+                padding-bottom: 10px;
+            }
+            p {
+                display: flex;
+                align-items: center;
+                ion-badge {
+                    font-style: normal !important;
+                    font-weight: normal;
+                }
+            }
+            ion-buttons {
+                margin-top: 10px;
+                ion-button {
+                    font-size: 14px;
+                    padding: 2px 5px !important;
+                }
+            }
+            
+        }
+    }
+}

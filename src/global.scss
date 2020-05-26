@@ -24,3 +24,57 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+ion-tab-button {
+    ion-icon {
+      color: var(--ion-color-secondary);
+      --ion-color-base: var(--ion-color-secondary);
+    }
+    ion-label {
+      color: var(--ion-color-primary);
+      --ion-color-base: var(--ion-color-primary);
+    }
+    &.tab-selected {
+      ion-icon {
+        color: var(--ion-color-primary) !important;
+        --ion-color-base: var(--ion-color-primary) !important;
+      }
+    }
+  }
+
+ion-card {
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 5px !important;
+}
+
+ion-toolbar {
+    padding-top: 10px !important;
+}
+
+ion-card {
+    border-radius: 4px !important;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.color-primary {
+  color: var(--ion-color-primary) !important;
+}
+
+.color-secondary {
+  color: var(--ion-color-secondary) !important;
+}
+
+.color-medium {
+  color: var(--ion-color-medium) !important;
+}
+
+.color-light {
+  color: var(--ion-color-light) !important;
+}
+
+.color-dark {
+  color: var(--ion-color-dark) !important;
+}
