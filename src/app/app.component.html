@@ -7,8 +7,20 @@
           <ion-title>Menu</ion-title>
         </ion-toolbar>
       </ion-header>
+
+      <ion-content class="menu">
+        <ion-list lines="none">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item detail="false" routerLinkActive #rla="routerLinkActive" [color]="rla.isActive && 'gray'" [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon [color]="rla.isActive ? 'pink' : 'dark-gray'" slot="start" [name]="p.icon"></ion-icon>
+              <ion-label [color]="rla.isActive ? 'pink' : 'dark-gray'">
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
     </ion-menu>
-  
     <!-- the main content -->
     <ion-router-outlet id="main"></ion-router-outlet>
   </ion-split-pane>

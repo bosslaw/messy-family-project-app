@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeGuard } from '../guards/home.guard';
+import { UserDataResolver } from '../resolvers/userData.resolver';
 import { HomePage } from './home.page';
 
 
@@ -7,6 +9,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePage,
+    canActivate: [HomeGuard],
+    resolve: {
+      userData: UserDataResolver
+    },
     children: [
       {
         path: 'home',
@@ -31,6 +37,15 @@ const routes: Routes = [
       {
         path: 'interest',
         loadChildren: () => import('../pages/interest/interest.module').then( m => m.InterestPageModule)
+      },
+      {
+        path: 'settings',
+        loadChildren: () => import('../pages/settings/settings.module').then( m => m.SettingsPageModule)
+      },
+      {
+        path: '',
+        redirectTo: '/home/home',
+        pathMatch: 'full'
       }
     ]
   }
