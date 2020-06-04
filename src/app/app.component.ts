@@ -19,11 +19,18 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
 
-    this.appPages = [{
-      title: 'Settings',
-      url: '/home/settings',
-      icon: 'settings'
-    }];
+    this.appPages = [
+      {
+        title: 'Settings',
+        url: '/home/settings',
+        icon: 'settings'
+      },
+      {
+        title: 'Update Account',
+        url: '/home/account-edit',
+        icon: 'pencil-outline'
+      }
+    ];
 
     this.initializeApp();
   }

@@ -43,6 +43,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/settings/settings.module').then( m => m.SettingsPageModule)
       },
       {
+        path: 'account-edit',
+        loadChildren: () => import('../pages/account-edit/account-edit.module').then( m => m.AccountEditPageModule)
+      },
+      {
         path: '',
         redirectTo: '/home/home',
         pathMatch: 'full'

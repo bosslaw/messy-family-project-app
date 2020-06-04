@@ -8,5 +8,14 @@
 </ion-header>
 
 <ion-content>
+  <div >
 
+    <ion-calendar [(ngModel)]="dateRange"
+      (onChange)="onChange($event)"
+      [options]="optionsRange"
+      [type]="type"
+      [format]="'YYYY-MM-DD'">
+    </ion-calendar>
+
+  </div>
 </ion-content>

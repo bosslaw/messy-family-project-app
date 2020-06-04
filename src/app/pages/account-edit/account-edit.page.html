@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>UPDATE ACCOUNT</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">First Name</ion-label>
+        <ion-input autocomplete="off" name="first_name" type="text" [(ngModel)]="userData.first_name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Last Name</ion-label>
+        <ion-input autocomplete="off" name="last_name" type="text" [(ngModel)]="userData.last_name"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input disabled autocomplete="off" name="email" type="text" [(ngModel)]="userData.email"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input autocomplete="off" name="password" type="password" [(ngModel)]="userData.password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" share="round" (click)="editAccountAction()" color="success">Update</ion-button>
+  </form>
+</ion-content>

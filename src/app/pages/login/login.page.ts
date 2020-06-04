@@ -38,8 +38,8 @@ export class LoginPage implements OnInit {
 
     if(this.validateInputs()) {
       this.authService.login(this.postData).subscribe((res: any) => {
-        if(res.userData) {
-          this.storageService.store(AuthConstants.AUTH, res.userData);
+        if(res.userData.length) {
+          this.storageService.store(AuthConstants.AUTH, res.userData[0]);
           this.router.navigate(['home'])
         } else {
           this.toastService.presentToast('Invalid credentials');

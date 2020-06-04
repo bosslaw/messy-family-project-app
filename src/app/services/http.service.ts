@@ -20,4 +20,13 @@ export class HttpService {
     return this.http.post(url, JSON.stringify(data), options)
 
   }
+
+  get(serviceName: string, data: any) {
+
+    const url = environment.apiUrl + serviceName;
+    const params = Object.keys(data).map(key => key + '=' + data[key]).join('&');
+
+    return this.http.get(url + '?'+ params)
+
+  }
 }
