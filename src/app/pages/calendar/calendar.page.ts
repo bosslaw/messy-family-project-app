@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CalendarComponentOptions } from 'ion2-calendar';
+import { formatDate } from '@angular/common';
+import { Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
+import { Calendar } from '@ionic-native/calendar/ngx';
+import { ActionSheetController, AlertController, ModalController, Platform } from '@ionic/angular';
+import { CalendarComponent } from 'ionic2-calendar';
+import { CalendarImportPage } from '../calendar-import/calendar-import.page';
+import { EventFormPage } from '../event-form/event-form.page';
 
 @Component({
   selector: 'app-calendar',
@@ -8,25 +13,157 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 })
 export class CalendarPage implements OnInit {
 
-  date: string;
-  type: 'string';
-  dateRange: { from: string; to: string; };
+  collapseCard = true;
+  eventSource = [];
+  viewTitle: string;
+  selectedDay = new Date();
 
-  optionsMulti: CalendarComponentOptions = {
-    pickMode: 'multi'
+  calendar = {
+    mode: 'month',
+    currentDate: new Date(),
   };
 
-  optionsRange: CalendarComponentOptions = {
-    pickMode: 'range'
-  };
+  @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
-  constructor() { }
+  constructor(
+    private alertCtrl: AlertController,
+    @Inject(LOCALE_ID) private locale: string,
+    private cal: Calendar,
+    private actionSheetController: ActionSheetController,
+    private modalCtrl: ModalController,
+    private plt: Platform) {
+
+      this.plt.ready().then(()=> {
+        this.cal.listCalendars().then(data=> {
+          console.log(data);
+        })
+      })
+    }
 
   ngOnInit() {
+
   }
 
-  onChange($event) {
-    console.log($event);
+  async showCalendarOptions() {
+    const actionSheet = await this.actionSheetController.create({
+      buttons: [ {
+        text: 'Import Event',
+        handler: () => {
+          this.importExportModal();
+        }
+      },{
+        text: 'Export Event',
+        handler: () => {
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+
+    await actionSheet.present();
+  }
+
+  async importExportModal() {
+    const modal = await this.modalCtrl.create({
+      component: CalendarImportPage,
+      componentProps: {
+      }
+    });
+
+    modal.onDidDismiss().then((event: any)=> {
+
+
+    });
+
+
+    return await modal.present();
+  }
+
+  async addEventModal() {
+    const modal = await this.modalCtrl.create({
+      component: EventFormPage,
+      componentProps: {
+        preselectedDate:this.selectedDay
+      }
+    });
+
+    modal.onDidDismiss().then((event: any)=> {
+
+      if(event.data) {
+        const eventCopy = {
+          title: event.data.title,
+          startTime:  new Date(event.data.startTime),
+          endTime: new Date(event.data.endTime),
+          allDay: event.data.allDay,
+          desc: event.data.desc
+        }
+
+        if (eventCopy.allDay) {
+          const start = eventCopy.startTime;
+          const end = eventCopy.endTime;
+
+          eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
+          eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
+        }
+
+        this.eventSource.push(eventCopy);
+        this.myCal.loadEvents();
+        console.log(this.eventSource);
+      }
+
+    });
+
+
+    return await modal.present();
+  }
+
+
+  onTimeSelected(ev) {
+    this.selectedDay = new Date(ev.selectedTime);
+    this.selectedDay.setHours(this.selectedDay.getHours() + 1);
+  }
+
+  next() {
+    const swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slideNext();
+  }
+
+  back() {
+    const swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slidePrev();
+  }
+
+  changeMode(mode) {
+    this.calendar.mode = mode;
+  }
+
+  today() {
+    this.calendar.currentDate = new Date();
+  }
+
+  onViewTitleChanged(title) {
+    this.viewTitle = title;
+  }
+
+  // Calendar event was clicked
+  async onEventSelected(event) {
+    console.log(event);
+    // Use Angular date pipe for conversion
+    const start = formatDate(event.startTime, 'medium', this.locale);
+    const end = formatDate(event.endTime, 'medium', this.locale);
+
+    const alert = await this.alertCtrl.create({
+      header: event.title,
+      subHeader: event.desc,
+      message: 'From: ' + start + '<br><br>To: ' + end,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

@@ -19,8 +19,12 @@ const routes: Routes = [
         loadChildren: () => import('../pages/signup/signup.module').then( m => m.SignupPageModule)
       },
       {
+        path: 'calendar',
+        loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
+      },
+      {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'calendar',
         pathMatch: 'full'
       }
     ]

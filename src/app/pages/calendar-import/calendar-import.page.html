@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Import Events</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>Upload ICS File</h1>
+  <ion-input type="file" name="file"  (change)="upload($event)">Upload!</ion-input>
+  <ion-label *ngIf="base64 != ''">
+    <ion-text><b>Name: </b> {{filename}}</ion-text> <br>
+    <ion-text><b>Type: </b> {{type}}</ion-text> <br>
+    <ion-text><b>Base64: </b>{{base64}} </ion-text> <br>
+  </ion-label>
+</ion-content>
