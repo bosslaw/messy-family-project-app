@@ -21,6 +21,9 @@ export class CalendarPage implements OnInit {
   calendar = {
     mode: 'month',
     currentDate: new Date(),
+    daysConfig: {
+      cssClass: 'iCalendar'
+    }
   };
 
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
@@ -46,7 +49,13 @@ export class CalendarPage implements OnInit {
 
   async showCalendarOptions() {
     const actionSheet = await this.actionSheetController.create({
-      buttons: [ {
+      buttons: [
+        {
+        text: 'New Event',
+        handler: () => {
+          this.addEventModal();
+        }
+      },{
         text: 'Import Event',
         handler: () => {
           this.importExportModal();
@@ -54,6 +63,8 @@ export class CalendarPage implements OnInit {
       },{
         text: 'Export Event',
         handler: () => {
+          // var icsMSG = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Our Company//NONSGML v1.0//EN\nBEGIN:VEVENT\nUID:me@google.com\nDTSTAMP:20120315T170000Z\nATTENDEE;CN=My Self ;RSVP=TRUE:MAILTO:me@gmail.com\nORGANIZER;CN=Me:MAILTO::me@gmail.com\nDTSTART:" + msgData1 +"\nDTEND:" + msgData2 +"\nLOCATION:" + msgData3 + "\nSUMMARY:Our Meeting Office\nEND:VEVENT\nEND:VCALENDAR";
+          console.log(this.eventSource);
         }
       }, {
         text: 'Cancel',
@@ -75,8 +86,21 @@ export class CalendarPage implements OnInit {
       }
     });
 
-    modal.onDidDismiss().then((event: any)=> {
+    modal.onDidDismiss().then((events: any)=> {
+      if(events.data) {
+        events.data.forEach((event: any) => {
+          const eventCopy = {
+            title: event.title,
+            startTime:  new Date(event.startTime),
+            endTime: new Date(event.endTime),
+            // allDay: event.allDay,
+            desc: event.desc
+          }
+          this.eventSource.push(eventCopy);
+        });
 
+        this.myCal.loadEvents();
+      }
 
     });
 
