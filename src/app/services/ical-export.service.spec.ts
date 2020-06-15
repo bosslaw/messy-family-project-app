@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { IcalService } from './ical.service';
+import { IcalExportService } from './ical-export.service';
 
-describe('IcalService', () => {
-  let service: IcalService;
+describe('IcalExportService', () => {
+  let service: IcalExportService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(IcalService);
+    service = TestBed.inject(IcalExportService);
   });
 
   it('should be created', () => {

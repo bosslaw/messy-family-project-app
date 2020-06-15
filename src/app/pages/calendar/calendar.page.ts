@@ -3,6 +3,8 @@ import { Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { Calendar } from '@ionic-native/calendar/ngx';
 import { ActionSheetController, AlertController, ModalController, Platform } from '@ionic/angular';
 import { CalendarComponent } from 'ionic2-calendar';
+import * as moment from 'moment';
+import { IcalExportService } from 'src/app/services/ical-export.service';
 import { CalendarImportPage } from '../calendar-import/calendar-import.page';
 import { EventFormPage } from '../event-form/event-form.page';
 
@@ -17,6 +19,8 @@ export class CalendarPage implements OnInit {
   eventSource = [];
   viewTitle: string;
   selectedDay = new Date();
+  sortedEvents: any;
+  displayMode = 'calendar';
 
   calendar = {
     mode: 'month',
@@ -34,13 +38,14 @@ export class CalendarPage implements OnInit {
     private cal: Calendar,
     private actionSheetController: ActionSheetController,
     private modalCtrl: ModalController,
+    private icalExportService: IcalExportService,
     private plt: Platform) {
 
-      this.plt.ready().then(()=> {
-        this.cal.listCalendars().then(data=> {
-          console.log(data);
-        })
-      })
+      // this.plt.ready().then(()=> {
+      //   this.cal.listCalendars().then(data=> {
+      //     console.log(data);
+      //   })
+      // })
     }
 
   ngOnInit() {
@@ -51,32 +56,70 @@ export class CalendarPage implements OnInit {
     const actionSheet = await this.actionSheetController.create({
       buttons: [
         {
-        text: 'New Event',
-        handler: () => {
-          this.addEventModal();
-        }
-      },{
-        text: 'Import Event',
-        handler: () => {
-          this.importExportModal();
-        }
-      },{
-        text: 'Export Event',
-        handler: () => {
-          // var icsMSG = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Our Company//NONSGML v1.0//EN\nBEGIN:VEVENT\nUID:me@google.com\nDTSTAMP:20120315T170000Z\nATTENDEE;CN=My Self ;RSVP=TRUE:MAILTO:me@gmail.com\nORGANIZER;CN=Me:MAILTO::me@gmail.com\nDTSTART:" + msgData1 +"\nDTEND:" + msgData2 +"\nLOCATION:" + msgData3 + "\nSUMMARY:Our Meeting Office\nEND:VEVENT\nEND:VCALENDAR";
-          console.log(this.eventSource);
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
-    });
+          text: 'Import Event',
+          handler: () => {
+            this.importExportModal();
+          }
+        },{
+          text: 'Export Event',
+          handler: () => {
+            // this.icalExportService.download(this.eventSource);
+            const icsString = this.icalExportService.download(this.eventSource);
+            console.log(icsString);
+          }
+        }, {
+          text: 'Cancel',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }]
+      });
+      await actionSheet.present();
+  }
 
-    await actionSheet.present();
+  getKeys(obj) {
+    return Object.keys(obj)
+  }
+
+  formatEvents() {
+    const finalObj = []
+    this.eventSource.forEach((event) => {
+      const date = moment(event.startTime).format('DD ddd')
+      if (finalObj[date]) {
+        finalObj[date].push(event);
+      } else {
+        finalObj[date] = [event];
+      }
+    })
+    this.sortedEvents = finalObj.sort()
+  }
+
+  async calendarViewOptions() {
+    const actionSheet = await this.actionSheetController.create({
+      buttons: [
+        {
+          text: 'Day',
+          handler: () => {
+            this.displayMode = 'event';
+            this.formatEvents();
+          }
+        }, {
+          text: 'Month',
+          handler: () => {
+            this.displayMode = 'calendar';
+          }
+        }, {
+          text: 'Cancel',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }]
+      });
+      await actionSheet.present();
   }
 
   async importExportModal() {
@@ -100,6 +143,7 @@ export class CalendarPage implements OnInit {
         });
 
         this.myCal.loadEvents();
+        this.formatEvents();
       }
 
     });
@@ -171,6 +215,7 @@ export class CalendarPage implements OnInit {
   }
 
   onViewTitleChanged(title) {
+    console.log(title);
     this.viewTitle = title;
   }
 
