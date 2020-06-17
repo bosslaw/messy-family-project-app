@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthConstants } from 'src/app/config/auth-constants';
-import { StorageService } from 'src/app/services/storage.service';
-import { ToastService } from 'src/app/services/toast.service';
-import { UserService } from 'src/app/services/user.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-account-edit',

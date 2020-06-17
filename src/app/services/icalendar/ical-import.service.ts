@@ -25,20 +25,24 @@ export class IcalImportService {
           if(event.includes('DTSTART')) {
             const date = event.split(':');
             const timezone = date[0].split('=');
-            formattedEvents[this.todoCount].startTime = this.calendarDate(date[1], timezone[1]);
+            formattedEvents[this.todoCount].start_date = this.calendarDate(date[1], timezone[1]);
           } else if(event.includes('DTEND')) {
             const date = event.split(':');
             const timezone = date[0].split('=');
-            formattedEvents[this.todoCount].endTime = this.calendarDate(date[1], timezone[1]);
+            formattedEvents[this.todoCount].end_date = this.calendarDate(date[1], timezone[1]);
           } else if(event.includes('RRULE')) {
             const rule = event.split(':');
             formattedEvents[this.todoCount].rRule = this.iCalendarRule(rule[1]);
           } else if (event.includes('SUMMARY')) {
             const title = event.split(':');
             formattedEvents[this.todoCount].title = title[1];
+          }else if (event.includes('LOCATION')) {
+            const location = event.split(':');
+            location.shift();
+            formattedEvents[this.todoCount].location = location.join(':');
           }else if (event.includes('DESCRIPTION')) {
             const matches = event.match(/([^:]+)[:]([\w\W]+)/);
-            formattedEvents[this.todoCount].desc = decodeURI(matches[2]);
+            formattedEvents[this.todoCount].description = decodeURI(matches[2]);
           } else { }
         }
 

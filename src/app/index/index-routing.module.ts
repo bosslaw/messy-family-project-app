@@ -18,13 +18,13 @@ const routes: Routes = [
         path: 'signup',
         loadChildren: () => import('../pages/signup/signup.module').then( m => m.SignupPageModule)
       },
-      {
-        path: 'calendar',
-        loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
-      },
+      // {
+      //   path: 'calendar',
+      //   loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
+      // },
       {
         path: '',
-        redirectTo: 'calendar',
+        redirectTo: 'login',
         pathMatch: 'full'
       }
     ]

@@ -4,7 +4,8 @@ import { Calendar } from '@ionic-native/calendar/ngx';
 import { ActionSheetController, AlertController, ModalController, Platform } from '@ionic/angular';
 import { CalendarComponent } from 'ionic2-calendar';
 import * as moment from 'moment';
-import { IcalExportService } from 'src/app/services/ical-export.service';
+import { EventsService } from 'src/app/services/events/events.service';
+import { IcalExportService } from 'src/app/services/icalendar/ical-export.service';
 import { CalendarImportPage } from '../calendar-import/calendar-import.page';
 import { EventFormPage } from '../event-form/event-form.page';
 
@@ -39,6 +40,7 @@ export class CalendarPage implements OnInit {
     private actionSheetController: ActionSheetController,
     private modalCtrl: ModalController,
     private icalExportService: IcalExportService,
+    private eventService: EventsService,
     private plt: Platform) {
 
       // this.plt.ready().then(()=> {
@@ -50,6 +52,28 @@ export class CalendarPage implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  ionViewWillEnter() {
+    this.getEvents();
+  }
+
+  getEvents() {
+    this.eventService.getEvents().subscribe((res: any) => {
+      res.forEach(event => {
+        event = this.formatEvent(event);
+      })
+      this.eventSource = res;
+    },
+    (error: any) => {})
+  }
+
+  formatEvent(event) {
+    event.startTime = new Date(event.start_date);
+    event.endTime = new Date(event.end_date);
+    event.desc = new Date(event.description);
+
+    return event;
   }
 
   async showCalendarOptions() {
@@ -132,18 +156,8 @@ export class CalendarPage implements OnInit {
     modal.onDidDismiss().then((events: any)=> {
       if(events.data) {
         events.data.forEach((event: any) => {
-          const eventCopy = {
-            title: event.title,
-            startTime:  new Date(event.startTime),
-            endTime: new Date(event.endTime),
-            // allDay: event.allDay,
-            desc: event.desc
-          }
-          this.eventSource.push(eventCopy);
+          this.addEvent(event);
         });
-
-        this.myCal.loadEvents();
-        this.formatEvents();
       }
 
     });
@@ -163,31 +177,34 @@ export class CalendarPage implements OnInit {
     modal.onDidDismiss().then((event: any)=> {
 
       if(event.data) {
-        const eventCopy = {
-          title: event.data.title,
-          startTime:  new Date(event.data.startTime),
-          endTime: new Date(event.data.endTime),
-          allDay: event.data.allDay,
-          desc: event.data.desc
-        }
-
-        if (eventCopy.allDay) {
-          const start = eventCopy.startTime;
-          const end = eventCopy.endTime;
-
-          eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
-          eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
-        }
-
-        this.eventSource.push(eventCopy);
-        this.myCal.loadEvents();
-        console.log(this.eventSource);
+        this.addEvent(event.data);
       }
-
     });
 
 
     return await modal.present();
+  }
+
+  addEvent(event) {
+
+    const formattedEvent = {
+      title: event.title,
+      start_date:  moment(event.start_date).format('YYYY-MM-DD hh:mm'),
+      end_date: moment(event.end_date).format('YYYY-MM-DD hh:mm'),
+      // allDay: event.data.allDay,
+      description: event.description,
+      location: event.location
+    };
+
+
+    this.eventService.addEvent(formattedEvent).subscribe((res: any) => {
+      if(res.success) {
+        this.eventSource.push(this.formatEvent(res.data));
+        this.myCal.loadEvents();
+      }
+    },
+    (error: any) => {
+    });
   }
 
 

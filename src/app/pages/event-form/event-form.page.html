@@ -13,15 +13,18 @@
       <ion-input type="text" name="title" placeholder="Title" [(ngModel)]="event.title"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" name="description" placeholder="Description" [(ngModel)]="event.desc"></ion-input>
+      <ion-input type="text" name="description" placeholder="Description" [(ngModel)]="event.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" name="location" placeholder="Location" [(ngModel)]="event.location"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Start</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" name="startTime" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" name="start_date" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.start_date" [min]="minDate"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>End</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" name="endTime" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" name="end_date" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.end_date" [min]="minDate"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>All Day?</ion-label>

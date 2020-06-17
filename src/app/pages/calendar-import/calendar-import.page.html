@@ -15,9 +15,10 @@
     <div *ngFor="let event of events">
       <b>{{event.title}}</b>
       
-      <p *ngIf="event.startTime"><b>Start: </b> {{event.startTime}}</p>
-      <p *ngIf="event.endTime"><b>End: </b> {{event.endTime}}</p>
-      <p *ngIf="event.desc"><b>Description: </b> {{event.desc}}</p>
+      <p *ngIf="event.start_date"><b>Start: </b> {{event.start_date}}</p>
+      <p *ngIf="event.end_date"><b>End: </b> {{event.end_date}}</p>
+      <p *ngIf="event.description"><b>Description: </b> {{event.description}}</p>
+      <p *ngIf="event.location"><b>Location: </b> {{event.location}}</p>
       
     </div>
     <ion-button *ngIf="events.length" (click)="importEvent()">Import</ion-button>

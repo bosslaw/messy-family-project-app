@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthConstants } from '../config/auth-constants';
-import { HttpService } from './http.service';
-import { StorageService } from './storage.service';
+import { AuthConstants } from '../../config/auth-constants';
+import { HttpService } from '../http/http.service';
+import { StorageService } from '../storage/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   login(postData: any): Observable<any> {
-    return this.httpService.get('login', postData);
+    return this.httpService.post('login', postData);
   }
 
   logout() {

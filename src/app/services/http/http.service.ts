@@ -12,16 +12,18 @@ export class HttpService {
   post(serviceName: string, data: any) {
 
     const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept','application/json');
 
     const options = { header: headers, withCredentials: false};
 
     const url = environment.apiUrl + serviceName;
 
-    return this.http.post(url, JSON.stringify(data), options)
+    return this.http.post(url, data, options)
 
   }
 
-  get(serviceName: string, data: any) {
+  get(serviceName: string, data: any = []) {
 
     const url = environment.apiUrl + serviceName;
     const params = Object.keys(data).map(key => key + '=' + data[key]).join('&');

@@ -10,9 +10,10 @@ export class EventFormPage implements OnInit {
 
   event = {
     title: '',
-    desc: '',
-    startTime: new Date().toISOString(),
-    endTime: new Date().toISOString(),
+    description: '',
+    start_date: new Date().toISOString(),
+    end_date: new Date().toISOString(),
+    location: '',
     allDay: false
   };
 
@@ -28,8 +29,8 @@ export class EventFormPage implements OnInit {
 
   ngOnInit() {
     this.preselectedDate = new Date(this.navParams.data.preselectedDate).toISOString();
-    this.event.startTime = this.preselectedDate;
-    this.event.endTime = this.preselectedDate;
+    this.event.start_date = this.preselectedDate;
+    this.event.end_date = this.preselectedDate;
   }
 
   dismiss() {

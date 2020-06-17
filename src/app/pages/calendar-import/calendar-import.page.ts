@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { IcalImportService } from 'src/app/services/ical-import.service';
+import { IcalImportService } from 'src/app/services/icalendar/ical-import.service';
 
 @Component({
   selector: 'app-calendar-import',
@@ -42,6 +42,7 @@ export class CalendarImportPage implements OnInit {
 
       const cal = ref.base64.split(',');
       this.events = this.iCalImportService.parse(atob(cal[1]));
+      console.log(this.events);
     }
 
     reader.readAsDataURL(file);
