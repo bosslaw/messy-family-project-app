@@ -18,4 +18,8 @@ export class EventsService {
   getEvents(): Observable<any> {
     return this.httpService.get('events');
   }
+
+  getLatestEvents(): Observable<any> {
+    return this.httpService.get('latest-events');
+  }
 }

@@ -47,6 +47,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/account-edit/account-edit.module').then( m => m.AccountEditPageModule)
       },
       {
+        path: 'blog/:id',
+        loadChildren: () => import('../pages/blog-view/blog-view.module').then( m => m.BlogViewPageModule)
+      },
+      {
         path: '',
         redirectTo: '/home/home',
         pathMatch: 'full'

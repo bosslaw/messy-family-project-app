@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-blog-thumbnails',
@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogThumbnailsComponent implements OnInit {
 
+  @Input() post;
+  @Output() postClicked = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {}
 
+  viewPost(post) {
+    this.postClicked.emit(post);
+  }
 }

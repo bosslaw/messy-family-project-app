@@ -56,12 +56,12 @@
           <p class="ion-no-margin">{{date | slice:3:date.length}}</p>
         </ion-col>
         <ion-col size="10">
-          <ion-card *ngFor="let event of sortedEvents[date]" class="ion-no-margin event">
+          <ion-card *ngFor="let event of sortedEvents[date]" class="ion-no-margin event" (click)="onEventSelected(event)">
             <ion-card-header>
               <ion-card-subtitle> {{event.title}}</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>
-              {{event.desc}}
+              {{event.description}}
             </ion-card-content>
           </ion-card>
          

@@ -42,6 +42,9 @@ export class CalendarImportPage implements OnInit {
 
       const cal = ref.base64.split(',');
       this.events = this.iCalImportService.parse(atob(cal[1]));
+      this.events.forEach(event => {
+        event.description = decodeURI(event.description);
+      })
       console.log(this.events);
     }
 

@@ -1,12 +1,14 @@
-import { formatDate } from '@angular/common';
 import { Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { Calendar } from '@ionic-native/calendar/ngx';
 import { ActionSheetController, AlertController, ModalController, Platform } from '@ionic/angular';
 import { CalendarComponent } from 'ionic2-calendar';
 import * as moment from 'moment';
+import { AuthConstants } from 'src/app/config/auth-constants';
 import { EventsService } from 'src/app/services/events/events.service';
 import { IcalExportService } from 'src/app/services/icalendar/ical-export.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 import { CalendarImportPage } from '../calendar-import/calendar-import.page';
+import { EventDetailsPage } from '../event-details/event-details.page';
 import { EventFormPage } from '../event-form/event-form.page';
 
 @Component({
@@ -22,6 +24,7 @@ export class CalendarPage implements OnInit {
   selectedDay = new Date();
   sortedEvents: any;
   displayMode = 'calendar';
+  user: any;
 
   calendar = {
     mode: 'month',
@@ -41,6 +44,7 @@ export class CalendarPage implements OnInit {
     private modalCtrl: ModalController,
     private icalExportService: IcalExportService,
     private eventService: EventsService,
+    private storageService: StorageService,
     private plt: Platform) {
 
       // this.plt.ready().then(()=> {
@@ -51,7 +55,9 @@ export class CalendarPage implements OnInit {
     }
 
   ngOnInit() {
-
+    this.storageService.get(AuthConstants.AUTH).then(res => {
+      this.user = res;
+    });
   }
 
   ionViewWillEnter() {
@@ -87,9 +93,7 @@ export class CalendarPage implements OnInit {
         },{
           text: 'Export Event',
           handler: () => {
-            // this.icalExportService.download(this.eventSource);
-            const icsString = this.icalExportService.download(this.eventSource);
-            console.log(icsString);
+            this.icalExportService.download();
           }
         }, {
           text: 'Cancel',
@@ -193,7 +197,9 @@ export class CalendarPage implements OnInit {
       end_date: moment(event.end_date).format('YYYY-MM-DD hh:mm'),
       // allDay: event.data.allDay,
       description: event.description,
-      location: event.location
+      location: event.location,
+      uid: this.user.Id,
+      status: 'Upcoming'
     };
 
 
@@ -238,18 +244,15 @@ export class CalendarPage implements OnInit {
 
   // Calendar event was clicked
   async onEventSelected(event) {
-    console.log(event);
-    // Use Angular date pipe for conversion
-    const start = formatDate(event.startTime, 'medium', this.locale);
-    const end = formatDate(event.endTime, 'medium', this.locale);
 
-    const alert = await this.alertCtrl.create({
-      header: event.title,
-      subHeader: event.desc,
-      message: 'From: ' + start + '<br><br>To: ' + end,
-      buttons: ['OK']
-    });
-    alert.present();
+      const modal = await this.modalCtrl.create({
+        component: EventDetailsPage,
+        componentProps: {
+          event
+        }
+      });
+
+      return await modal.present();
   }
 
 }
