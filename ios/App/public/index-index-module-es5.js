@@ -71,9 +71,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../services/storage.service */
-    "./src/app/services/storage.service.ts");
+    var _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../services/storage/storage.service */
+    "./src/app/services/storage/storage.service.ts");
 
     var IndexGuard = /*#__PURE__*/function () {
       function IndexGuard(storageServices, router) {
@@ -109,7 +109,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     IndexGuard.ctorParameters = function () {
       return [{
-        type: _services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"]
+        type: _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }];
@@ -117,7 +117,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     IndexGuard = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], IndexGuard);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], IndexGuard);
     /***/
   },
 
@@ -197,20 +197,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return m.SignupPageModule;
           });
         }
-      }, {
-        path: 'calendar',
+      }, // {
+      //   path: 'calendar',
+      //   loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
+      // },
+      {
+        path: 'home',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
-          /*! import() | pages-calendar-calendar-module */
-          "pages-calendar-calendar-module").then(__webpack_require__.bind(null,
-          /*! ../pages/calendar/calendar.module */
-          "./src/app/pages/calendar/calendar.module.ts")).then(function (m) {
-            return m.CalendarPageModule;
+          return Promise.all(
+          /*! import() | pages-home-home-module */
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-home-home-module")]).then(__webpack_require__.bind(null,
+          /*! ../pages/home/home.module */
+          "./src/app/pages/home/home.module.ts")).then(function (m) {
+            return m.HomePageModule;
           });
         }
       }, {
         path: '',
-        redirectTo: 'calendar',
+        redirectTo: 'home',
         pathMatch: 'full'
       }]
     }];

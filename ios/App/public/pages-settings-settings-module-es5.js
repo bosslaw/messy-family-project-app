@@ -212,9 +212,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! src/app/services/auth.service */
-    "./src/app/services/auth.service.ts");
+    var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/services/auth/auth.service */
+    "./src/app/services/auth/auth.service.ts");
 
     var SettingsPage = /*#__PURE__*/function () {
       function SettingsPage(authService) {
@@ -238,7 +238,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     SettingsPage.ctorParameters = function () {
       return [{
-        type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
+        type: src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
       }];
     };
 
@@ -250,7 +250,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
       /*! ./settings.page.scss */
       "./src/app/pages/settings/settings.page.scss"))["default"]]
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])], SettingsPage);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])], SettingsPage);
     /***/
   }
 }]);

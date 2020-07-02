@@ -10,11 +10,18 @@
 #endif
 #endif
 
+#import "APPBadge.h"
 #import "Calendar.h"
+#import "CDVDevice.h"
 #import "CDVAssetLibraryFilesystem.h"
 #import "CDVFile.h"
 #import "CDVLocalFilesystem.h"
 #import "CDVFileTransfer.h"
+#import "APPLocalNotification.h"
+#import "APPNotificationContent.h"
+#import "APPNotificationOptions.h"
+#import "UNNotificationRequest+APPLocalNotification.h"
+#import "UNUserNotificationCenter+APPLocalNotification.h"
 
 FOUNDATION_EXPORT double CordovaPluginsVersionNumber;
 FOUNDATION_EXPORT const unsigned char CordovaPluginsVersionString[];

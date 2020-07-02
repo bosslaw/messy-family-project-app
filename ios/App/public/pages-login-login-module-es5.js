@@ -224,30 +224,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! src/app/services/auth.service */
-    "./src/app/services/auth.service.ts");
+    var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/services/auth/auth.service */
+    "./src/app/services/auth/auth.service.ts");
     /* harmony import */
 
 
-    var src_app_services_storage_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! src/app/services/storage.service */
-    "./src/app/services/storage.service.ts");
+    var src_app_services_notifications_notifications_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/services/notifications/notifications.service */
+    "./src/app/services/notifications/notifications.service.ts");
     /* harmony import */
 
 
-    var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! src/app/services/toast.service */
-    "./src/app/services/toast.service.ts");
+    var src_app_services_push_notifications_push_notifications_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! src/app/services/push-notifications/push-notifications.service */
+    "./src/app/services/push-notifications/push-notifications.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! src/app/services/storage/storage.service */
+    "./src/app/services/storage/storage.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! src/app/services/toast/toast.service */
+    "./src/app/services/toast/toast.service.ts");
 
     var LoginPage = /*#__PURE__*/function () {
-      function LoginPage(router, authService, storageService, toastService) {
+      function LoginPage(router, authService, storageService, toastService, notifServices, pushNoficationService) {
         _classCallCheck(this, LoginPage);
 
         this.router = router;
         this.authService = authService;
         this.storageService = storageService;
         this.toastService = toastService;
+        this.notifServices = notifServices;
+        this.pushNoficationService = pushNoficationService;
         this.postData = {
           email: '',
           password: ''
@@ -256,13 +270,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       _createClass(LoginPage, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {// this.testPushNotification();
+          // this.testNotification();
+        }
       }, {
         key: "validateInputs",
         value: function validateInputs() {
           var email = this.postData.email.trim();
           var password = this.postData.password.trim();
           return this.postData.email && this.postData.password && email.length > 0 && password.length > 0;
+        }
+      }, {
+        key: "testPushNotification",
+        value: function testPushNotification() {
+          this.pushNoficationService.notify();
+        }
+      }, {
+        key: "testNotification",
+        value: function testNotification() {
+          this.notifServices.notify();
         }
       }, {
         key: "loginAction",
@@ -294,11 +320,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return [{
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }, {
-        type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]
+        type: src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"]
       }, {
-        type: src_app_services_storage_service__WEBPACK_IMPORTED_MODULE_5__["StorageService"]
+        type: src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_7__["StorageService"]
       }, {
-        type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_6__["ToastService"]
+        type: src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_8__["ToastService"]
+      }, {
+        type: src_app_services_notifications_notifications_service__WEBPACK_IMPORTED_MODULE_5__["NotificationsService"]
+      }, {
+        type: src_app_services_push_notifications_push_notifications_service__WEBPACK_IMPORTED_MODULE_6__["PushNotificationsService"]
       }];
     };
 
@@ -310,7 +340,155 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
       /*! ./login.page.scss */
       "./src/app/pages/login/login.page.scss"))["default"]]
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], src_app_services_storage_service__WEBPACK_IMPORTED_MODULE_5__["StorageService"], src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_6__["ToastService"]])], LoginPage);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_7__["StorageService"], src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_8__["ToastService"], src_app_services_notifications_notifications_service__WEBPACK_IMPORTED_MODULE_5__["NotificationsService"], src_app_services_push_notifications_push_notifications_service__WEBPACK_IMPORTED_MODULE_6__["PushNotificationsService"]])], LoginPage);
+    /***/
+  },
+
+  /***/
+  "./src/app/services/notifications/notifications.service.ts":
+  /*!*****************************************************************!*\
+    !*** ./src/app/services/notifications/notifications.service.ts ***!
+    \*****************************************************************/
+
+  /*! exports provided: NotificationsService */
+
+  /***/
+  function srcAppServicesNotificationsNotificationsServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "NotificationsService", function () {
+      return NotificationsService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic-native/local-notifications/ngx */
+    "./node_modules/@ionic-native/local-notifications/__ivy_ngcc__/ngx/index.js");
+
+    var NotificationsService = /*#__PURE__*/function () {
+      function NotificationsService(localNotifications) {
+        _classCallCheck(this, NotificationsService);
+
+        this.localNotifications = localNotifications;
+      }
+
+      _createClass(NotificationsService, [{
+        key: "notify",
+        value: function notify() {
+          this.localNotifications.schedule([{
+            id: 1,
+            title: 'Messy Family Notification',
+            text: 'Upcoming Event',
+            icon: ''
+          }]);
+        }
+      }]);
+
+      return NotificationsService;
+    }();
+
+    NotificationsService.ctorParameters = function () {
+      return [{
+        type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_2__["LocalNotifications"]
+      }];
+    };
+
+    NotificationsService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_2__["LocalNotifications"]])], NotificationsService);
+    /***/
+  },
+
+  /***/
+  "./src/app/services/push-notifications/push-notifications.service.ts":
+  /*!***************************************************************************!*\
+    !*** ./src/app/services/push-notifications/push-notifications.service.ts ***!
+    \***************************************************************************/
+
+  /*! exports provided: PushNotificationsService */
+
+  /***/
+  function srcAppServicesPushNotificationsPushNotificationsServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PushNotificationsService", function () {
+      return PushNotificationsService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _capacitor_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @capacitor/core */
+    "./node_modules/@capacitor/core/dist/esm/index.js");
+
+    var PushNotifications = _capacitor_core__WEBPACK_IMPORTED_MODULE_2__["Plugins"].PushNotifications;
+
+    var PushNotificationsService = /*#__PURE__*/function () {
+      function PushNotificationsService() {
+        _classCallCheck(this, PushNotificationsService);
+      }
+
+      _createClass(PushNotificationsService, [{
+        key: "notify",
+        value: function notify() {
+          PushNotifications.requestPermission().then(function (result) {
+            if (result.granted) {
+              // Register with Apple / Google to receive push via APNS/FCM
+              PushNotifications.register();
+            } else {// Show some error
+            }
+          });
+          PushNotifications.addListener('registration', function (token) {
+            alert('Push registration success, token: ' + token.value);
+          });
+          PushNotifications.addListener('pushNotificationReceived', function (notification) {
+            alert('Push received: ' + JSON.stringify(notification));
+          });
+          PushNotifications.addListener('pushNotificationActionPerformed', function (notification) {
+            alert('Push action performed: ' + JSON.stringify(notification));
+          });
+        }
+      }]);
+
+      return PushNotificationsService;
+    }();
+
+    PushNotificationsService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [])], PushNotificationsService);
     /***/
   }
 }]);

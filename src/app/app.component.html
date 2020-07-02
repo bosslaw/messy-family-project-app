@@ -3,16 +3,15 @@
     <!--  our side menu  -->
     <ion-menu contentId="main">
       <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
+        <ion-toolbar class="sidemenu-title" color="primary">
+          <ion-title class="ion-no-padding">the catholic family app</ion-title>
         </ion-toolbar>
       </ion-header>
 
       <ion-content class="menu">
         <ion-list lines="none">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-menu-toggle class="menu-toggle" auto-hide="false" *ngFor="let p of appPages">
             <ion-item detail="false" routerLinkActive #rla="routerLinkActive" [color]="rla.isActive && 'gray'" [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon [color]="rla.isActive ? 'pink' : 'dark-gray'" slot="start" [name]="p.icon"></ion-icon>
               <ion-label [color]="rla.isActive ? 'pink' : 'dark-gray'">
                 {{p.title}}
               </ion-label>

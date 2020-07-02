@@ -218,15 +218,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! src/app/services/auth.service */
-    "./src/app/services/auth.service.ts");
+    var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/services/auth/auth.service */
+    "./src/app/services/auth/auth.service.ts");
     /* harmony import */
 
 
-    var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! src/app/services/toast.service */
-    "./src/app/services/toast.service.ts");
+    var src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/services/toast/toast.service */
+    "./src/app/services/toast/toast.service.ts");
 
     var SignupPage = /*#__PURE__*/function () {
       function SignupPage(authService, router, toastService) {
@@ -281,11 +281,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     SignupPage.ctorParameters = function () {
       return [{
-        type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]
+        type: src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }, {
-        type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]
+        type: src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]
       }];
     };
 
@@ -297,7 +297,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
       /*! ./signup.page.scss */
       "./src/app/pages/signup/signup.page.scss"))["default"]]
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]])], SignupPage);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]])], SignupPage);
     /***/
   }
 }]);

@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { Calendar } from '@ionic-native/calendar/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -24,7 +25,8 @@ import { AppComponent } from './app.component';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Calendar,
     FileTransfer,
-    File
+    File,
+    LocalNotifications
   ],
   bootstrap: [AppComponent]
 })

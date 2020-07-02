@@ -4542,15 +4542,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/services/storage.service.ts":
-  /*!*********************************************!*\
-    !*** ./src/app/services/storage.service.ts ***!
-    \*********************************************/
+  "./src/app/services/storage/storage.service.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/services/storage/storage.service.ts ***!
+    \*****************************************************/
 
   /*! exports provided: StorageService */
 
   /***/
-  function srcAppServicesStorageServiceTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppServicesStorageStorageServiceTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);

@@ -2671,10 +2671,10 @@ AuthConstants.AUTH = 'userDataKey';
 
 /***/ }),
 
-/***/ "./src/app/services/storage.service.ts":
-/*!*********************************************!*\
-  !*** ./src/app/services/storage.service.ts ***!
-  \*********************************************/
+/***/ "./src/app/services/storage/storage.service.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/services/storage/storage.service.ts ***!
+  \*****************************************************/
 /*! exports provided: StorageService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

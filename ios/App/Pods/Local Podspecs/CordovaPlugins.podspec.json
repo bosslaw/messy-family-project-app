@@ -28,7 +28,9 @@
     "EventKit",
     "EventKitUI",
     "AssetsLibrary",
-    "MobileCoreServices"
+    "MobileCoreServices",
+    "UserNotifications",
+    "CoreLocation"
   ],
   "swift_version": "5.0"
 }

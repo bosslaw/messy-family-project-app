@@ -26984,7 +26984,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Import Events</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button  (click)=\"dismiss()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <h1>Upload ICS File</h1>\n  <ion-input type=\"file\" name=\"file\"  (change)=\"upload($event)\">Upload!</ion-input>\n  <br><br><br>\n  <div lines=\"none\" *ngIf=\"events\">\n    <div *ngFor=\"let event of events\">\n      <b>{{event.title}}</b>\n      \n      <p *ngIf=\"event.startTime\"><b>Start: </b> {{event.startTime}}</p>\n      <p *ngIf=\"event.endTime\"><b>End: </b> {{event.endTime}}</p>\n      <p *ngIf=\"event.desc\"><b>Description: </b> {{event.desc}}</p>\n      \n    </div>\n    <ion-button *ngIf=\"events.length\" (click)=\"importEvent()\">Import</ion-button>\n  </div>\n   \n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Import Events</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button  (click)=\"dismiss()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <h1>Upload ICS File</h1>\n  <ion-input type=\"file\" name=\"file\"  (change)=\"upload($event)\">Upload!</ion-input>\n  <br><br><br>\n  <div lines=\"none\" *ngIf=\"events\">\n    <div *ngFor=\"let event of events\">\n      <b>{{event.title}}</b>\n      \n      <p *ngIf=\"event.start_date\"><b>Start: </b> {{event.start_date}}</p>\n      <p *ngIf=\"event.end_date\"><b>End: </b> {{event.end_date}}</p>\n      <p *ngIf=\"event.description\"><b>Description: </b> {{event.description}}</p>\n      <p *ngIf=\"event.location\"><b>Location: </b> {{event.location}}</p>\n      \n    </div>\n    <ion-button *ngIf=\"events.length\" (click)=\"importEvent()\">Import</ion-button>\n  </div>\n   \n</ion-content>\n";
     /***/
   },
 
@@ -27004,7 +27004,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"calendarViewOptions()\" icon-only><ion-icon name=\"menu-outline\"></ion-icon></ion-button>\n    </ion-buttons>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"today()\" icon-only><ion-icon name=\"calendar-outline\"></ion-icon></ion-button>\n      <ion-button icon-only small (click)=\"addEventModal()\">\n        <ion-icon name=\"add-outline\" ></ion-icon>\n      </ion-button>\n      <ion-button icon-only small (click)=\"showCalendarOptions()\">\n        <ion-icon name=\"ellipsis-vertical\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <!--\n  <ion-row>\n    <ion-col size=\"4\">\n      <ion-button small expand=\"block\" [color]=\"calendar.mode == 'month' ? 'primary' : 'secondary'\" (click)=\"changeMode('month')\">Month</ion-button>\n    </ion-col>\n    <ion-col size=\"4\">\n      <ion-button small expand=\"block\" [color]=\"calendar.mode == 'week' ? 'primary' : 'secondary'\" (click)=\"changeMode('week')\">Week</ion-button>\n    </ion-col>\n    <ion-col size=\"4\">\n      <ion-button small expand=\"block\" [color]=\"calendar.mode == 'day' ? 'primary' : 'secondary'\" (click)=\"changeMode('day')\">Day</ion-button>\n    </ion-col> \n \n    <ion-col size=\"3\" class=\"ion-tex-left\">\n      <ion-button fill=\"clear\" small (click)=\"back()\">\n        <ion-icon name=\"arrow-back\" slot=\"icon-only\"></ion-icon>\n      </ion-button>\n    </ion-col>\n    <ion-col size=\"6\" class=\"ion-text-center\">\n      <ion-button small fill=\"clear\" >\n        {{ viewTitle }}\n      </ion-button>\n    </ion-col>\n\n    <ion-col size=\"3\" class=\"ion-text-right\">\n      <ion-button small fill=\"clear\" (click)=\"next()\">\n        <ion-icon name=\"arrow-forward\" slot=\"icon-only\"></ion-icon>\n      </ion-button>\n    </ion-col>\n  </ion-row>\n  -->\n  <div *ngIf=\"displayMode=='event'\">\n    <ion-grid *ngIf=\"sortedEvents\">\n      <ion-row *ngFor=\"let date of getKeys(sortedEvents)\">\n        <ion-col size=\"2\" class=\"ion-text-center\">\n          <h1 class=\"ion-no-margin\">{{date | slice:0:2}}</h1>\n          <p class=\"ion-no-margin\">{{date | slice:3:date.length}}</p>\n        </ion-col>\n        <ion-col size=\"10\">\n          <ion-card *ngFor=\"let event of sortedEvents[date]\" class=\"ion-no-margin event\">\n            <ion-card-header>\n              <ion-card-subtitle> {{event.title}}</ion-card-subtitle>\n            </ion-card-header>\n            <ion-card-content>\n              {{event.desc}}\n            </ion-card-content>\n          </ion-card>\n         \n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n  <div *ngIf=\"displayMode=='calendar'\">\n      <calendar \n      [eventSource]=\"eventSource\" \n      [calendarMode]=\"calendar.mode\" \n      [currentDate]=\"calendar.currentDate\"\n      (onEventSelected)=\"onEventSelected($event)\"\n      (onTitleChanged)=\"onViewTitleChanged($event)\"\n      (onTimeSelected)=\"onTimeSelected($event)\" \n      startHour=\"01\"\n      endHour=\"24\"\n      step=\"10\"\n      startingDayWeek=\"1\">\n      </calendar>\n  </div>\n  \n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"calendarViewOptions()\" icon-only><ion-icon name=\"menu-outline\"></ion-icon></ion-button>\n    </ion-buttons>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"today()\" icon-only><ion-icon name=\"calendar-outline\"></ion-icon></ion-button>\n      <ion-button icon-only small (click)=\"addEventModal()\">\n        <ion-icon name=\"add-outline\" ></ion-icon>\n      </ion-button>\n      <ion-button icon-only small (click)=\"showCalendarOptions()\">\n        <ion-icon name=\"ellipsis-vertical\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <!--\n  <ion-row>\n    <ion-col size=\"4\">\n      <ion-button small expand=\"block\" [color]=\"calendar.mode == 'month' ? 'primary' : 'secondary'\" (click)=\"changeMode('month')\">Month</ion-button>\n    </ion-col>\n    <ion-col size=\"4\">\n      <ion-button small expand=\"block\" [color]=\"calendar.mode == 'week' ? 'primary' : 'secondary'\" (click)=\"changeMode('week')\">Week</ion-button>\n    </ion-col>\n    <ion-col size=\"4\">\n      <ion-button small expand=\"block\" [color]=\"calendar.mode == 'day' ? 'primary' : 'secondary'\" (click)=\"changeMode('day')\">Day</ion-button>\n    </ion-col> \n \n    <ion-col size=\"3\" class=\"ion-tex-left\">\n      <ion-button fill=\"clear\" small (click)=\"back()\">\n        <ion-icon name=\"arrow-back\" slot=\"icon-only\"></ion-icon>\n      </ion-button>\n    </ion-col>\n    <ion-col size=\"6\" class=\"ion-text-center\">\n      <ion-button small fill=\"clear\" >\n        {{ viewTitle }}\n      </ion-button>\n    </ion-col>\n\n    <ion-col size=\"3\" class=\"ion-text-right\">\n      <ion-button small fill=\"clear\" (click)=\"next()\">\n        <ion-icon name=\"arrow-forward\" slot=\"icon-only\"></ion-icon>\n      </ion-button>\n    </ion-col>\n  </ion-row>\n  -->\n  <div *ngIf=\"displayMode=='event'\">\n    <ion-grid *ngIf=\"sortedEvents\">\n      <ion-row *ngFor=\"let date of getKeys(sortedEvents)\">\n        <ion-col size=\"2\" class=\"ion-text-center\">\n          <h1 class=\"ion-no-margin\">{{date | slice:0:2}}</h1>\n          <p class=\"ion-no-margin\">{{date | slice:3:date.length}}</p>\n        </ion-col>\n        <ion-col size=\"10\">\n          <ion-card *ngFor=\"let event of sortedEvents[date]\" class=\"ion-no-margin event\" (click)=\"onEventSelected(event)\">\n            <ion-card-header>\n              <ion-card-subtitle> {{event.title}}</ion-card-subtitle>\n            </ion-card-header>\n            <ion-card-content>\n              {{event.description}}\n            </ion-card-content>\n          </ion-card>\n         \n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </div>\n  <div *ngIf=\"displayMode=='calendar'\">\n      <calendar \n      [eventSource]=\"eventSource\" \n      [calendarMode]=\"calendar.mode\" \n      [currentDate]=\"calendar.currentDate\"\n      (onEventSelected)=\"onEventSelected($event)\"\n      (onTitleChanged)=\"onViewTitleChanged($event)\"\n      (onTimeSelected)=\"onTimeSelected($event)\" \n      startHour=\"01\"\n      endHour=\"24\"\n      step=\"10\"\n      startingDayWeek=\"1\">\n      </calendar>\n  </div>\n  \n</ion-content>\n";
     /***/
   },
 
@@ -27024,7 +27024,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>New Event</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button  (click)=\"dismiss()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content >\n  \n    <ion-item>\n      <ion-input type=\"text\" name=\"title\" placeholder=\"Title\" [(ngModel)]=\"event.title\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input type=\"text\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"event.desc\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Start</ion-label>\n      <ion-datetime displayFormat=\"MM/DD/YYYY HH:mm\" name=\"startTime\" pickerFormat=\"MMM D:HH:mm\" [(ngModel)]=\"event.startTime\" [min]=\"minDate\"></ion-datetime>\n    </ion-item>\n    <ion-item>\n      <ion-label>End</ion-label>\n      <ion-datetime displayFormat=\"MM/DD/YYYY HH:mm\" name=\"endTime\" pickerFormat=\"MMM D:HH:mm\" [(ngModel)]=\"event.endTime\" [min]=\"minDate\"></ion-datetime>\n    </ion-item>\n    <ion-item>\n      <ion-label>All Day?</ion-label>\n      <ion-checkbox name=\"allDay\" [(ngModel)]=\"event.allDay\"></ion-checkbox>\n    </ion-item>\n    <ion-button fill=\"outline\" expand=\"block\" (click)=\"addEvent()\" type=\"submit\">Add Event</ion-button>\n  \n    \n\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>New Event</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button  (click)=\"dismiss()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content >\n  \n    <ion-item>\n      <ion-input type=\"text\" name=\"title\" placeholder=\"Title\" [(ngModel)]=\"event.title\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input type=\"text\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"event.description\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input type=\"text\" name=\"location\" placeholder=\"Location\" [(ngModel)]=\"event.location\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Start</ion-label>\n      <ion-datetime displayFormat=\"MM/DD/YYYY HH:mm\" name=\"start_date\" pickerFormat=\"MMM D:HH:mm\" [(ngModel)]=\"event.start_date\" [min]=\"minDate\"></ion-datetime>\n    </ion-item>\n    <ion-item>\n      <ion-label>End</ion-label>\n      <ion-datetime displayFormat=\"MM/DD/YYYY HH:mm\" name=\"end_date\" pickerFormat=\"MMM D:HH:mm\" [(ngModel)]=\"event.end_date\" [min]=\"minDate\"></ion-datetime>\n    </ion-item>\n    <ion-item>\n      <ion-label>All Day?</ion-label>\n      <ion-checkbox name=\"allDay\" [(ngModel)]=\"event.allDay\"></ion-checkbox>\n    </ion-item>\n    <ion-button fill=\"outline\" expand=\"block\" (click)=\"addEvent()\" type=\"submit\">Add Event</ion-button>\n  \n    \n\n</ion-content>\n";
     /***/
   },
 
@@ -27259,9 +27259,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var src_app_services_ical_import_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! src/app/services/ical-import.service */
-    "./src/app/services/ical-import.service.ts");
+    var src_app_services_icalendar_ical_import_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/services/icalendar/ical-import.service */
+    "./src/app/services/icalendar/ical-import.service.ts");
 
     var CalendarImportPage = /*#__PURE__*/function () {
       function CalendarImportPage(modalCtrl, iCalImportService) {
@@ -27297,6 +27297,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             ref.base64 = base64.toString();
             var cal = ref.base64.split(',');
             _this8.events = _this8.iCalImportService.parse(atob(cal[1]));
+
+            _this8.events.forEach(function (event) {
+              event.description = decodeURI(event.description);
+            });
+
+            console.log(_this8.events);
           };
 
           reader.readAsDataURL(file);
@@ -27320,7 +27326,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return [{
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
       }, {
-        type: src_app_services_ical_import_service__WEBPACK_IMPORTED_MODULE_3__["IcalImportService"]
+        type: src_app_services_icalendar_ical_import_service__WEBPACK_IMPORTED_MODULE_3__["IcalImportService"]
       }];
     };
 
@@ -27332,7 +27338,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
       /*! ./calendar-import.page.scss */
       "./src/app/pages/calendar-import/calendar-import.page.scss"))["default"]]
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_services_ical_import_service__WEBPACK_IMPORTED_MODULE_3__["IcalImportService"]])], CalendarImportPage);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_services_icalendar_ical_import_service__WEBPACK_IMPORTED_MODULE_3__["IcalImportService"]])], CalendarImportPage);
     /***/
   },
 
@@ -27460,19 +27466,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _event_form_event_form_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _event_details_event_details_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../event-details/event-details.module */
+    "./src/app/pages/event-details/event-details.module.ts");
+    /* harmony import */
+
+
+    var _event_form_event_form_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ../event-form/event-form.module */
     "./src/app/pages/event-form/event-form.module.ts");
     /* harmony import */
 
 
-    var _calendar_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _calendar_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ./calendar-routing.module */
     "./src/app/pages/calendar/calendar-routing.module.ts");
     /* harmony import */
 
 
-    var _calendar_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _calendar_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ./calendar.page */
     "./src/app/pages/calendar/calendar.page.ts");
 
@@ -27481,9 +27493,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     CalendarPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _calendar_routing_module__WEBPACK_IMPORTED_MODULE_8__["CalendarPageRoutingModule"], ionic2_calendar__WEBPACK_IMPORTED_MODULE_5__["NgCalendarModule"], _event_form_event_form_module__WEBPACK_IMPORTED_MODULE_7__["EventFormPageModule"], _calendar_import_calendar_import_module__WEBPACK_IMPORTED_MODULE_6__["CalendarImportPageModule"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _calendar_routing_module__WEBPACK_IMPORTED_MODULE_9__["CalendarPageRoutingModule"], ionic2_calendar__WEBPACK_IMPORTED_MODULE_5__["NgCalendarModule"], _event_form_event_form_module__WEBPACK_IMPORTED_MODULE_8__["EventFormPageModule"], _calendar_import_calendar_import_module__WEBPACK_IMPORTED_MODULE_6__["CalendarImportPageModule"], _event_details_event_details_module__WEBPACK_IMPORTED_MODULE_7__["EventDetailsPageModule"]],
       schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["NO_ERRORS_SCHEMA"]],
-      declarations: [_calendar_page__WEBPACK_IMPORTED_MODULE_9__["CalendarPage"]]
+      declarations: [_calendar_page__WEBPACK_IMPORTED_MODULE_10__["CalendarPage"]]
     })], CalendarPageModule);
     /***/
   },
@@ -27536,64 +27548,82 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/common */
-    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
     /* harmony import */
 
 
-    var _ionic_native_calendar_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _ionic_native_calendar_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @ionic-native/calendar/ngx */
     "./node_modules/@ionic-native/calendar/__ivy_ngcc__/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
     /* harmony import */
 
 
-    var ionic2_calendar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var ionic2_calendar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ionic2-calendar */
     "./node_modules/ionic2-calendar/index.js");
     /* harmony import */
 
 
-    var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! moment */
     "./node_modules/moment/moment.js");
     /* harmony import */
 
 
-    var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
+    var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
     /* harmony import */
 
 
-    var src_app_services_ical_export_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! src/app/services/ical-export.service */
-    "./src/app/services/ical-export.service.ts");
+    var src_app_config_auth_constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! src/app/config/auth-constants */
+    "./src/app/config/auth-constants.ts");
     /* harmony import */
 
 
-    var _calendar_import_calendar_import_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var src_app_services_events_events_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! src/app/services/events/events.service */
+    "./src/app/services/events/events.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_icalendar_ical_export_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! src/app/services/icalendar/ical-export.service */
+    "./src/app/services/icalendar/ical-export.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! src/app/services/storage/storage.service */
+    "./src/app/services/storage/storage.service.ts");
+    /* harmony import */
+
+
+    var _calendar_import_calendar_import_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ../calendar-import/calendar-import.page */
     "./src/app/pages/calendar-import/calendar-import.page.ts");
     /* harmony import */
 
 
-    var _event_form_event_form_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _event_details_event_details_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ../event-details/event-details.page */
+    "./src/app/pages/event-details/event-details.page.ts");
+    /* harmony import */
+
+
+    var _event_form_event_form_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! ../event-form/event-form.page */
     "./src/app/pages/event-form/event-form.page.ts");
 
     var CalendarPage = /*#__PURE__*/function () {
-      function CalendarPage(alertCtrl, locale, cal, actionSheetController, modalCtrl, icalExportService, plt) {
+      function CalendarPage(alertCtrl, locale, cal, actionSheetController, modalCtrl, icalExportService, eventService, storageService, plt) {
         _classCallCheck(this, CalendarPage);
 
         this.alertCtrl = alertCtrl;
@@ -27602,6 +27632,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.actionSheetController = actionSheetController;
         this.modalCtrl = modalCtrl;
         this.icalExportService = icalExportService;
+        this.eventService = eventService;
+        this.storageService = storageService;
         this.plt = plt;
         this.collapseCard = true;
         this.eventSource = [];
@@ -27622,12 +27654,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(CalendarPage, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          var _this9 = this;
+
+          this.storageService.get(src_app_config_auth_constants__WEBPACK_IMPORTED_MODULE_6__["AuthConstants"].AUTH).then(function (res) {
+            _this9.user = res;
+          });
+        }
+      }, {
+        key: "ionViewWillEnter",
+        value: function ionViewWillEnter() {
+          this.getEvents();
+        }
+      }, {
+        key: "getEvents",
+        value: function getEvents() {
+          var _this10 = this;
+
+          this.eventService.getEvents().subscribe(function (res) {
+            res.forEach(function (event) {
+              event = _this10.formatEvent(event);
+            });
+            _this10.eventSource = res;
+          }, function (error) {});
+        }
+      }, {
+        key: "formatEvent",
+        value: function formatEvent(event) {
+          event.startTime = new Date(event.start_date);
+          event.endTime = new Date(event.end_date);
+          event.desc = new Date(event.description);
+          return event;
+        }
       }, {
         key: "showCalendarOptions",
         value: function showCalendarOptions() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this9 = this;
+            var _this11 = this;
 
             var actionSheet;
             return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -27639,15 +27702,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       buttons: [{
                         text: 'Import Event',
                         handler: function handler() {
-                          _this9.importExportModal();
+                          _this11.importExportModal();
                         }
                       }, {
                         text: 'Export Event',
                         handler: function handler() {
-                          // this.icalExportService.download(this.eventSource);
-                          var icsString = _this9.icalExportService.download(_this9.eventSource);
-
-                          console.log(icsString);
+                          _this11.icalExportService.download();
                         }
                       }, {
                         text: 'Cancel',
@@ -27682,7 +27742,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function formatEvents() {
           var finalObj = [];
           this.eventSource.forEach(function (event) {
-            var date = moment__WEBPACK_IMPORTED_MODULE_6__(event.startTime).format('DD ddd');
+            var date = moment__WEBPACK_IMPORTED_MODULE_5__(event.startTime).format('DD ddd');
 
             if (finalObj[date]) {
               finalObj[date].push(event);
@@ -27696,7 +27756,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "calendarViewOptions",
         value: function calendarViewOptions() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this10 = this;
+            var _this12 = this;
 
             var actionSheet;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -27708,14 +27768,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       buttons: [{
                         text: 'Day',
                         handler: function handler() {
-                          _this10.displayMode = 'event';
+                          _this12.displayMode = 'event';
 
-                          _this10.formatEvents();
+                          _this12.formatEvents();
                         }
                       }, {
                         text: 'Month',
                         handler: function handler() {
-                          _this10.displayMode = 'calendar';
+                          _this12.displayMode = 'calendar';
                         }
                       }, {
                         text: 'Cancel',
@@ -27744,7 +27804,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "importExportModal",
         value: function importExportModal() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-            var _this11 = this;
+            var _this13 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -27753,7 +27813,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 0:
                     _context3.next = 2;
                     return this.modalCtrl.create({
-                      component: _calendar_import_calendar_import_page__WEBPACK_IMPORTED_MODULE_8__["CalendarImportPage"],
+                      component: _calendar_import_calendar_import_page__WEBPACK_IMPORTED_MODULE_10__["CalendarImportPage"],
                       componentProps: {}
                     });
 
@@ -27762,20 +27822,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     modal.onDidDismiss().then(function (events) {
                       if (events.data) {
                         events.data.forEach(function (event) {
-                          var eventCopy = {
-                            title: event.title,
-                            startTime: new Date(event.startTime),
-                            endTime: new Date(event.endTime),
-                            // allDay: event.allDay,
-                            desc: event.desc
-                          };
-
-                          _this11.eventSource.push(eventCopy);
+                          _this13.addEvent(event);
                         });
-
-                        _this11.myCal.loadEvents();
-
-                        _this11.formatEvents();
                       }
                     });
                     _context3.next = 6;
@@ -27796,7 +27844,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "addEventModal",
         value: function addEventModal() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-            var _this12 = this;
+            var _this14 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
@@ -27805,7 +27853,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 0:
                     _context4.next = 2;
                     return this.modalCtrl.create({
-                      component: _event_form_event_form_page__WEBPACK_IMPORTED_MODULE_9__["EventFormPage"],
+                      component: _event_form_event_form_page__WEBPACK_IMPORTED_MODULE_12__["EventFormPage"],
                       componentProps: {
                         preselectedDate: this.selectedDay
                       }
@@ -27815,26 +27863,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     modal = _context4.sent;
                     modal.onDidDismiss().then(function (event) {
                       if (event.data) {
-                        var eventCopy = {
-                          title: event.data.title,
-                          startTime: new Date(event.data.startTime),
-                          endTime: new Date(event.data.endTime),
-                          allDay: event.data.allDay,
-                          desc: event.data.desc
-                        };
-
-                        if (eventCopy.allDay) {
-                          var start = eventCopy.startTime;
-                          var end = eventCopy.endTime;
-                          eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
-                          eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
-                        }
-
-                        _this12.eventSource.push(eventCopy);
-
-                        _this12.myCal.loadEvents();
-
-                        console.log(_this12.eventSource);
+                        _this14.addEvent(event.data);
                       }
                     });
                     _context4.next = 6;
@@ -27850,6 +27879,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             }, _callee4, this);
           }));
+        }
+      }, {
+        key: "addEvent",
+        value: function addEvent(event) {
+          var _this15 = this;
+
+          var formattedEvent = {
+            title: event.title,
+            start_date: moment__WEBPACK_IMPORTED_MODULE_5__(event.start_date).format('YYYY-MM-DD hh:mm'),
+            end_date: moment__WEBPACK_IMPORTED_MODULE_5__(event.end_date).format('YYYY-MM-DD hh:mm'),
+            // allDay: event.data.allDay,
+            description: event.description,
+            location: event.location,
+            uid: this.user.Id,
+            status: 'Upcoming'
+          };
+          this.eventService.addEvent(formattedEvent).subscribe(function (res) {
+            if (res.success) {
+              _this15.eventSource.push(_this15.formatEvent(res.data));
+
+              _this15.myCal.loadEvents();
+            }
+          }, function (error) {});
         }
       }, {
         key: "onTimeSelected",
@@ -27890,28 +27942,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "onEventSelected",
         value: function onEventSelected(event) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-            var start, end, alert;
+            var modal;
             return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
                 switch (_context5.prev = _context5.next) {
                   case 0:
-                    console.log(event); // Use Angular date pipe for conversion
-
-                    start = Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["formatDate"])(event.startTime, 'medium', this.locale);
-                    end = Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["formatDate"])(event.endTime, 'medium', this.locale);
-                    _context5.next = 5;
-                    return this.alertCtrl.create({
-                      header: event.title,
-                      subHeader: event.desc,
-                      message: 'From: ' + start + '<br><br>To: ' + end,
-                      buttons: ['OK']
+                    _context5.next = 2;
+                    return this.modalCtrl.create({
+                      component: _event_details_event_details_page__WEBPACK_IMPORTED_MODULE_11__["EventDetailsPage"],
+                      componentProps: {
+                        event: event
+                      }
                     });
 
-                  case 5:
-                    alert = _context5.sent;
-                    alert.present();
+                  case 2:
+                    modal = _context5.sent;
+                    _context5.next = 5;
+                    return modal.present();
 
-                  case 7:
+                  case 5:
+                    return _context5.abrupt("return", _context5.sent);
+
+                  case 6:
                   case "end":
                     return _context5.stop();
                 }
@@ -27926,28 +27978,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     CalendarPage.ctorParameters = function () {
       return [{
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]
       }, {
         type: String,
         decorators: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"],
-          args: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["LOCALE_ID"]]
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+          args: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["LOCALE_ID"]]
         }]
       }, {
-        type: _ionic_native_calendar_ngx__WEBPACK_IMPORTED_MODULE_3__["Calendar"]
+        type: _ionic_native_calendar_ngx__WEBPACK_IMPORTED_MODULE_2__["Calendar"]
       }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"]
       }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]
       }, {
-        type: src_app_services_ical_export_service__WEBPACK_IMPORTED_MODULE_7__["IcalExportService"]
+        type: src_app_services_icalendar_ical_export_service__WEBPACK_IMPORTED_MODULE_8__["IcalExportService"]
       }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]
+        type: src_app_services_events_events_service__WEBPACK_IMPORTED_MODULE_7__["EventsService"]
+      }, {
+        type: src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_9__["StorageService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]
       }];
     };
 
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"])(ionic2_calendar__WEBPACK_IMPORTED_MODULE_5__["CalendarComponent"]), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", ionic2_calendar__WEBPACK_IMPORTED_MODULE_5__["CalendarComponent"])], CalendarPage.prototype, "myCal", void 0);
-    CalendarPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(ionic2_calendar__WEBPACK_IMPORTED_MODULE_4__["CalendarComponent"]), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", ionic2_calendar__WEBPACK_IMPORTED_MODULE_4__["CalendarComponent"])], CalendarPage.prototype, "myCal", void 0);
+    CalendarPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-calendar',
       template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
       /*! raw-loader!./calendar.page.html */
@@ -27955,7 +28011,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
       /*! ./calendar.page.scss */
       "./src/app/pages/calendar/calendar.page.scss"))["default"]]
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_core__WEBPACK_IMPORTED_MODULE_2__["LOCALE_ID"])), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], String, _ionic_native_calendar_ngx__WEBPACK_IMPORTED_MODULE_3__["Calendar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"], src_app_services_ical_export_service__WEBPACK_IMPORTED_MODULE_7__["IcalExportService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]])], CalendarPage);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["LOCALE_ID"])), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"], String, _ionic_native_calendar_ngx__WEBPACK_IMPORTED_MODULE_2__["Calendar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], src_app_services_icalendar_ical_export_service__WEBPACK_IMPORTED_MODULE_8__["IcalExportService"], src_app_services_events_events_service__WEBPACK_IMPORTED_MODULE_7__["EventsService"], src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_9__["StorageService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]])], CalendarPage);
     /***/
   },
 
@@ -28158,9 +28214,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.navParams = navParams;
         this.event = {
           title: '',
-          desc: '',
-          startTime: new Date().toISOString(),
-          endTime: new Date().toISOString(),
+          description: '',
+          start_date: new Date().toISOString(),
+          end_date: new Date().toISOString(),
+          location: '',
           allDay: false
         };
         this.minDate = new Date().toISOString();
@@ -28170,8 +28227,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "ngOnInit",
         value: function ngOnInit() {
           this.preselectedDate = new Date(this.navParams.data.preselectedDate).toISOString();
-          this.event.startTime = this.preselectedDate;
-          this.event.endTime = this.preselectedDate;
+          this.event.start_date = this.preselectedDate;
+          this.event.end_date = this.preselectedDate;
         }
       }, {
         key: "dismiss",
@@ -28209,15 +28266,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
-  "./src/app/services/ical-export.service.ts":
-  /*!*************************************************!*\
-    !*** ./src/app/services/ical-export.service.ts ***!
-    \*************************************************/
+  "./src/app/services/icalendar/ical-export.service.ts":
+  /*!***********************************************************!*\
+    !*** ./src/app/services/icalendar/ical-export.service.ts ***!
+    \***********************************************************/
 
   /*! exports provided: IcalExportService */
 
   /***/
-  function srcAppServicesIcalExportServiceTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppServicesIcalendarIcalExportServiceTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -28257,6 +28314,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
 
     var IcalExportService = /*#__PURE__*/function () {
       function IcalExportService(platform, file, fileTransfer) {
@@ -28265,140 +28328,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.platform = platform;
         this.file = file;
         this.fileTransfer = fileTransfer;
-        this.SEPARATOR = '\n';
-        this.calendarEvents = [];
-        this.calendarStart = ['BEGIN:VCALENDAR', 'VERSION:2.0'].join(this.SEPARATOR);
-        this.calendarEnd = this.SEPARATOR + 'END:VCALENDAR';
       }
 
       _createClass(IcalExportService, [{
-        key: "addEvent",
-        value: function addEvent(title, description, start, end) {
-          if (typeof title === 'undefined' || typeof description === 'undefined' || typeof start === 'undefined' || typeof end === 'undefined') {
-            return false;
-          }
-
-          var startDate = new Date(start);
-          var endDate = new Date(end);
-          var startYear = ('0000' + startDate.getFullYear().toString()).slice(-4);
-          var startMonth = ('00' + (startDate.getMonth() + 1).toString()).slice(-2);
-          var startDay = ('00' + startDate.getDate().toString()).slice(-2);
-          var startHours = ('00' + startDate.getHours().toString()).slice(-2);
-          var startMinutes = ('00' + startDate.getMinutes().toString()).slice(-2);
-          var startSeconds = ('00' + startDate.getMinutes().toString()).slice(-2);
-          var endYear = ('0000' + endDate.getFullYear().toString()).slice(-4);
-          var endMonth = ('00' + (endDate.getMonth() + 1).toString()).slice(-2);
-          var endDay = ('00' + endDate.getDate().toString()).slice(-2);
-          var endHours = ('00' + endDate.getHours().toString()).slice(-2);
-          var endMinutes = ('00' + endDate.getMinutes().toString()).slice(-2);
-          var endSeconds = ('00' + endDate.getMinutes().toString()).slice(-2);
-          var startTime = '';
-          var endTime = ''; // if ((startMinutes + startSeconds + endMinutes + endSeconds) !== 0) {
-
-          startTime = 'T' + startHours + startMinutes + startSeconds;
-          endTime = 'T' + endHours + endMinutes + endSeconds; // }
-
-          var startEvent = startYear + startMonth + startDay + startTime;
-          var endEvent = endYear + endMonth + endDay + endTime;
-          var calendarEvent = ['BEGIN:VEVENT', 'CLASS:PUBLIC', 'DESCRIPTION:' + description, 'DTSTART;VALUE=DATE:' + startEvent, 'DTEND;VALUE=DATE:' + endEvent, 'LOCATION:' + location, 'SUMMARY;LANGUAGE=en-us:' + title, 'TRANSP:TRANSPARENT', 'END:VEVENT'].join(this.SEPARATOR);
-          this.calendarEvents.push(calendarEvent);
-          return calendarEvent;
-        }
-      }, {
         key: "download",
-        value: function download(events) {
-          var _this13 = this;
-
-          if (!events.length) {
-            return false;
-          }
-
-          events.forEach(function (event) {
-            _this13.addEvent(event.title, event.desc, new Date(event.startTime).toUTCString(), new Date(event.endTime).toUTCString());
-          });
-
-          if (this.calendarEvents.length < 1) {
-            return false;
-          }
-
-          var calendar = this.calendarStart + this.SEPARATOR + this.calendarEvents.join(this.SEPARATOR) + this.calendarEnd;
-          var fullString = 'data:text/calendar;charset=utf8,' + escape(calendar); // return btoa('data:text/calendar;charset=utf8,' + escape(calendar));
-
-          var base64 = btoa(fullString);
-          var contentType = 'application/ics';
-          var folderPath = cordova.file.applicationStorageDirectory;
-          var filename = 'calendar.ics';
-          this.saveBase64AsPDF(folderPath, filename, base64, contentType); // const DataBlob = this.b64toBlob(base64,'text/calendar','');
-          // const file = new Blob([atob(escape(calendar))], {type: 'text/calendar'});
-          // const fileURL = URL.createObjectURL(file);
-          // window.open(fileURL);
-          // return ;
-        }
-      }, {
-        key: "saveBase64AsPDF",
-        value: function saveBase64AsPDF(folderPath, filename, content, contentType) {
-          var _this14 = this;
-
-          // Convert the base64 string in a Blob
-          var DataBlob = this.b64toBlob(content, contentType, '');
-          window.resolveLocalFileSystemURL(folderPath, function (dir) {
-            dir.getFile(filename, {
-              create: true
-            }, function (file) {
-              console.log('File created successfully.');
-              file.createWriter(function (fileWriter) {
-                console.log('Writing content to file');
-                fileWriter.write(DataBlob);
-
-                _this14.processDownload(folderPath, filename);
-              }, function (err) {
-                alert('Unable to save file in path ' + folderPath);
-              });
-            });
-          });
-        }
-      }, {
-        key: "processDownload",
-        value: function processDownload(folderPath, filename) {
-          var path = null;
-
-          if (this.platform.is('ios')) {
-            path = this.file.documentsDirectory;
-          } else {
-            path = this.file.dataDirectory;
-          }
-
-          console.log('path', path);
+        value: function download() {
+          var url = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUrl + 'cal-events';
           var transfer = this.fileTransfer.create();
-          transfer.download(folderPath + filename, path + filename).then(function (entry) {
-            //  console.log(entry);
+          transfer.download(url, this.file.dataDirectory + 'calendar_events.ics').then(function (entry) {
             console.log('download complete: ' + entry.toURL());
+          }, function (error) {// handle error
           });
-        }
-      }, {
-        key: "b64toBlob",
-        value: function b64toBlob(b64Data, contentType, sliceSize) {
-          contentType = contentType || '';
-          sliceSize = sliceSize || 512;
-          var byteCharacters = atob(b64Data);
-          var byteArrays = [];
-
-          for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            var slice = byteCharacters.slice(offset, offset + sliceSize);
-            var byteNumbers = new Array(slice.length);
-
-            for (var i = 0; i < slice.length; i++) {
-              byteNumbers[i] = slice.charCodeAt(i);
-            }
-
-            var byteArray = new Uint8Array(byteNumbers);
-            byteArrays.push(byteArray);
-          }
-
-          var blob = new Blob(byteArrays, {
-            type: contentType
-          });
-          return blob;
         }
       }]);
 
@@ -28422,15 +28362,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
-  "./src/app/services/ical-import.service.ts":
-  /*!*************************************************!*\
-    !*** ./src/app/services/ical-import.service.ts ***!
-    \*************************************************/
+  "./src/app/services/icalendar/ical-import.service.ts":
+  /*!***********************************************************!*\
+    !*** ./src/app/services/icalendar/ical-import.service.ts ***!
+    \***********************************************************/
 
   /*! exports provided: IcalImportService */
 
   /***/
-  function srcAppServicesIcalImportServiceTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppServicesIcalendarIcalImportServiceTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -28473,7 +28413,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(IcalImportService, [{
         key: "parse",
         value: function parse(encodedData) {
-          var _this15 = this;
+          var _this16 = this;
 
           var lines = encodedData.split('\n');
           var formattedEvents = [];
@@ -28482,35 +28422,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           lines.forEach(function (event) {
             if (event.includes('BEGIN:VEVENT')) {
               eventStarted = true;
-              formattedEvents[_this15.todoCount] = {};
+              formattedEvents[_this16.todoCount] = {};
             }
 
             if (eventStarted) {
               if (event.includes('DTSTART')) {
                 var date = event.split(':');
                 var timezone = date[0].split('=');
-                formattedEvents[_this15.todoCount].startTime = _this15.calendarDate(date[1], timezone[1]);
+                formattedEvents[_this16.todoCount].start_date = _this16.calendarDate(date[1], timezone[1]);
               } else if (event.includes('DTEND')) {
                 var _date = event.split(':');
 
                 var _timezone = _date[0].split('=');
 
-                formattedEvents[_this15.todoCount].endTime = _this15.calendarDate(_date[1], _timezone[1]);
+                formattedEvents[_this16.todoCount].end_date = _this16.calendarDate(_date[1], _timezone[1]);
               } else if (event.includes('RRULE')) {
                 var rule = event.split(':');
-                formattedEvents[_this15.todoCount].rRule = _this15.iCalendarRule(rule[1]);
+                formattedEvents[_this16.todoCount].rRule = _this16.iCalendarRule(rule[1]);
               } else if (event.includes('SUMMARY')) {
                 var title = event.split(':');
-                formattedEvents[_this15.todoCount].title = title[1];
+                formattedEvents[_this16.todoCount].title = title[1];
+              } else if (event.includes('LOCATION')) {
+                var location = event.split(':');
+                location.shift();
+                formattedEvents[_this16.todoCount].location = location.join(':');
               } else if (event.includes('DESCRIPTION')) {
                 var matches = event.match(/([^:]+)[:]([\w\W]+)/);
-                formattedEvents[_this15.todoCount].desc = decodeURI(matches[2]);
+                formattedEvents[_this16.todoCount].description = decodeURI(matches[2]);
               } else {}
             }
 
             if (event.includes('END:VEVENT')) {
               eventStarted = false;
-              _this15.todoCount = _this15.todoCount + 1;
+              _this16.todoCount = _this16.todoCount + 1;
             }
           });
           return formattedEvents;

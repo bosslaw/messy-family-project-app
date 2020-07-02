@@ -10,7 +10,7 @@
             <h1 (click)="viewPost(post)" [innerHTML]="post.title.rendered"></h1>
             <p class="color-medium italic">
               <ion-icon name="time-outline"></ion-icon> {{ post.date_gmt | date }}
-              <!-- <ion-badge color="medium">faith</ion-badge> -->
+              <ion-badge color="medium" *ngFor="let category of post.categories">{{category}}</ion-badge>
             </p>
             <ion-buttons >
               <ion-button fill="solid" size="small" color="secondary" (click)="viewPost(post)">

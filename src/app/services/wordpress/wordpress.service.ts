@@ -31,15 +31,40 @@ export class WordpressService {
         const data = resp['body'];
 
         for (let post of data) {
+          post.categories = [];
           if(post['_embedded']['wp:featuredmedia'] !==  undefined ) {
             post.media_url = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['thumbnail'].source_url;
           }
+
+          if(post['_embedded']['wp:term'].length ) {
+            post['_embedded']['wp:term'].forEach(a => {
+              if(a.length) {
+                  a.forEach(b => {
+                  if(b.taxonomy === 'category') {
+                    post.categories.push(b.slug);
+                  }
+                });
+              }
+            });
+          }
+
         }
         return data;
       })
     )
   }
 
+  // if(this.post._embedded['wp:term'].length) {
+  //   this.post._embedded['wp:term'].forEach(a => {
+  //     if(a.length) {
+  //       a.forEach(b => {
+  //         if(b.taxonomy === 'category') {
+  //           this.categories.push(b.slug);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
   getPostContent(id) {
     return this.http.get(`${this.url}posts/${id}?_embed`).pipe(
       map(post => {

@@ -293,10 +293,161 @@ const openURL = async (url, ev, direction) => {
 
 /***/ }),
 
-/***/ "./src/app/services/auth.service.ts":
-/*!******************************************!*\
-  !*** ./src/app/services/auth.service.ts ***!
-  \******************************************/
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/event-details/event-details.page.html":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/event-details/event-details.page.html ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title></ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button  (click)=\"dismiss()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <h1>{{event.title}}</h1>\n  <p *ngIf=\"event.start_date\"><b>Start: </b> {{event.start_date | date}}</p>\n  <p *ngIf=\"event.end_date\"><b>End: </b> {{event.end_date | date}}</p>\n  <p *ngIf=\"event.description\"><b>Description: </b> {{event.description}}</p>\n  <p *ngIf=\"event.location\"><b>Location: </b> {{event.location}}</p>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "./src/app/pages/event-details/event-details-routing.module.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/pages/event-details/event-details-routing.module.ts ***!
+  \*********************************************************************/
+/*! exports provided: EventDetailsPageRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventDetailsPageRoutingModule", function() { return EventDetailsPageRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _event_details_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event-details.page */ "./src/app/pages/event-details/event-details.page.ts");
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _event_details_page__WEBPACK_IMPORTED_MODULE_3__["EventDetailsPage"]
+    }
+];
+let EventDetailsPageRoutingModule = class EventDetailsPageRoutingModule {
+};
+EventDetailsPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+    })
+], EventDetailsPageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/event-details/event-details.module.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/pages/event-details/event-details.module.ts ***!
+  \*************************************************************/
+/*! exports provided: EventDetailsPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventDetailsPageModule", function() { return EventDetailsPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _event_details_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./event-details-routing.module */ "./src/app/pages/event-details/event-details-routing.module.ts");
+/* harmony import */ var _event_details_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./event-details.page */ "./src/app/pages/event-details/event-details.page.ts");
+
+
+
+
+
+
+
+let EventDetailsPageModule = class EventDetailsPageModule {
+};
+EventDetailsPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _event_details_routing_module__WEBPACK_IMPORTED_MODULE_5__["EventDetailsPageRoutingModule"]
+        ],
+        declarations: [_event_details_page__WEBPACK_IMPORTED_MODULE_6__["EventDetailsPage"]]
+    })
+], EventDetailsPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/event-details/event-details.page.scss":
+/*!*************************************************************!*\
+  !*** ./src/app/pages/event-details/event-details.page.scss ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2V2ZW50LWRldGFpbHMvZXZlbnQtZGV0YWlscy5wYWdlLnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/pages/event-details/event-details.page.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/pages/event-details/event-details.page.ts ***!
+  \***********************************************************/
+/*! exports provided: EventDetailsPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventDetailsPage", function() { return EventDetailsPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+
+
+let EventDetailsPage = class EventDetailsPage {
+    constructor(modalCtrl) {
+        this.modalCtrl = modalCtrl;
+    }
+    ngOnInit() {
+    }
+    dismiss() {
+        this.modalCtrl.dismiss();
+    }
+};
+EventDetailsPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
+];
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:type", Object)
+], EventDetailsPage.prototype, "event", void 0);
+EventDetailsPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-event-details',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./event-details.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/event-details/event-details.page.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./event-details.page.scss */ "./src/app/pages/event-details/event-details.page.scss")).default]
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
+], EventDetailsPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/auth/auth.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/services/auth/auth.service.ts ***!
+  \***********************************************/
 /*! exports provided: AuthService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -307,9 +458,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var _config_auth_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../config/auth-constants */ "./src/app/config/auth-constants.ts");
-/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./http.service */ "./src/app/services/http.service.ts");
-/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./storage.service */ "./src/app/services/storage.service.ts");
+/* harmony import */ var _config_auth_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/auth-constants */ "./src/app/config/auth-constants.ts");
+/* harmony import */ var _http_http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../http/http.service */ "./src/app/services/http/http.service.ts");
+/* harmony import */ var _storage_storage_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../storage/storage.service */ "./src/app/services/storage/storage.service.ts");
 
 
 
@@ -330,10 +481,10 @@ let AuthService = class AuthService {
         });
     }
     signup(postData) {
-        return this.httpService.get('signup', postData);
+        return this.httpService.post('signup', postData);
     }
     login(postData) {
-        return this.httpService.get('login', postData);
+        return this.httpService.post('login', postData);
     }
     logout() {
         // this.storageService.clear();
@@ -345,25 +496,69 @@ let AuthService = class AuthService {
     }
 };
 AuthService.ctorParameters = () => [
-    { type: _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"] },
-    { type: _storage_service__WEBPACK_IMPORTED_MODULE_6__["StorageService"] },
+    { type: _http_http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"] },
+    { type: _storage_storage_service__WEBPACK_IMPORTED_MODULE_6__["StorageService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
 ];
 AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"], _storage_service__WEBPACK_IMPORTED_MODULE_6__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_http_http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"], _storage_storage_service__WEBPACK_IMPORTED_MODULE_6__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
 ], AuthService);
 
 
 
 /***/ }),
 
-/***/ "./src/app/services/http.service.ts":
-/*!******************************************!*\
-  !*** ./src/app/services/http.service.ts ***!
-  \******************************************/
+/***/ "./src/app/services/events/events.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/events/events.service.ts ***!
+  \***************************************************/
+/*! exports provided: EventsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventsService", function() { return EventsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _http_http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../http/http.service */ "./src/app/services/http/http.service.ts");
+
+
+
+let EventsService = class EventsService {
+    constructor(httpService) {
+        this.httpService = httpService;
+    }
+    addEvent(eventData) {
+        return this.httpService.post('events', eventData);
+    }
+    getEvents() {
+        return this.httpService.get('events');
+    }
+    getLatestEvents() {
+        return this.httpService.get('latest-events');
+    }
+};
+EventsService.ctorParameters = () => [
+    { type: _http_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] }
+];
+EventsService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_http_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]])
+], EventsService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/http/http.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/services/http/http.service.ts ***!
+  \***********************************************/
 /*! exports provided: HttpService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -384,11 +579,13 @@ let HttpService = class HttpService {
     }
     post(serviceName, data) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
         const options = { header: headers, withCredentials: false };
         const url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + serviceName;
-        return this.http.post(url, JSON.stringify(data), options);
+        return this.http.post(url, data, options);
     }
-    get(serviceName, data) {
+    get(serviceName, data = []) {
         const url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + serviceName;
         const params = Object.keys(data).map(key => key + '=' + data[key]).join('&');
         return this.http.get(url + '?' + params);
@@ -408,10 +605,10 @@ HttpService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
-/***/ "./src/app/services/toast.service.ts":
-/*!*******************************************!*\
-  !*** ./src/app/services/toast.service.ts ***!
-  \*******************************************/
+/***/ "./src/app/services/toast/toast.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/services/toast/toast.service.ts ***!
+  \*************************************************/
 /*! exports provided: ToastService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -447,6 +644,73 @@ ToastService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     }),
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"]])
 ], ToastService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/wordpress/wordpress.service.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/services/wordpress/wordpress.service.ts ***!
+  \*********************************************************/
+/*! exports provided: WordpressService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WordpressService", function() { return WordpressService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
+
+let WordpressService = class WordpressService {
+    constructor(http) {
+        this.http = http;
+        this.url = `https://www.messyfamilyproject.org/wp-json/wp/v2/`;
+        this.totalPosts = null;
+    }
+    getPosts(page = 1) {
+        const options = {
+            observe: 'response',
+            params: {
+                per_page: '5',
+                page: '' + page
+            }
+        };
+        return this.http.get(`${this.url}posts?_embed`, options).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((resp) => {
+            this.pages = resp['headers'].get('x-wp-totalpages');
+            this.totalPosts = resp['headers'].get('x-wp-total');
+            const data = resp['body'];
+            for (let post of data) {
+                if (post['_embedded']['wp:featuredmedia'] !== undefined) {
+                    post.media_url = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['thumbnail'].source_url;
+                }
+            }
+            return data;
+        }));
+    }
+    getPostContent(id) {
+        return this.http.get(`${this.url}posts/${id}?_embed`).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(post => {
+            if (post['_embedded']['wp:featuredmedia'] !== undefined) {
+                post['media_url'] = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes.medium.source_url;
+            }
+            return post;
+        }));
+    }
+};
+WordpressService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
+];
+WordpressService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+        providedIn: 'root'
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+], WordpressService);
 
 
 

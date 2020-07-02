@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthConstants } from 'src/app/config/auth-constants';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { NotificationsService } from 'src/app/services/notifications/notifications.service';
+import { PushNotificationsService } from 'src/app/services/push-notifications/push-notifications.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+
+
 
 @Component({
   selector: 'app-login',
@@ -21,10 +25,14 @@ export class LoginPage implements OnInit {
     private router: Router,
     private authService: AuthService,
     private storageService: StorageService,
-    private toastService: ToastService
-    ) { }
+    private toastService: ToastService,
+    private notifServices: NotificationsService,
+    private pushNoficationService: PushNotificationsService
+  ) { }
 
   ngOnInit() {
+    // this.testPushNotification();
+    // this.testNotification();
   }
 
   validateInputs() {
@@ -32,6 +40,14 @@ export class LoginPage implements OnInit {
     const password = this.postData.password.trim();
 
     return (this.postData.email && this.postData.password && email.length > 0 && password.length > 0)
+  }
+
+  testPushNotification() {
+    this.pushNoficationService.notify();
+  }
+
+  testNotification() {
+    this.notifServices.notify();
   }
 
   loginAction() {

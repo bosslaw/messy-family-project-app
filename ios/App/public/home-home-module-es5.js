@@ -71,9 +71,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../services/storage.service */
-    "./src/app/services/storage.service.ts");
+    var _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../services/storage/storage.service */
+    "./src/app/services/storage/storage.service.ts");
 
     var HomeGuard = /*#__PURE__*/function () {
       function HomeGuard(storageServices, router) {
@@ -109,7 +109,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     HomeGuard.ctorParameters = function () {
       return [{
-        type: _services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"]
+        type: _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }];
@@ -117,7 +117,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     HomeGuard = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], HomeGuard);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], HomeGuard);
     /***/
   },
 
@@ -187,19 +187,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       children: [{
         path: 'home',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | pages-home-home-module */
-          "pages-home-home-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-home-home-module")]).then(__webpack_require__.bind(null,
           /*! ../pages/home/home.module */
           "./src/app/pages/home/home.module.ts")).then(function (m) {
             return m.HomePageModule;
           });
         }
-      }, // {
-      //   path: 'calendar',
-      //   loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
-      // },
-      {
+      }, {
+        path: 'calendar',
+        loadChildren: function loadChildren() {
+          return Promise.all(
+          /*! import() | pages-calendar-calendar-module */
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-calendar-calendar-module")]).then(__webpack_require__.bind(null,
+          /*! ../pages/calendar/calendar.module */
+          "./src/app/pages/calendar/calendar.module.ts")).then(function (m) {
+            return m.CalendarPageModule;
+          });
+        }
+      }, {
         path: 'profiles',
         loadChildren: function loadChildren() {
           return __webpack_require__.e(
@@ -263,6 +270,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           /*! ../pages/account-edit/account-edit.module */
           "./src/app/pages/account-edit/account-edit.module.ts")).then(function (m) {
             return m.AccountEditPageModule;
+          });
+        }
+      }, {
+        path: 'blog/:id',
+        loadChildren: function loadChildren() {
+          return Promise.all(
+          /*! import() | pages-blog-view-blog-view-module */
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-blog-view-blog-view-module")]).then(__webpack_require__.bind(null,
+          /*! ../pages/blog-view/blog-view.module */
+          "./src/app/pages/blog-view/blog-view.module.ts")).then(function (m) {
+            return m.BlogViewPageModule;
           });
         }
       }, {
@@ -467,9 +485,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../services/auth.service */
-    "./src/app/services/auth.service.ts");
+    var _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../services/auth/auth.service */
+    "./src/app/services/auth/auth.service.ts");
 
     var UserDataResolver = /*#__PURE__*/function () {
       function UserDataResolver(authService) {
@@ -490,13 +508,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     UserDataResolver.ctorParameters = function () {
       return [{
-        type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
+        type: _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
       }];
     };
 
     UserDataResolver = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])], UserDataResolver);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])], UserDataResolver);
     /***/
   }
 }]);

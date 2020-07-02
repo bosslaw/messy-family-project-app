@@ -28,9 +28,9 @@ export class HomePage implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.authService.userData$.subscribe((res: any) => {
-      this.displayUserData = res;
-    })
+    // this.authService.userData$.subscribe((res: any) => {
+    //   this.displayUserData = res;
+    // })
 
     this.loadPosts();
     this.loadLatestEvents();
@@ -59,7 +59,7 @@ export class HomePage implements OnInit {
     this.router.navigate(['/home/blog',post.id])
   }
 
-  async loadPosts() {
+  loadPosts() {
     this.wp.getPosts().subscribe(res => {
       this.count = this.wp.totalPosts;
       this.posts = res;

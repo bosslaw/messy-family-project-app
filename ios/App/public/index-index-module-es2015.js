@@ -27,7 +27,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _config_auth_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/auth-constants */ "./src/app/config/auth-constants.ts");
-/* harmony import */ var _services_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/storage.service */ "./src/app/services/storage.service.ts");
+/* harmony import */ var _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/storage/storage.service */ "./src/app/services/storage/storage.service.ts");
 
 
 
@@ -55,14 +55,14 @@ let IndexGuard = class IndexGuard {
     }
 };
 IndexGuard.ctorParameters = () => [
-    { type: _services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"] },
+    { type: _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
 ];
 IndexGuard = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
 ], IndexGuard);
 
 
@@ -103,13 +103,17 @@ const routes = [
                 path: 'signup',
                 loadChildren: () => Promise.all(/*! import() | pages-signup-signup-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-signup-signup-module")]).then(__webpack_require__.bind(null, /*! ../pages/signup/signup.module */ "./src/app/pages/signup/signup.module.ts")).then(m => m.SignupPageModule)
             },
+            // {
+            //   path: 'calendar',
+            //   loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
+            // },
             {
-                path: 'calendar',
-                loadChildren: () => __webpack_require__.e(/*! import() | pages-calendar-calendar-module */ "pages-calendar-calendar-module").then(__webpack_require__.bind(null, /*! ../pages/calendar/calendar.module */ "./src/app/pages/calendar/calendar.module.ts")).then(m => m.CalendarPageModule)
+                path: 'home',
+                loadChildren: () => Promise.all(/*! import() | pages-home-home-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-home-home-module")]).then(__webpack_require__.bind(null, /*! ../pages/home/home.module */ "./src/app/pages/home/home.module.ts")).then(m => m.HomePageModule)
             },
             {
                 path: '',
-                redirectTo: 'calendar',
+                redirectTo: 'home',
                 pathMatch: 'full'
             }
         ]

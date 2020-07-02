@@ -218,21 +218,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var src_app_services_storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! src/app/services/storage.service */
-    "./src/app/services/storage.service.ts");
+    var src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/services/storage/storage.service */
+    "./src/app/services/storage/storage.service.ts");
     /* harmony import */
 
 
-    var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! src/app/services/toast.service */
-    "./src/app/services/toast.service.ts");
+    var src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/services/toast/toast.service */
+    "./src/app/services/toast/toast.service.ts");
     /* harmony import */
 
 
-    var src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! src/app/services/user.service */
-    "./src/app/services/user.service.ts");
+    var src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/services/user/user.service */
+    "./src/app/services/user/user.service.ts");
 
     var AccountEditPage = /*#__PURE__*/function () {
       function AccountEditPage(storageService, userService, toastService) {
@@ -293,11 +293,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     AccountEditPage.ctorParameters = function () {
       return [{
-        type: src_app_services_storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]
+        type: src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]
       }, {
-        type: src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]
+        type: src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]
       }, {
-        type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]
+        type: src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]
       }];
     };
 
@@ -309,20 +309,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
       /*! ./account-edit.page.scss */
       "./src/app/pages/account-edit/account-edit.page.scss"))["default"]]
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [src_app_services_storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"], src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]])], AccountEditPage);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [src_app_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], src_app_services_user_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"], src_app_services_toast_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]])], AccountEditPage);
     /***/
   },
 
   /***/
-  "./src/app/services/user.service.ts":
-  /*!******************************************!*\
-    !*** ./src/app/services/user.service.ts ***!
-    \******************************************/
+  "./src/app/services/user/user.service.ts":
+  /*!***********************************************!*\
+    !*** ./src/app/services/user/user.service.ts ***!
+    \***********************************************/
 
   /*! exports provided: UserService */
 
   /***/
-  function srcAppServicesUserServiceTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppServicesUserUserServiceTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -347,9 +347,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./http.service */
-    "./src/app/services/http.service.ts");
+    var _http_http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../http/http.service */
+    "./src/app/services/http/http.service.ts");
 
     var UserService = /*#__PURE__*/function () {
       function UserService(httpService) {
@@ -361,7 +361,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(UserService, [{
         key: "updateUser",
         value: function updateUser(postData) {
-          return this.httpService.get('updateUser', postData);
+          return this.httpService.post('updateUser', postData);
         }
       }]);
 
@@ -370,13 +370,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     UserService.ctorParameters = function () {
       return [{
-        type: _http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]
+        type: _http_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]
       }];
     };
 
     UserService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
-    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]])], UserService);
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_http_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]])], UserService);
     /***/
   }
 }]);

@@ -21,15 +21,35 @@ export class AppComponent {
 
     this.appPages = [
       {
-        title: 'Settings',
-        url: '/home/settings',
-        icon: 'settings'
+        title: 'Marriage Toolkit',
+        url: ''
       },
       {
-        title: 'Update Account',
-        url: '/home/account-edit',
-        icon: 'pencil-outline'
-      }
+        title: 'Parenting Corner',
+        url: ''
+      },
+      {
+        title: 'Family Cultre',
+        url: '',
+      },
+      {
+        title: 'Prayer Resources',
+        url: ''
+      },
+      {
+        title: 'Messy Family Neighborhood',
+        url: '',
+      },
+      // {
+      //   title: 'Settings',
+      //   url: '/home/settings',
+      //   icon: 'settings'
+      // },
+      // {
+      //   title: 'Update Account',
+      //   url: '/home/account-edit',
+      //   icon: 'pencil-outline'
+      // }
     ];
 
     this.initializeApp();

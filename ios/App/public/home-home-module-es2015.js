@@ -27,7 +27,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _config_auth_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/auth-constants */ "./src/app/config/auth-constants.ts");
-/* harmony import */ var _services_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/storage.service */ "./src/app/services/storage.service.ts");
+/* harmony import */ var _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/storage/storage.service */ "./src/app/services/storage/storage.service.ts");
 
 
 
@@ -55,14 +55,14 @@ let HomeGuard = class HomeGuard {
     }
 };
 HomeGuard.ctorParameters = () => [
-    { type: _services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"] },
+    { type: _services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
 ];
 HomeGuard = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_storage_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
 ], HomeGuard);
 
 
@@ -102,12 +102,12 @@ const routes = [
         children: [
             {
                 path: 'home',
-                loadChildren: () => __webpack_require__.e(/*! import() | pages-home-home-module */ "pages-home-home-module").then(__webpack_require__.bind(null, /*! ../pages/home/home.module */ "./src/app/pages/home/home.module.ts")).then(m => m.HomePageModule)
+                loadChildren: () => Promise.all(/*! import() | pages-home-home-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-home-home-module")]).then(__webpack_require__.bind(null, /*! ../pages/home/home.module */ "./src/app/pages/home/home.module.ts")).then(m => m.HomePageModule)
             },
-            // {
-            //   path: 'calendar',
-            //   loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
-            // },
+            {
+                path: 'calendar',
+                loadChildren: () => Promise.all(/*! import() | pages-calendar-calendar-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-calendar-calendar-module")]).then(__webpack_require__.bind(null, /*! ../pages/calendar/calendar.module */ "./src/app/pages/calendar/calendar.module.ts")).then(m => m.CalendarPageModule)
+            },
             {
                 path: 'profiles',
                 loadChildren: () => __webpack_require__.e(/*! import() | pages-profiles-profiles-module */ "pages-profiles-profiles-module").then(__webpack_require__.bind(null, /*! ../pages/profiles/profiles.module */ "./src/app/pages/profiles/profiles.module.ts")).then(m => m.ProfilesPageModule)
@@ -131,6 +131,10 @@ const routes = [
             {
                 path: 'account-edit',
                 loadChildren: () => Promise.all(/*! import() | pages-account-edit-account-edit-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-account-edit-account-edit-module")]).then(__webpack_require__.bind(null, /*! ../pages/account-edit/account-edit.module */ "./src/app/pages/account-edit/account-edit.module.ts")).then(m => m.AccountEditPageModule)
+            },
+            {
+                path: 'blog/:id',
+                loadChildren: () => Promise.all(/*! import() | pages-blog-view-blog-view-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-blog-view-blog-view-module")]).then(__webpack_require__.bind(null, /*! ../pages/blog-view/blog-view.module */ "./src/app/pages/blog-view/blog-view.module.ts")).then(m => m.BlogViewPageModule)
             },
             {
                 path: '',
@@ -252,7 +256,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserDataResolver", function() { return UserDataResolver; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth/auth.service */ "./src/app/services/auth/auth.service.ts");
 
 
 
@@ -265,13 +269,13 @@ let UserDataResolver = class UserDataResolver {
     }
 };
 UserDataResolver.ctorParameters = () => [
-    { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+    { type: _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
 ];
 UserDataResolver = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
 ], UserDataResolver);
 
 
