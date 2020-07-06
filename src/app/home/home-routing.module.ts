@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeGuard } from '../guards/home.guard';
+import { InterestListPageModule } from '../pages/interest-list/interest-list.module';
 import { UserDataResolver } from '../resolvers/userData.resolver';
 import { HomePage } from './home.page';
 
@@ -49,6 +50,14 @@ const routes: Routes = [
       {
         path: 'blog/:id',
         loadChildren: () => import('../pages/blog-view/blog-view.module').then( m => m.BlogViewPageModule)
+      },
+      {
+        path: 'interest-list/:id',
+        loadChildren: () => import('../pages/interest-list/interest-list.module').then( m => InterestListPageModule)
+      },
+      {
+        path: 'event-details',
+        loadChildren: () => import('../pages/event-details/event-details.module').then( m => m.EventDetailsPageModule)
       },
       {
         path: '',

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button color=\"secondary\"></ion-menu-button>\n    </ion-buttons>\n    <ion-title>PODCAST</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button color=\"secondary\"></ion-menu-button>\n    </ion-buttons>\n    <ion-title>PODCAST</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-row>\n    <ion-col size=\"12\" class=\"ion-text-center\">\n      <a target=\"_blank\" href=\"https://podcasts.google.com/feed/aHR0cDovL3d3dy5tZXNzeXBhcmVudGluZy5vcmcvZmVlZC9wb2RjYXN0Lw\">\n        <img  src=\"/assets/images/listen_google.png\">\n      </a>\n    </ion-col>\n    <ion-col size=\"12\"  class=\"ion-text-center\">\n      <a target=\"_blank\" href=\"https://podcasts.apple.com/us/podcast/messy-parenting-catholic-conversations-on-marriage/id957216506?mt=2\">\n        <img src=\"/assets/images/listen_apple.png\">\n      </a>\n    </ion-col>\n  </ion-row>\n\n</ion-content>\n");
 
 /***/ }),
 

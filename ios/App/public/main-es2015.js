@@ -436,7 +436,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main\">\n    <!--  our side menu  -->\n    <ion-menu contentId=\"main\">\n      <ion-header>\n        <ion-toolbar>\n          <ion-title>Menu</ion-title>\n        </ion-toolbar>\n      </ion-header>\n\n      <ion-content class=\"menu\">\n        <ion-list lines=\"none\">\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item detail=\"false\" routerLinkActive #rla=\"routerLinkActive\" [color]=\"rla.isActive && 'gray'\" [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon [color]=\"rla.isActive ? 'pink' : 'dark-gray'\" slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label [color]=\"rla.isActive ? 'pink' : 'dark-gray'\">\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <!-- the main content -->\n    <ion-router-outlet id=\"main\"></ion-router-outlet>\n  </ion-split-pane>\n\n  <!-- <ion-router-outlet></ion-router-outlet> -->\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main\">\n    <!--  our side menu  -->\n    <ion-menu contentId=\"main\">\n      <ion-header>\n        <ion-toolbar class=\"sidemenu-title\" color=\"primary\">\n          <ion-title class=\"ion-no-padding\">the catholic family app</ion-title>\n        </ion-toolbar>\n      </ion-header>\n\n      <ion-content class=\"menu\">\n        <ion-list lines=\"none\">\n          <ion-menu-toggle class=\"menu-toggle\" auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item detail=\"false\" routerLinkActive #rla=\"routerLinkActive\" [color]=\"rla.isActive && 'gray'\" [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-label [color]=\"rla.isActive ? 'pink' : 'dark-gray'\">\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <!-- the main content -->\n    <ion-router-outlet id=\"main\"></ion-router-outlet>\n  </ion-split-pane>\n\n  <!-- <ion-router-outlet></ion-router-outlet> -->\n</ion-app>\n");
 
 /***/ }),
 
@@ -494,7 +494,7 @@ AppRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = (".menu-toggle ion-label {\n  font-size: 12px;\n  margin-top: 0px;\n  margin-bottom: 0px;\n}\n\n.sidemenu-title ion-title {\n  font-size: 14px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qdGFuZ3Bvcy9BcHBzL21lc3N5ZmFtaWx5cHJvamVjdC9tZXNzeWZhbWlseXByb2plY3Qvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDSTtFQUNJLGVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7QUNBUjs7QURJSTtFQUNJLGVBQUE7QUNEUiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tZW51LXRvZ2dsZXtcbiAgICBpb24tbGFiZWwge1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICAgIG1hcmdpbi10b3A6IDBweDtcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogMHB4O1xuICAgIH1cbn1cbi5zaWRlbWVudS10aXRsZXtcbiAgICBpb24tdGl0bGUge1xuICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgfVxufSIsIi5tZW51LXRvZ2dsZSBpb24tbGFiZWwge1xuICBmb250LXNpemU6IDEycHg7XG4gIG1hcmdpbi10b3A6IDBweDtcbiAgbWFyZ2luLWJvdHRvbTogMHB4O1xufVxuXG4uc2lkZW1lbnUtdGl0bGUgaW9uLXRpdGxlIHtcbiAgZm9udC1zaXplOiAxNHB4O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -525,15 +525,25 @@ let AppComponent = class AppComponent {
         this.statusBar = statusBar;
         this.appPages = [
             {
-                title: 'Settings',
-                url: '/home/settings',
-                icon: 'settings'
+                title: 'Marriage Toolkit',
+                url: ''
             },
             {
-                title: 'Update Account',
-                url: '/home/account-edit',
-                icon: 'pencil-outline'
-            }
+                title: 'Parenting Corner',
+                url: ''
+            },
+            {
+                title: 'Family Cultre',
+                url: '',
+            },
+            {
+                title: 'Prayer Resources',
+                url: ''
+            },
+            {
+                title: 'Messy Family Neighborhood',
+                url: '',
+            },
         ];
         this.initializeApp();
     }

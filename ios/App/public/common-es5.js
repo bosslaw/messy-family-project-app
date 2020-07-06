@@ -1175,12 +1175,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _step;
 
             try {
-              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var _loop = function _loop() {
                 var post = _step.value;
+                post.categories = [];
 
                 if (post['_embedded']['wp:featuredmedia'] !== undefined) {
                   post.media_url = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['thumbnail'].source_url;
                 }
+
+                if (post['_embedded']['wp:term'].length) {
+                  post['_embedded']['wp:term'].forEach(function (a) {
+                    if (a.length) {
+                      a.forEach(function (b) {
+                        if (b.taxonomy === 'category') {
+                          post.categories.push(b.slug);
+                        }
+                      });
+                    }
+                  });
+                }
+              };
+
+              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                _loop();
               }
             } catch (err) {
               _iterator.e(err);
@@ -1190,7 +1207,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             return data;
           }));
-        }
+        } // if(this.post._embedded['wp:term'].length) {
+        //   this.post._embedded['wp:term'].forEach(a => {
+        //     if(a.length) {
+        //       a.forEach(b => {
+        //         if(b.taxonomy === 'category') {
+        //           this.categories.push(b.slug);
+        //         }
+        //       });
+        //     }
+        //   });
+        // }
+
       }, {
         key: "getPostContent",
         value: function getPostContent(id) {
