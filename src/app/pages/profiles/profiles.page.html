@@ -15,7 +15,7 @@
         </ion-col>
         <ion-col class="ion-text-left profile-name">
           <ion-label>
-            <h1>Alicia <ion-icon name="caret-down-outline" color="light"></ion-icon></h1>
+            <h1 *ngIf="user">{{user.FirstName}} <ion-icon name="caret-down-outline" color="light"></ion-icon></h1>
             <p>Spouse</p>
           </ion-label>
           
@@ -25,42 +25,66 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="profile">
-  <ion-list-header>
-    <ion-label color="medium"> <ion-icon name="person-outline"></ion-icon> <span>PROFILE</span></ion-label>
-  </ion-list-header> 
+<ion-content>
+  <div class="profile">
+    <ion-list-header>
+      <ion-label color="medium"> <ion-icon name="person-outline"></ion-icon> <span>PROFILE</span></ion-label>
+    </ion-list-header> 
 
-  <ion-list>
+    <ion-list *ngIf="user">
+      <ion-item >
+        <ion-label>Name</ion-label>
+        <ion-text slot="end" color="primary">{{user.FirstName}} {{user.LastName}}</ion-text>
+      </ion-item>
 
-    <ion-item >
-      <ion-label>Name</ion-label>
-      <ion-note slot="end" color="primary">Alicia Hernon</ion-note>
-    </ion-item>
+      <ion-item >
+        <ion-label>Birthday</ion-label>
+        <ion-text slot="end" color="primary">Jan. 19, 1972</ion-text>
+      </ion-item>
 
-    <ion-item >
-      <ion-label>Birthday</ion-label>
-      <ion-note slot="end" color="primary">Jan. 19, 1972</ion-note>
-    </ion-item>
+      <ion-item >
+        <ion-label>Special Dates</ion-label>
+        <ion-text slot="end" color="primary">MM.DD.YY</ion-text>
+      </ion-item>
 
-    <ion-item >
-      <ion-label>Special Dates</ion-label>
-      <ion-note slot="end" color="primary">MM.DD.YY</ion-note>
-    </ion-item>
+      <ion-item >
+        <ion-label>Personality Type</ion-label>
+        <ion-text slot="end" color="primary">xxx</ion-text>
+      </ion-item>
 
-    <ion-item >
-      <ion-label>Personality Type</ion-label>
-      <ion-note slot="end" color="primary">xxx</ion-note>
-    </ion-item>
+      <ion-item > 
+        <ion-label>
+          Favorites
+          <p>
+            Read Wine - Bella
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 
-    <ion-item > 
-      <ion-label>
-        Favorites
-        <p>
-          Read Wine - Bella
-        </p>
-      </ion-label>
-    </ion-item>
+  <div class="family">
+    <ion-list-header>
+      <ion-label color="medium"> <ion-icon name="people-outline"></ion-icon> <span>Family Members</span></ion-label>
+    </ion-list-header> 
 
-  </ion-list>
-
+    <ion-list>
+      <ion-item >
+        <ion-label>Jess Doe</ion-label>
+        <ion-text slot="end">Spouse</ion-text>
+      </ion-item>
+      <ion-item >
+        <ion-label>Christy Doe</ion-label>
+        <ion-text slot="end">Daughter</ion-text>
+      </ion-item>
+      <ion-item >
+        <ion-label>Agnes Doe</ion-label>
+        <ion-text slot="end">Daughter</ion-text>
+      </ion-item>
+      <ion-item >
+        <ion-label>Lucas Doe</ion-label>
+        <ion-text slot="end">Son</ion-text>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

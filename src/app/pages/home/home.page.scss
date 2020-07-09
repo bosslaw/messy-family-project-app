@@ -5,7 +5,7 @@
             display: flex;
             align-items: center;
             span {
-                font-size: 18px;
+                font-size: 14px;
                 margin-left: 20px;
             }
         }
@@ -15,7 +15,7 @@
         margin: 5px !important;
         padding: 13px 0;
         h1 {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 200;
             padding-bottom: 5px;
         }
@@ -24,6 +24,9 @@
     .interests {
         ion-card {
             margin: 0px !important;
+            img{
+                margin-bottom: -5px;
+            }
         }
     }
 }
