@@ -63,27 +63,16 @@
     </ion-list>
   </div>
 
-  <div class="family">
-    <ion-list-header>
-      <ion-label color="medium"> <ion-icon name="people-outline"></ion-icon> <span>Family Members</span></ion-label>
-    </ion-list-header> 
-
-    <ion-list>
-      <ion-item >
-        <ion-label>Jess Doe</ion-label>
-        <ion-text slot="end">Spouse</ion-text>
-      </ion-item>
-      <ion-item >
-        <ion-label>Christy Doe</ion-label>
-        <ion-text slot="end">Daughter</ion-text>
-      </ion-item>
-      <ion-item >
-        <ion-label>Agnes Doe</ion-label>
-        <ion-text slot="end">Daughter</ion-text>
-      </ion-item>
-      <ion-item >
-        <ion-label>Lucas Doe</ion-label>
-        <ion-text slot="end">Son</ion-text>
+  <div class="family ion-margin-top">
+    <ion-item lines="none"> 
+      <ion-icon color="medium" slot="start" name="people-outline"></ion-icon>
+      <ion-label color="medium">Family Members</ion-label>
+      <ion-icon color="primary"  (click)="addFamilyMember()" slot="end" name="person-add-outline"></ion-icon>
+    </ion-item>
+    <ion-list *ngIf="familyMembers">
+      <ion-item *ngFor="let member of familyMembers">
+        <ion-label>{{ member.first_name }} {{member.last_name}}</ion-label>
+        <ion-text slot="end">{{member.relationship_name}}</ion-text>
       </ion-item>
     </ion-list>
   </div>

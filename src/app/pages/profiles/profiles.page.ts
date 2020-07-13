@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthConstants } from 'src/app/config/auth-constants';
-import { StorageService } from 'src/app/services/storage/storage.service';
+import { ModalController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { FamilyService } from 'src/app/services/family/family.service';
+import { FamilyMemberAddPage } from '../family-member-add/family-member-add.page';
 
 @Component({
   selector: 'app-profiles',
@@ -10,9 +12,12 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 export class ProfilesPage implements OnInit {
 
   user: any;
+  familyMembers: any;
 
   constructor(
-    private storageService: StorageService
+    private authService: AuthService,
+    private modalCtrl: ModalController,
+    private familyService: FamilyService
   ) { }
 
   ngOnInit() {
@@ -20,10 +25,31 @@ export class ProfilesPage implements OnInit {
   }
 
   getUserData() {
-    this.storageService.get(AuthConstants.AUTH).then((res: any) => {
+    this.authService.userData$.subscribe((res: any) => {
       this.user = res;
-      console.log(this.user);
+      if(this.user) {
+        this.loadFamilyMembers();
+      }
+    })
+  }
+
+  loadFamilyMembers() {
+    this.familyService.getMembers(this.user.Id).subscribe(res => {
+      this.familyMembers = res;
     });
+  }
+
+  async addFamilyMember() {
+    const modal = await this.modalCtrl.create({
+      component: FamilyMemberAddPage,
+      componentProps: {
+        uid: this.user.Id
+      }
+    });
+    modal.onDidDismiss().then((events: any)=> {
+      this.loadFamilyMembers();
+    });
+    return await modal.present();
   }
 
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { EventDetailsPageModule } from '../event-details/event-details.module';
+import { EventFormPageModule } from '../event-form/event-form.module';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 
@@ -15,7 +16,8 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule,
     ComponentsModule,
-    EventDetailsPageModule
+    EventDetailsPageModule,
+    EventFormPageModule
   ],
   declarations: [HomePage]
 })

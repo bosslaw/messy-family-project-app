@@ -22,23 +22,23 @@ export class AppComponent {
     this.appPages = [
       {
         title: 'Marriage Toolkit',
-        url: ''
+        url: '/home/interest-list/20'
       },
       {
         title: 'Parenting Corner',
-        url: ''
+        url: '/home/interest-list/21'
       },
       {
         title: 'Family Cultre',
-        url: '',
+        url: '/home/interest-list/102',
       },
       {
         title: 'Prayer Resources',
-        url: ''
+        url: '/home/interest-list/68'
       },
       {
         title: 'Messy Family Neighborhood',
-        url: '',
+        url: '/home/interest-list/20',
       },
       // {
       //   title: 'Settings',

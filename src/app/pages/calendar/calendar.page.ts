@@ -179,12 +179,10 @@ export class CalendarPage implements OnInit {
     });
 
     modal.onDidDismiss().then((event: any)=> {
-
       if(event.data) {
         this.addEvent(event.data);
       }
     });
-
 
     return await modal.present();
   }
@@ -201,7 +199,6 @@ export class CalendarPage implements OnInit {
       uid: this.user.Id,
       status: 'Upcoming'
     };
-
 
     this.eventService.addEvent(formattedEvent).subscribe((res: any) => {
       if(res.success) {

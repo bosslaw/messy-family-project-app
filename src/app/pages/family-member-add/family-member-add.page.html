@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>New Member</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">First Name</ion-label>
+        <ion-input autocomplete="off" name="first_name" type="text" [(ngModel)]="memberData.first_name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Last Name</ion-label>
+        <ion-input autocomplete="off" name="last_name" type="text" [(ngModel)]="memberData.last_name"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label position="stacked">Birthday</ion-label>
+      <ion-datetime [(ngModel)]="memberData.birth_date" name="birth_date" display-timezone="utc"></ion-datetime>
+      <!-- <ion-input disabled autocomplete="off" name="email" type="text" [(ngModel)]="memberData.birth_date"></ion-input> -->
+      </ion-item>
+      
+      <ion-item>
+      <ion-label position="stacked">Relationship</ion-label>
+      <ion-select placeholder="" name="rid" [(ngModel)]="memberData.rid">
+        <ion-select-option  *ngFor="let r of relationships" [value]="r.id">{{r.name}}</ion-select-option>
+      </ion-select>
+      
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" share="round" (click)="saveMember()" color="success">Save</ion-button>
+  </form>
+
+</ion-content>

@@ -19,7 +19,7 @@ export class EventsService {
     return this.httpService.get('events');
   }
 
-  getLatestEvents(): Observable<any> {
-    return this.httpService.get('latest-events');
+  getLatestEvents(uid): Observable<any> {
+    return this.httpService.get('latest-events/'+uid);
   }
 }

@@ -11,7 +11,7 @@
 
   <ion-list-header>
     <ion-label color="medium"> <ion-icon  name="notifications-outline"></ion-icon> <span>REMINDERS</span></ion-label>
-    <ion-button icon-only color="secondary" size="large" ><ion-icon size="large" name="add-circle"></ion-icon></ion-button>
+    <ion-button icon-only color="secondary" size="large" (click)="addEventModal()"><ion-icon size="large" name="add-circle"></ion-icon></ion-button>
   </ion-list-header> 
 
   <!-- <ion-card class="reminder">
@@ -45,7 +45,6 @@
     <ion-row>
       <ion-col>
         <ion-card routerLink="/home/interest-list/20">
-          <!-- <ion-img src="https://via.placeholder.com/300x250"></ion-img> -->
           <img  src="/assets/images/marriage_toolkit.png">
         </ion-card>
       </ion-col>
