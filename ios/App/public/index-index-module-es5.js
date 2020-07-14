@@ -197,17 +197,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return m.SignupPageModule;
           });
         }
-      }, {
-        path: 'podcast',
-        loadChildren: function loadChildren() {
-          return __webpack_require__.e(
-          /*! import() | pages-podcast-podcast-module */
-          "pages-podcast-podcast-module").then(__webpack_require__.bind(null,
-          /*! ../pages/podcast/podcast.module */
-          "./src/app/pages/podcast/podcast.module.ts")).then(function (m) {
-            return m.PodcastPageModule;
-          });
-        }
       }, // {
       //   path: 'calendar',
       //   loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
@@ -217,8 +206,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       //   loadChildren: () => import('../pages/home/home.module').then( m => m.HomePageModule)
       // },
       {
+        path: 'test',
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | pages-test-test-module */
+          "pages-test-test-module").then(__webpack_require__.bind(null,
+          /*! ../pages/test/test.module */
+          "./src/app/pages/test/test.module.ts")).then(function (m) {
+            return m.TestPageModule;
+          });
+        }
+      }, {
         path: '',
-        redirectTo: 'podcast',
+        redirectTo: 'test',
         pathMatch: 'full'
       }]
     }];

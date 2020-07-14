@@ -10,6 +10,30 @@
         ]
         },
       {
+          "id": "cordova-plugin-camera.Camera",
+          "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+          "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+          "Camera"
+        ]
+        },
+      {
+          "id": "cordova-plugin-camera.CameraPopoverHandle",
+          "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+          "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+          "CameraPopoverHandle"
+        ]
+        },
+      {
+          "id": "cordova-plugin-camera.CameraPopoverOptions",
+          "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+          "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+          "CameraPopoverOptions"
+        ]
+        },
+      {
           "id": "cordova-plugin-badge.Badge",
           "file": "plugins/cordova-plugin-badge/www/badge.js",
           "pluginId": "cordova-plugin-badge",
@@ -31,6 +55,14 @@
           "pluginId": "cordova-plugin-device",
         "clobbers": [
           "device"
+        ]
+        },
+      {
+          "id": "cordova-plugin-camera.camera",
+          "file": "plugins/cordova-plugin-camera/www/Camera.js",
+          "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+          "navigator.camera"
         ]
         },
       {
@@ -246,6 +278,7 @@
     {
       "cordova-plugin-badge": "0.8.8",
       "cordova-plugin-calendar": "5.1.5",
+      "cordova-plugin-camera": "4.1.0",
       "cordova-plugin-device": "2.0.3",
       "cordova-plugin-file": "6.0.2",
       "cordova-plugin-file-transfer": "1.7.1",

@@ -7,9 +7,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <h1>Upload ICS File</h1>
-  <ion-input type="file" name="file"  (change)="upload($event)">Upload!</ion-input>
+  <ion-input type="file" name="file"  (change)="upload($event)">Upload! </ion-input>
   <br><br><br>
   <div lines="none" *ngIf="events">
     <div *ngFor="let event of events">

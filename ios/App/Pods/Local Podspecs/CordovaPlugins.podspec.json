@@ -24,13 +24,16 @@
     ]
   },
   "swift_versions": "5.0",
+  "weak_frameworks": "ImageIO",
   "frameworks": [
     "EventKit",
     "EventKitUI",
+    "CoreLocation",
+    "CoreGraphics",
     "AssetsLibrary",
     "MobileCoreServices",
-    "UserNotifications",
-    "CoreLocation"
+    "AVFoundation",
+    "UserNotifications"
   ],
   "swift_version": "5.0"
 }

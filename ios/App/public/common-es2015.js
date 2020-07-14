@@ -306,6 +306,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/event-form/event-form.page.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/event-form/event-form.page.html ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>New Event</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button  (click)=\"dismiss()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content >\n  \n    <ion-item>\n      <ion-input type=\"text\" name=\"title\" placeholder=\"Title\" [(ngModel)]=\"event.title\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input type=\"text\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"event.description\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input type=\"text\" name=\"location\" placeholder=\"Location\" [(ngModel)]=\"event.location\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Start</ion-label>\n      <ion-datetime displayFormat=\"MM/DD/YYYY HH:mm\" name=\"start_date\" pickerFormat=\"MMM D:HH:mm\" [(ngModel)]=\"event.start_date\" [min]=\"minDate\"></ion-datetime>\n    </ion-item>\n    <ion-item>\n      <ion-label>End</ion-label>\n      <ion-datetime displayFormat=\"MM/DD/YYYY HH:mm\" name=\"end_date\" pickerFormat=\"MMM D:HH:mm\" [(ngModel)]=\"event.end_date\" [min]=\"minDate\"></ion-datetime>\n    </ion-item>\n    <ion-item>\n      <ion-label>All Day?</ion-label>\n      <ion-checkbox name=\"allDay\" [(ngModel)]=\"event.allDay\"></ion-checkbox>\n    </ion-item>\n    <ion-button fill=\"outline\" expand=\"block\" (click)=\"addEvent()\" type=\"submit\">Add Event</ion-button>\n  \n    \n\n</ion-content>\n");
+
+/***/ }),
+
 /***/ "./src/app/pages/event-details/event-details-routing.module.ts":
 /*!*********************************************************************!*\
   !*** ./src/app/pages/event-details/event-details-routing.module.ts ***!
@@ -444,6 +457,158 @@ EventDetailsPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
+/***/ "./src/app/pages/event-form/event-form-routing.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/pages/event-form/event-form-routing.module.ts ***!
+  \***************************************************************/
+/*! exports provided: EventFormPageRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventFormPageRoutingModule", function() { return EventFormPageRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _event_form_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event-form.page */ "./src/app/pages/event-form/event-form.page.ts");
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _event_form_page__WEBPACK_IMPORTED_MODULE_3__["EventFormPage"]
+    }
+];
+let EventFormPageRoutingModule = class EventFormPageRoutingModule {
+};
+EventFormPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+    })
+], EventFormPageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/event-form/event-form.module.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/pages/event-form/event-form.module.ts ***!
+  \*******************************************************/
+/*! exports provided: EventFormPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventFormPageModule", function() { return EventFormPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _event_form_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./event-form-routing.module */ "./src/app/pages/event-form/event-form-routing.module.ts");
+/* harmony import */ var _event_form_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./event-form.page */ "./src/app/pages/event-form/event-form.page.ts");
+
+
+
+
+
+
+
+let EventFormPageModule = class EventFormPageModule {
+};
+EventFormPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _event_form_routing_module__WEBPACK_IMPORTED_MODULE_5__["EventFormPageRoutingModule"]
+        ],
+        declarations: [_event_form_page__WEBPACK_IMPORTED_MODULE_6__["EventFormPage"]]
+    })
+], EventFormPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/event-form/event-form.page.scss":
+/*!*******************************************************!*\
+  !*** ./src/app/pages/event-form/event-form.page.scss ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2V2ZW50LWZvcm0vZXZlbnQtZm9ybS5wYWdlLnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/pages/event-form/event-form.page.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/pages/event-form/event-form.page.ts ***!
+  \*****************************************************/
+/*! exports provided: EventFormPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventFormPage", function() { return EventFormPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+
+
+let EventFormPage = class EventFormPage {
+    constructor(modalCtrl, navParams) {
+        this.modalCtrl = modalCtrl;
+        this.navParams = navParams;
+        this.event = {
+            title: '',
+            description: '',
+            start_date: new Date().toISOString(),
+            end_date: new Date().toISOString(),
+            location: '',
+            allDay: false
+        };
+        this.minDate = new Date().toISOString();
+    }
+    ngOnInit() {
+        this.preselectedDate = new Date(this.navParams.data.preselectedDate).toISOString();
+        this.event.start_date = this.preselectedDate;
+        this.event.end_date = this.preselectedDate;
+    }
+    dismiss() {
+        this.modalCtrl.dismiss();
+    }
+    addEvent() {
+        this.modalCtrl.dismiss(this.event);
+    }
+};
+EventFormPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] }
+];
+EventFormPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-event-form',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./event-form.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/event-form/event-form.page.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./event-form.page.scss */ "./src/app/pages/event-form/event-form.page.scss")).default]
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]])
+], EventFormPage);
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/auth/auth.service.ts":
 /*!***********************************************!*\
   !*** ./src/app/services/auth/auth.service.ts ***!
@@ -537,8 +702,8 @@ let EventsService = class EventsService {
     getEvents() {
         return this.httpService.get('events');
     }
-    getLatestEvents() {
-        return this.httpService.get('latest-events');
+    getLatestEvents(uid) {
+        return this.httpService.get('latest-events/' + uid);
     }
 };
 EventsService.ctorParameters = () => [
@@ -644,96 +809,6 @@ ToastService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     }),
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"]])
 ], ToastService);
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/wordpress/wordpress.service.ts":
-/*!*********************************************************!*\
-  !*** ./src/app/services/wordpress/wordpress.service.ts ***!
-  \*********************************************************/
-/*! exports provided: WordpressService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WordpressService", function() { return WordpressService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-
-
-
-
-let WordpressService = class WordpressService {
-    constructor(http) {
-        this.http = http;
-        this.url = `https://www.messyfamilyproject.org/wp-json/wp/v2/`;
-        this.totalPosts = null;
-    }
-    getPosts(page = 1) {
-        const options = {
-            observe: 'response',
-            params: {
-                per_page: '5',
-                page: '' + page
-            }
-        };
-        return this.http.get(`${this.url}posts?_embed`, options).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((resp) => {
-            this.pages = resp['headers'].get('x-wp-totalpages');
-            this.totalPosts = resp['headers'].get('x-wp-total');
-            const data = resp['body'];
-            for (let post of data) {
-                post.categories = [];
-                if (post['_embedded']['wp:featuredmedia'] !== undefined) {
-                    post.media_url = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['thumbnail'].source_url;
-                }
-                if (post['_embedded']['wp:term'].length) {
-                    post['_embedded']['wp:term'].forEach(a => {
-                        if (a.length) {
-                            a.forEach(b => {
-                                if (b.taxonomy === 'category') {
-                                    post.categories.push(b.slug);
-                                }
-                            });
-                        }
-                    });
-                }
-            }
-            return data;
-        }));
-    }
-    // if(this.post._embedded['wp:term'].length) {
-    //   this.post._embedded['wp:term'].forEach(a => {
-    //     if(a.length) {
-    //       a.forEach(b => {
-    //         if(b.taxonomy === 'category') {
-    //           this.categories.push(b.slug);
-    //         }
-    //       });
-    //     }
-    //   });
-    // }
-    getPostContent(id) {
-        return this.http.get(`${this.url}posts/${id}?_embed`).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(post => {
-            if (post['_embedded']['wp:featuredmedia'] !== undefined) {
-                post['media_url'] = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes.medium.source_url;
-            }
-            return post;
-        }));
-    }
-};
-WordpressService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
-];
-WordpressService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
-        providedIn: 'root'
-    }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-], WordpressService);
 
 
 

@@ -12,6 +12,10 @@
 
 #import "APPBadge.h"
 #import "Calendar.h"
+#import "CDVCamera.h"
+#import "CDVExif.h"
+#import "CDVJpegHeaderWriter.h"
+#import "UIImage+CropScaleOrientation.h"
 #import "CDVDevice.h"
 #import "CDVAssetLibraryFilesystem.h"
 #import "CDVFile.h"

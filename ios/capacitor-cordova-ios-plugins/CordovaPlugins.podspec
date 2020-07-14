@@ -12,5 +12,6 @@
     s.xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) COCOAPODS=1 WK_WEB_VIEW_ONLY=1' }
     s.dependency 'CapacitorCordova'
     s.swift_version  = '5.0'
-    s.frameworks = 'EventKit', 'EventKitUI', 'AssetsLibrary', 'MobileCoreServices', 'UserNotifications', 'CoreLocation'
+    s.weak_frameworks = 'ImageIO'
+    s.frameworks = 'EventKit', 'EventKitUI', 'CoreLocation', 'CoreGraphics', 'AssetsLibrary', 'MobileCoreServices', 'AVFoundation', 'UserNotifications'
   end

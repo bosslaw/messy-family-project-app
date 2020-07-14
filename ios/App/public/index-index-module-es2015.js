@@ -103,10 +103,6 @@ const routes = [
                 path: 'signup',
                 loadChildren: () => Promise.all(/*! import() | pages-signup-signup-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-signup-signup-module")]).then(__webpack_require__.bind(null, /*! ../pages/signup/signup.module */ "./src/app/pages/signup/signup.module.ts")).then(m => m.SignupPageModule)
             },
-            {
-                path: 'podcast',
-                loadChildren: () => __webpack_require__.e(/*! import() | pages-podcast-podcast-module */ "pages-podcast-podcast-module").then(__webpack_require__.bind(null, /*! ../pages/podcast/podcast.module */ "./src/app/pages/podcast/podcast.module.ts")).then(m => m.PodcastPageModule)
-            },
             // {
             //   path: 'calendar',
             //   loadChildren: () => import('../pages/calendar/calendar.module').then( m => m.CalendarPageModule)
@@ -116,8 +112,12 @@ const routes = [
             //   loadChildren: () => import('../pages/home/home.module').then( m => m.HomePageModule)
             // },
             {
+                path: 'test',
+                loadChildren: () => __webpack_require__.e(/*! import() | pages-test-test-module */ "pages-test-test-module").then(__webpack_require__.bind(null, /*! ../pages/test/test.module */ "./src/app/pages/test/test.module.ts")).then(m => m.TestPageModule)
+            },
+            {
                 path: '',
-                redirectTo: 'podcast',
+                redirectTo: 'test',
                 pathMatch: 'full'
             }
         ]

@@ -14,11 +14,10 @@
           </ion-avatar>
         </ion-col>
         <ion-col class="ion-text-left profile-name">
-          <ion-label>
+          <ion-label (click)="showProfileOptions()">
             <h1 *ngIf="user">{{user.FirstName}} <ion-icon name="caret-down-outline" color="light"></ion-icon></h1>
             <p>Spouse</p>
           </ion-label>
-          
         </ion-col>
       </ion-row>
     </ion-grid>
