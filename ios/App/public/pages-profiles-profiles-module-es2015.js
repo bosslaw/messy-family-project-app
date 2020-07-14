@@ -475,50 +475,6 @@ FamilyService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 
 
-/***/ }),
-
-/***/ "./src/app/services/upload-image/upload-image.service.ts":
-/*!***************************************************************!*\
-  !*** ./src/app/services/upload-image/upload-image.service.ts ***!
-  \***************************************************************/
-/*! exports provided: UploadImageService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadImageService", function() { return UploadImageService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-
-
-// import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
-// import { FilePath } from '@ionic-native/file-path/ngx';
-// import { File, FileEntry } from '@ionic-native/File/ngx';
-// import { WebView } from '@ionic-native/ionic-webview/ngx';
-// import { LoadingController, Platform } from '@ionic/angular';
-// import { finalize } from 'rxjs/operators';
-const STORAGE_KEY = 'my_images';
-let UploadImageService = class UploadImageService {
-    constructor(
-    // private camera: Camera,
-    // private plt: Platform,
-    // private http: HttpClient,
-    // private filePath: FilePath,
-    // private file: File,
-    // private storage: Storage,
-    // private webview: WebView,
-    // private loadingController: LoadingController
-    ) { }
-};
-UploadImageService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [])
-], UploadImageService);
-
-
-
 /***/ })
 
 }]);

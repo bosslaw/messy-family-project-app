@@ -208,9 +208,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       {
         path: 'test',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | pages-test-test-module */
-          "pages-test-test-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-test-test-module")]).then(__webpack_require__.bind(null,
           /*! ../pages/test/test.module */
           "./src/app/pages/test/test.module.ts")).then(function (m) {
             return m.TestPageModule;

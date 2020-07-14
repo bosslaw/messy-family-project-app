@@ -47,7 +47,9 @@ var FilesystemDirectory;
      * On iOS it's the app's documents directory.
      * Use this directory to store user-generated content.
      * On Android it's the Public Documents folder, so it's accessible from other apps.
-     * It's not accesible on Android 10 and newer.
+     * It's not accesible on Android 10 unless the app enables legacy External Storage
+     * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
+     * in the `AndroidManifest.xml`
      */
     FilesystemDirectory["Documents"] = "DOCUMENTS";
     /**
@@ -77,7 +79,9 @@ var FilesystemDirectory;
      * The external storage directory
      * On iOS it will use the Documents directory
      * On Android it's the primary shared/external storage directory.
-     * It's not accesible on Android 10 and newer.
+     * It's not accesible on Android 10 unless the app enables legacy External Storage
+     * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
+     * in the `AndroidManifest.xml`
      */
     FilesystemDirectory["ExternalStorage"] = "EXTERNAL_STORAGE";
 })(FilesystemDirectory || (FilesystemDirectory = {}));
@@ -126,6 +130,7 @@ var PermissionType;
     PermissionType["Notifications"] = "notifications";
     PermissionType["ClipboardRead"] = "clipboard-read";
     PermissionType["ClipboardWrite"] = "clipboard-write";
+    PermissionType["Microphone"] = "microphone";
 })(PermissionType || (PermissionType = {}));
 var PhotosAlbumType;
 (function (PhotosAlbumType) {
@@ -517,7 +522,7 @@ var CapacitorWeb = /** @class */ (function () {
         // Gracefully degrade in non-Proxy supporting engines, e.g. IE11. This
         // effectively means that trying to access an unavailable plugin will
         // locally throw, but this is still better than throwing a syntax error.
-        if ('Proxy' in window) {
+        if (typeof Proxy !== 'undefined') {
             // Build a proxy for the Plugins object that returns the "Noop Plugin"
             // if a plugin isn't available
             this.Plugins = new Proxy(this.Plugins, {
@@ -1336,7 +1341,7 @@ var FilesystemPluginWeb = /** @class */ (function (_super) {
      */
     FilesystemPluginWeb.prototype.appendFile = function (options) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function () {
-            var path, data, parentPath, now, ctime, occupiedEntry, parentEntry, parentArgPath, pathObj;
+            var path, data, parentPath, now, ctime, occupiedEntry, parentEntry, parentArgPathIndex, parentArgPath, pathObj;
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"])(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1354,7 +1359,8 @@ var FilesystemPluginWeb = /** @class */ (function (_super) {
                     case 2:
                         parentEntry = _a.sent();
                         if (!(parentEntry === undefined)) return [3 /*break*/, 4];
-                        parentArgPath = parentPath.substr(parentPath.indexOf('/', 1));
+                        parentArgPathIndex = parentPath.indexOf('/', 1);
+                        parentArgPath = parentArgPathIndex !== -1 ? parentPath.substr(parentArgPathIndex) : '/';
                         return [4 /*yield*/, this.mkdir({ path: parentArgPath, directory: options.directory, recursive: true })];
                     case 3:
                         _a.sent();
@@ -2160,7 +2166,9 @@ var LocalNotificationsPluginWeb = /** @class */ (function (_super) {
         return Promise.resolve();
     };
     LocalNotificationsPluginWeb.prototype.areEnabled = function () {
-        throw new Error('Method not implemented.');
+        return Promise.resolve({
+            value: Notification.permission === 'granted'
+        });
     };
     LocalNotificationsPluginWeb.prototype.requestPermission = function () {
         return new Promise(function (resolve) {

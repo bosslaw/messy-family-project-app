@@ -437,9 +437,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! @ionic-native/Camera/ngx */
-    "./node_modules/@ionic-native/Camera/__ivy_ngcc__/ngx/index.js");
+    var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic-native/camera/ngx */
+    "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
     /* harmony import */
 
 
@@ -461,43 +461,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-    /*! @ionic-native/ionic-webview/ngx */
-    "./node_modules/@ionic-native/ionic-webview/__ivy_ngcc__/ngx/index.js");
-    /* harmony import */
-
-
-    var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! @ionic-native/local-notifications/ngx */
     "./node_modules/@ionic-native/local-notifications/__ivy_ngcc__/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @ionic-native/splash-screen/ngx */
     "./node_modules/@ionic-native/splash-screen/__ivy_ngcc__/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @ionic-native/status-bar/ngx */
     "./node_modules/@ionic-native/status-bar/__ivy_ngcc__/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
     /* harmony import */
 
 
-    var _app_routing_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _app_routing_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! ./app-routing.module */
     "./src/app/app-routing.module.ts");
     /* harmony import */
 
 
-    var _app_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _app_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ./app.component */
     "./src/app/app.component.ts");
 
@@ -506,14 +500,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_16__["AppComponent"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"]],
       entryComponents: [],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_14__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_15__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"]],
-      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_13__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_12__["SplashScreen"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"], {
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_14__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"]],
+      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_12__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_11__["SplashScreen"], _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouteReuseStrategy"],
-        useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_14__["IonicRouteStrategy"]
-      }, _ionic_native_calendar_ngx__WEBPACK_IMPORTED_MODULE_5__["Calendar"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_8__["FileTransfer"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_11__["LocalNotifications"], _ionic_native_Camera_ngx__WEBPACK_IMPORTED_MODULE_6__["Camera"], _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_10__["WebView"], _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_7__["FilePath"]],
-      bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_16__["AppComponent"]]
+        useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["IonicRouteStrategy"]
+      }, _ionic_native_calendar_ngx__WEBPACK_IMPORTED_MODULE_5__["Calendar"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_8__["FileTransfer"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_9__["File"], _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_7__["FilePath"], _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_10__["LocalNotifications"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_6__["Camera"]],
+      bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"]]
     })], AppModule);
     /***/
   },

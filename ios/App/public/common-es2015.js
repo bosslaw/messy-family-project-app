@@ -812,6 +812,135 @@ ToastService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 
 
+/***/ }),
+
+/***/ "./src/app/services/upload-image/upload-image.service.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/services/upload-image/upload-image.service.ts ***!
+  \***************************************************************/
+/*! exports provided: UploadImageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadImageService", function() { return UploadImageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/file-path/ngx */ "./node_modules/@ionic-native/file-path/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+
+
+
+
+
+let UploadImageService = class UploadImageService {
+    constructor(camera, platform, filePath, file) {
+        this.camera = camera;
+        this.platform = platform;
+        this.filePath = filePath;
+        this.file = file;
+    }
+    takePicture(sourceType) {
+        // Create options for the Camera Dialog
+        const options = {
+            quality: 100,
+            sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+        };
+        this.camera.getPicture(options).then((imagePath) => {
+            // Special handling for Android library
+            if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
+                this.filePath.resolveNativePath(imagePath)
+                    .then(filePath => {
+                    const correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+                    const currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+                    // console.log(correctPath, currentName);
+                    this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+                });
+            }
+            else {
+                const currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+                const correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+                console.log(correctPath, currentName);
+                this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+            }
+        }, (err) => {
+            console.log('error', err);
+            // this.globals.presentToast('Error while selecting image.');
+        });
+    }
+    createFileName() {
+        const d = new Date(), n = d.getTime(), newFileName = n + '.jpg';
+        return newFileName;
+    }
+    copyFileToLocalDir(namePath, currentName, newFileName) {
+        this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
+            this.uploadPhoto(newFileName);
+        }, error => {
+            console.log('Error while storing file');
+        });
+    }
+    pathForImage(img) {
+        let result = '';
+        if (img !== null) {
+            result = cordova.file.dataDirectory + img;
+        }
+        return result;
+    }
+    uploadPhoto(imageName) {
+        this.lastImage = imageName;
+        const targetPath = this.pathForImage(imageName);
+        this.file.resolveLocalFilesystemUrl(targetPath)
+            .then(entry => entry.file(file => this.readFile(file)))
+            .catch(err => {
+            console.log(err);
+        });
+    }
+    readFile(file) {
+        const reader = new FileReader();
+        // this.showLoader();
+        reader.onloadend = () => {
+            const formData = new FormData();
+            const imgBlob = new Blob([reader.result], { type: file.type });
+            formData.append('file', imgBlob, file.name);
+            console.log(formData);
+            // switch(this.userInfo['type']) {
+            //   case 'Student':
+            //     formData.append('student_id', this.userInfo['id']);
+            //     break;
+            //   case 'Coach':
+            //     formData.append('coach_id', this.userInfo['id']);
+            //     break;
+            //   default:
+            //     break;
+            // }
+            // this.postData(formData);
+        };
+        reader.readAsArrayBuffer(file);
+    }
+};
+UploadImageService.ctorParameters = () => [
+    { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_2__["Camera"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"] },
+    { type: _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_3__["FilePath"] },
+    { type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_4__["File"] }
+];
+UploadImageService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_2__["Camera"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"],
+        _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_3__["FilePath"],
+        _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_4__["File"]])
+], UploadImageService);
+
+
+
 /***/ })
 
 }]);

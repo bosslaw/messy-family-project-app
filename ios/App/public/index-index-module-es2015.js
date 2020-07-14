@@ -113,7 +113,7 @@ const routes = [
             // },
             {
                 path: 'test',
-                loadChildren: () => __webpack_require__.e(/*! import() | pages-test-test-module */ "pages-test-test-module").then(__webpack_require__.bind(null, /*! ../pages/test/test.module */ "./src/app/pages/test/test.module.ts")).then(m => m.TestPageModule)
+                loadChildren: () => Promise.all(/*! import() | pages-test-test-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-test-test-module")]).then(__webpack_require__.bind(null, /*! ../pages/test/test.module */ "./src/app/pages/test/test.module.ts")).then(m => m.TestPageModule)
             },
             {
                 path: '',

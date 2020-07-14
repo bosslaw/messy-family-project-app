@@ -1362,6 +1362,198 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       providedIn: 'root'
     }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"]])], ToastService);
     /***/
+  },
+
+  /***/
+  "./src/app/services/upload-image/upload-image.service.ts":
+  /*!***************************************************************!*\
+    !*** ./src/app/services/upload-image/upload-image.service.ts ***!
+    \***************************************************************/
+
+  /*! exports provided: UploadImageService */
+
+  /***/
+  function srcAppServicesUploadImageUploadImageServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "UploadImageService", function () {
+      return UploadImageService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic-native/camera/ngx */
+    "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic-native/file-path/ngx */
+    "./node_modules/@ionic-native/file-path/__ivy_ngcc__/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic-native/file/ngx */
+    "./node_modules/@ionic-native/file/__ivy_ngcc__/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+    var UploadImageService = /*#__PURE__*/function () {
+      function UploadImageService(camera, platform, filePath, file) {
+        _classCallCheck(this, UploadImageService);
+
+        this.camera = camera;
+        this.platform = platform;
+        this.filePath = filePath;
+        this.file = file;
+      }
+
+      _createClass(UploadImageService, [{
+        key: "takePicture",
+        value: function takePicture(sourceType) {
+          var _this3 = this;
+
+          // Create options for the Camera Dialog
+          var options = {
+            quality: 100,
+            sourceType: sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+          };
+          this.camera.getPicture(options).then(function (imagePath) {
+            // Special handling for Android library
+            if (_this3.platform.is('android') && sourceType === _this3.camera.PictureSourceType.PHOTOLIBRARY) {
+              _this3.filePath.resolveNativePath(imagePath).then(function (filePath) {
+                var correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+                var currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?')); // console.log(correctPath, currentName);
+
+                _this3.copyFileToLocalDir(correctPath, currentName, _this3.createFileName());
+              });
+            } else {
+              var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+              var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+              console.log(correctPath, currentName);
+
+              _this3.copyFileToLocalDir(correctPath, currentName, _this3.createFileName());
+            }
+          }, function (err) {
+            console.log('error', err); // this.globals.presentToast('Error while selecting image.');
+          });
+        }
+      }, {
+        key: "createFileName",
+        value: function createFileName() {
+          var d = new Date(),
+              n = d.getTime(),
+              newFileName = n + '.jpg';
+          return newFileName;
+        }
+      }, {
+        key: "copyFileToLocalDir",
+        value: function copyFileToLocalDir(namePath, currentName, newFileName) {
+          var _this4 = this;
+
+          this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(function (success) {
+            _this4.uploadPhoto(newFileName);
+          }, function (error) {
+            console.log('Error while storing file');
+          });
+        }
+      }, {
+        key: "pathForImage",
+        value: function pathForImage(img) {
+          var result = '';
+
+          if (img !== null) {
+            result = cordova.file.dataDirectory + img;
+          }
+
+          return result;
+        }
+      }, {
+        key: "uploadPhoto",
+        value: function uploadPhoto(imageName) {
+          var _this5 = this;
+
+          this.lastImage = imageName;
+          var targetPath = this.pathForImage(imageName);
+          this.file.resolveLocalFilesystemUrl(targetPath).then(function (entry) {
+            return entry.file(function (file) {
+              return _this5.readFile(file);
+            });
+          })["catch"](function (err) {
+            console.log(err);
+          });
+        }
+      }, {
+        key: "readFile",
+        value: function readFile(file) {
+          var reader = new FileReader(); // this.showLoader();
+
+          reader.onloadend = function () {
+            var formData = new FormData();
+            var imgBlob = new Blob([reader.result], {
+              type: file.type
+            });
+            formData.append('file', imgBlob, file.name);
+            console.log(formData); // switch(this.userInfo['type']) {
+            //   case 'Student':
+            //     formData.append('student_id', this.userInfo['id']);
+            //     break;
+            //   case 'Coach':
+            //     formData.append('coach_id', this.userInfo['id']);
+            //     break;
+            //   default:
+            //     break;
+            // }
+            // this.postData(formData);
+          };
+
+          reader.readAsArrayBuffer(file);
+        }
+      }]);
+
+      return UploadImageService;
+    }();
+
+    UploadImageService.ctorParameters = function () {
+      return [{
+        type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_2__["Camera"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"]
+      }, {
+        type: _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_3__["FilePath"]
+      }, {
+        type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_4__["File"]
+      }];
+    };
+
+    UploadImageService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    }), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [_ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_2__["Camera"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"], _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_3__["FilePath"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_4__["File"]])], UploadImageService);
+    /***/
   }
 }]);
 //# sourceMappingURL=common-es5.js.map
