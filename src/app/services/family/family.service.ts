@@ -12,7 +12,11 @@ export class FamilyService {
   ) { }
 
   addMember(memberData: any): Observable<any> {
-    return this.httpService.post('family-members', memberData);
+    return this.httpService.post('family-member', memberData);
+  }
+
+  updateMember(memberData: any): Observable<any> {
+    return this.httpService.post('family-member/' + memberData.id, memberData);
   }
 
   getMembers(uid: number): Observable<any> {

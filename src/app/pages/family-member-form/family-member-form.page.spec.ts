@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { FamilyMemberFormPage } from './family-member-form.page';
 
-import { FamilyMemberAddPage } from './family-member-add.page';
 
-describe('FamilyMemberAddPage', () => {
-  let component: FamilyMemberAddPage;
-  let fixture: ComponentFixture<FamilyMemberAddPage>;
+describe('FamilyMemberFormPage', () => {
+  let component: FamilyMemberFormPage;
+  let fixture: ComponentFixture<FamilyMemberFormPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FamilyMemberAddPage ],
+      declarations: [ FamilyMemberFormPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FamilyMemberAddPage);
+    fixture = TestBed.createComponent(FamilyMemberFormPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

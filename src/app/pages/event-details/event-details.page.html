@@ -13,4 +13,8 @@
   <p *ngIf="event.end_date"><b>End: </b> {{event.end_date | date}}</p>
   <p *ngIf="event.description"><b>Description: </b> {{event.description}}</p>
   <p *ngIf="event.location"><b>Location: </b> {{event.location}}</p>
+
+  <ion-button color="secondary" (click)="editEvent()">
+    Edit
+  </ion-button>
 </ion-content>

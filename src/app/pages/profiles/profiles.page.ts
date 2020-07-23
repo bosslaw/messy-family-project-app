@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-// import { Camera } from '@ionic-native/camera/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FamilyService } from 'src/app/services/family/family.service';
 import { UploadImageService } from 'src/app/services/upload-image/upload-image.service';
-import { FamilyMemberAddPage } from '../family-member-add/family-member-add.page';
+import { FamilyMemberFormPage } from '../family-member-form/family-member-form.page';
 
 @Component({
   selector: 'app-profiles',
@@ -22,7 +22,7 @@ export class ProfilesPage implements OnInit {
     private familyService: FamilyService,
     public actionsheetCtrl: ActionSheetController,
     public uploadImage: UploadImageService,
-    // private camera: Camera
+    private camera: Camera
   ) { }
 
   ngOnInit() {
@@ -32,6 +32,7 @@ export class ProfilesPage implements OnInit {
   getUserData() {
     this.authService.userData$.subscribe((res: any) => {
       this.user = res;
+
       if(this.user) {
         this.loadFamilyMembers();
       }
@@ -65,28 +66,42 @@ export class ProfilesPage implements OnInit {
     await actionSheet.present();
   }
 
-  // async selectImage() {
-  //   const actionSheet = await this.actionsheetCtrl.create({
-  //     header: 'Select Image source',
-  //     buttons: [{
-  //       text: 'Load from Library',
-  //       handler: () => {
-  //         this.uploadImage.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
-  //       }
-  //    },
-  //    {
-  //     text: 'Use Camera',
-  //     handler: () => {
-  //       this.uploadImage.takePicture(this.camera.PictureSourceType.CAMERA);
-  //      }
-  //    },
-  //    {
-  //     text: 'Cancel',
-  //     role: 'cancel'
-  //    }]
-  //  });
-  //  await actionSheet.present();
-  // }
+  async selectImage() {
+    const actionSheet = await this.actionsheetCtrl.create({
+      header: 'Select Image source',
+      buttons: [{
+        text: 'Load from Library',
+        handler: () => {
+          this.uploadImage.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY, this.user.Id);
+        }
+     },
+     {
+      text: 'Use Camera',
+      handler: () => {
+        this.uploadImage.takePicture(this.camera.PictureSourceType.CAMERA, this.user.Id);
+       }
+     },
+     {
+      text: 'Cancel',
+      role: 'cancel'
+     }]
+   });
+   await actionSheet.present();
+  }
+
+  async updateMember(member) {
+    const modal = await this.modalCtrl.create({
+      component: FamilyMemberFormPage,
+      componentProps: {
+        uid: this.user.Id,
+        member
+      }
+    });
+    modal.onDidDismiss().then((events: any)=> {
+      this.loadFamilyMembers();
+    });
+    return await modal.present();
+  }
 
   loadFamilyMembers() {
     this.familyService.getMembers(this.user.Id).subscribe(res => {
@@ -96,7 +111,7 @@ export class ProfilesPage implements OnInit {
 
   async addFamilyMember() {
     const modal = await this.modalCtrl.create({
-      component: FamilyMemberAddPage,
+      component: FamilyMemberFormPage,
       componentProps: {
         uid: this.user.Id
       }

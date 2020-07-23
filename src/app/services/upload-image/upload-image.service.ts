@@ -3,6 +3,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { File, FileEntry } from '@ionic-native/file/ngx';
 import { Platform } from '@ionic/angular';
+import { HttpService } from '../http/http.service';
 
 declare var cordova: any;
 @Injectable({
@@ -11,15 +12,18 @@ declare var cordova: any;
 export class UploadImageService {
 
   lastImage: any;
+  uid: any;
 
   constructor(
     private camera: Camera,
     private platform: Platform,
     private filePath: FilePath,
-    private file: File
+    private file: File,
+    private http: HttpService
   ) { }
 
-  takePicture(sourceType) {
+  takePicture(sourceType, uid) {
+    this.uid = uid;
     // Create options for the Camera Dialog
     const options = {
       quality: 100,
@@ -91,19 +95,18 @@ export class UploadImageService {
       const formData: FormData = new FormData();
       const imgBlob: Blob = new Blob([reader.result], {type: file.type});
       formData.append('file', imgBlob, file.name);
+      formData.append('uid', this.uid);
       console.log(formData);
-      // switch(this.userInfo['type']) {
-      //   case 'Student':
-      //     formData.append('student_id', this.userInfo['id']);
-      //     break;
-      //   case 'Coach':
-      //     formData.append('coach_id', this.userInfo['id']);
-      //     break;
-      //   default:
-      //     break;
-      // }
-      // this.postData(formData);
+      this.postData(formData);
     };
     reader.readAsArrayBuffer(file);
+  }
+
+  postData(formData: FormData) {
+
+    this.http.post('upload', formData).subscribe(data => {
+      console.log(data);
+    })
+
   }
 }

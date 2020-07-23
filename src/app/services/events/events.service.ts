@@ -15,6 +15,10 @@ export class EventsService {
     return this.httpService.post('events', eventData);
   }
 
+  updateEvent(eventData): Observable<any> {
+    return this.httpService.post('events/' + eventData.id, eventData);
+  }
+
   getEvents(): Observable<any> {
     return this.httpService.get('events');
   }

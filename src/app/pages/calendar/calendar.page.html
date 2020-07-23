@@ -17,37 +17,6 @@
 </ion-header>
 
 <ion-content>
-
-  <!--
-  <ion-row>
-    <ion-col size="4">
-      <ion-button small expand="block" [color]="calendar.mode == 'month' ? 'primary' : 'secondary'" (click)="changeMode('month')">Month</ion-button>
-    </ion-col>
-    <ion-col size="4">
-      <ion-button small expand="block" [color]="calendar.mode == 'week' ? 'primary' : 'secondary'" (click)="changeMode('week')">Week</ion-button>
-    </ion-col>
-    <ion-col size="4">
-      <ion-button small expand="block" [color]="calendar.mode == 'day' ? 'primary' : 'secondary'" (click)="changeMode('day')">Day</ion-button>
-    </ion-col> 
- 
-    <ion-col size="3" class="ion-tex-left">
-      <ion-button fill="clear" small (click)="back()">
-        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-col>
-    <ion-col size="6" class="ion-text-center">
-      <ion-button small fill="clear" >
-        {{ viewTitle }}
-      </ion-button>
-    </ion-col>
-
-    <ion-col size="3" class="ion-text-right">
-      <ion-button small fill="clear" (click)="next()">
-        <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  -->
   <div *ngIf="displayMode=='event'">
     <ion-grid *ngIf="sortedEvents">
       <ion-row *ngFor="let date of getKeys(sortedEvents)">

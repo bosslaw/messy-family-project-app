@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { FamilyMemberAddPageModule } from '../family-member-add/family-member-add.module';
+import { FamilyMemberFormPageModule } from '../family-member-form/family-member-form.module';
 import { ProfilesPageRoutingModule } from './profiles-routing.module';
 import { ProfilesPage } from './profiles.page';
 
@@ -15,7 +15,7 @@ import { ProfilesPage } from './profiles.page';
     FormsModule,
     IonicModule,
     ProfilesPageRoutingModule,
-    FamilyMemberAddPageModule
+    FamilyMemberFormPageModule
   ],
   declarations: [ProfilesPage]
 })

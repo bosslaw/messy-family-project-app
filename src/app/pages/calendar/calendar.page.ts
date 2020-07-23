@@ -77,7 +77,6 @@ export class CalendarPage implements OnInit {
   formatEvent(event) {
     event.startTime = new Date(event.start_date);
     event.endTime = new Date(event.end_date);
-    event.desc = new Date(event.description);
 
     return event;
   }
