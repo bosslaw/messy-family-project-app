@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -22,7 +23,8 @@ export class ProfilesPage implements OnInit {
     private familyService: FamilyService,
     public actionsheetCtrl: ActionSheetController,
     public uploadImage: UploadImageService,
-    private camera: Camera
+    private camera: Camera,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -43,9 +45,10 @@ export class ProfilesPage implements OnInit {
     const actionSheet = await this.actionsheetCtrl.create({
       buttons: [
         {
-          text: 'Upload Profile',
+          text: 'Update Profile',
           handler: () => {
-            console.log('Upload clicked');
+            this.router.navigate(['home/account-edit']);
+            // this.nav.navigateForward('home/account-edit');
           }
         },
         {

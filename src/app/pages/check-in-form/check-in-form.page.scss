@@ -1,0 +1,29 @@
+.title {
+    display: flex;
+    ion-icon{
+        font-size: 64px !important;
+        --ionicon-stroke-width: 16px;
+    }
+}
+.checkin {
+    ion-list {
+        ion-item {
+            --background: #F0F8FD !important;
+            --border-color: #E6ECEF !important;
+            // --padding-bottom: 15px !important;
+            // --padding-top: 10px !important;
+            --min-height: 70px !important;
+
+            ion-label {
+                font-size: 14px;
+                p {
+                    color: var(--ion-color-primary);
+                    font-size: 14px !important;
+                }
+            }
+            ion-text{
+                font-size: 14px;
+            }
+        }
+    }
+}

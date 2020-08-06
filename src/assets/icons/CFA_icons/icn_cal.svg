@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="23" width="23">
+  <defs>
+    <path id="path-1" opacity="1" fill-rule="evenodd" d="M2,0 L21,0 C22.103830048988,0 23,0.896169951012 23,2 L23,21 C23,22.103830048988 22.103830048988,23 21,23 L2,23 C0.8961699510120003,23 2.220446049250313e-16,22.103830048988 0,21 L0,2 C0,0.8961699510120003 0.8961699510119996,2.220446049250313e-16 2,0Z"/>
+    <mask id="mask-2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0">
+      <rect opacity="1" x="0" y="0" width="23" height="23" fill="black"/>
+      <use xlink:href="#path-1" fill="white"/>
+    </mask>
+    <path id="path-3" opacity="1" fill-rule="evenodd" d="M2,0 L21,0 C22.103830048988,0 23,0.896169951012 23,2 L23,6.2727272727272725 L0,6.2727272727272725 L0,2 C0,0.8961699510120003 0.8961699510119996,2.220446049250313e-16 2,0Z"/>
+    <mask id="mask-4" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0">
+      <rect opacity="1" x="0" y="0" width="23" height="23" fill="black"/>
+      <use xlink:href="#path-3" fill="white"/>
+    </mask>
+    <ellipse id="ellipse-5" opacity="1" rx="1.0454545454545454" ry="1.045454545454544" cx="3.136363636363632" cy="14.636363636363637"/>
+    <ellipse id="ellipse-6" opacity="1" rx="1.0454545454545454" ry="1.045454545454544" cx="7.318181818181811" cy="14.636363636363637"/>
+    <ellipse id="ellipse-7" opacity="1" rx="1.045454545454545" ry="1.045454545454544" cx="11.499999999999998" cy="14.636363636363637"/>
+    <ellipse id="ellipse-8" opacity="1" rx="1.045454545454545" ry="1.045454545454544" cx="15.681818181818178" cy="14.636363636363637"/>
+    <ellipse id="ellipse-9" opacity="1" rx="1.045454545454545" ry="1.045454545454544" cx="19.863636363636367" cy="14.636363636363637"/>
+    <ellipse id="ellipse-10" opacity="1" rx="1.0454545454545454" ry="1.045454545454545" cx="3.136363636363632" cy="10.454545454545448"/>
+    <ellipse id="ellipse-11" opacity="1" rx="1.0454545454545454" ry="1.045454545454545" cx="7.318181818181811" cy="10.454545454545448"/>
+    <ellipse id="ellipse-12" opacity="1" rx="1.045454545454545" ry="1.045454545454545" cx="11.499999999999998" cy="10.454545454545448"/>
+    <ellipse id="ellipse-13" opacity="1" rx="1.045454545454545" ry="1.045454545454545" cx="15.681818181818178" cy="10.454545454545448"/>
+    <ellipse id="ellipse-14" opacity="1" rx="1.045454545454545" ry="1.045454545454545" cx="19.863636363636367" cy="10.454545454545448"/>
+    <ellipse id="ellipse-15" opacity="1" rx="1.0454545454545454" ry="1.045454545454545" cx="3.136363636363632" cy="18.818181818181813"/>
+    <ellipse id="ellipse-16" opacity="1" rx="1.0454545454545454" ry="1.045454545454545" cx="7.318181818181811" cy="18.818181818181813"/>
+    <ellipse id="ellipse-17" opacity="1" rx="1.045454545454545" ry="1.045454545454545" cx="11.499999999999998" cy="18.818181818181813"/>
+    <ellipse id="ellipse-18" opacity="1" rx="1.045454545454545" ry="1.045454545454545" cx="15.681818181818178" cy="18.818181818181813"/>
+    <ellipse id="ellipse-19" opacity="1" rx="1.045454545454545" ry="1.045454545454545" cx="19.863636363636367" cy="18.818181818181813"/>
+  </defs>
+  <g opacity="1">
+    <g opacity="1">
+      <use xlink:href="#path-1" fill-opacity="0" stroke="rgb(244,170,0)" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-3" fill="rgb(244,170,0)" fill-opacity="1"/>
+      <use xlink:href="#path-3" fill-opacity="0" stroke="rgb(244,170,0)" stroke-opacity="1" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"/>
+    </g>
+    <g opacity="1">
+      <g opacity="1">
+        <g opacity="1">
+          <use xlink:href="#ellipse-5" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-6" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-7" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-8" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-9" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+      </g>
+      <g opacity="1">
+        <g opacity="1">
+          <use xlink:href="#ellipse-10" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-11" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-12" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-13" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-14" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+      </g>
+      <g opacity="1">
+        <g opacity="1">
+          <use xlink:href="#ellipse-15" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-16" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-17" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-18" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+        <g opacity="1">
+          <use xlink:href="#ellipse-19" fill="rgb(244,170,0)" fill-opacity="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

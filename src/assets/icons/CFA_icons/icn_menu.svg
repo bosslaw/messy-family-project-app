@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="19.023809523809533" width="24">
+  <defs>
+    <rect id="rect-1" opacity="1" x="0.9999999999999858" y="1" width="22" height="17.023809523809533"/>
+    <path id="path-2" opacity="1" fill-rule="evenodd" d="M0.9999999999999858,1 L22.999999999999986,1 "/>
+    <path id="path-3" opacity="1" fill-rule="evenodd" d="M0.9999999999999858,8.73809523809524 L22.999999999999986,8.73809523809524 "/>
+    <path id="path-4" opacity="1" fill-rule="evenodd" d="M0.9999999999999858,16.992063492063494 L22.999999999999986,16.992063492063494 "/>
+  </defs>
+  <g opacity="1">
+    <g opacity="1">
+      <use xlink:href="#path-2" fill-opacity="0" stroke="rgb(244,170,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-3" fill-opacity="0" stroke="rgb(244,170,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-4" fill-opacity="0" stroke="rgb(244,170,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+</svg>
