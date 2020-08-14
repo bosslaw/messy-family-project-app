@@ -16,7 +16,12 @@ export class AccountEditPage implements OnInit {
     email: '',
     password: '',
     first_name: '',
-    last_name: ''
+    last_name: '',
+    address_1: '',
+    address_2: '',
+    city: '',
+    state: '',
+    country: ''
   }
 
 
@@ -32,6 +37,11 @@ export class AccountEditPage implements OnInit {
       this.userData.email = res.Email;
       this.userData.first_name = res.FirstName;
       this.userData.last_name = res.LastName;
+      this.userData.address_1 = res.StreetAddress1;
+      this.userData.address_2 = res.StreetAddress2;
+      this.userData.city = res.City;
+      this.userData.state = res.State;
+      this.userData.country = res.Country;
     });
   }
 

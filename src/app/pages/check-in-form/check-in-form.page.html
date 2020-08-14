@@ -37,6 +37,11 @@
       </ion-item>
 
       <ion-item >
+        <ion-label>Details</ion-label>
+        <ion-textarea [(ngModel)]="form.details" name="details"></ion-textarea>
+      </ion-item>
+
+      <ion-item >
         <ion-label>Time</ion-label>
         <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="form.time" name="time"></ion-datetime>
       </ion-item>

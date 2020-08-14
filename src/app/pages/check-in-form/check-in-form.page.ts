@@ -26,7 +26,9 @@ export class CheckInFormPage implements OnInit {
     this.form = {
       devotion: 1,
       location: 'Steubeville',
-      time: new Date().toISOString()
+      time: new Date().toISOString(),
+      uid: null,
+      details: ''
     };
 
   }
@@ -34,8 +36,6 @@ export class CheckInFormPage implements OnInit {
   ngOnInit() {
     this.authService.userData$.subscribe((res: any) => {
       this.user = res;
-
-      console.log(this.user)
     })
   }
 
@@ -44,18 +44,19 @@ export class CheckInFormPage implements OnInit {
   }
 
   newCheckin() {
-    console.log(this.form);
     const params = {
       devotion_id: this.form.devotion,
       uid: this.user.Id,
-      location,
-      time: this.form.time
+      location: this.form.location,
+      time: this.form.time,
+      details: this.form.details
     }
 
     this.checkinService.newCheckin(params).subscribe((res: any) => {
-      console.log(res);
+      this.dismiss();
     },
     (error: any) => {
+      console.error(error);
     });
   }
 }
