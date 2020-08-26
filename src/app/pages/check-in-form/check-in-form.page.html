@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" class="title ion-padding">
+      <ion-icon slot="icon-only"  name="location-outline"></ion-icon>
+      <div>
+        <h4 class="ion-no-margin color-secondary">new check in</h4>
+        <p class="ion-no-margin">Hernon Family</p>
+      </div>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button  (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="checkin">
+    <ion-list-header>
+      <ion-label color="medium"> <ion-icon name="person-outline"></ion-icon> <span>DETAILS</span></ion-label>
+    </ion-list-header> 
+
+    <ion-list>
+      <ion-item >
+        <ion-label>Devotion</ion-label>
+        <ion-select interface="popover" [(ngModel)]="form.devotion" name="devotion">
+          <ion-select-option *ngFor="let devotion of devotions" [value]="devotion.id">{{devotion.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item >
+        <ion-label>Location</ion-label>
+        <ion-select interface="popover" [(ngModel)]="form.location" name="location">
+          <ion-select-option value="Steubeville">Steubenville, OH</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item >
+        <ion-label>Details</ion-label>
+        <ion-textarea [(ngModel)]="form.details" name="details"></ion-textarea>
+      </ion-item>
+
+      <ion-item >
+        <ion-label>Time</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="form.time" name="time"></ion-datetime>
+      </ion-item>
+
+      <ion-item > 
+        <ion-label>
+          Intention
+          <p>
+            John Doe
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-text-center">
+      <ion-button (click)="newCheckin()">Save</ion-button>
+    </div>
+  </div>
+</ion-content>

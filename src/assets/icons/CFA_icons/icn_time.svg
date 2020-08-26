@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="10" width="10">
+  <defs>
+    <ellipse id="ellipse-1" opacity="1" rx="5" ry="5" cx="5" cy="5"/>
+    <mask id="mask-2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0">
+      <rect opacity="1" x="0" y="0" width="10" height="10" fill="black"/>
+      <use xlink:href="#ellipse-1" fill="white"/>
+    </mask>
+    <path id="path-3" opacity="1" fill-rule="evenodd" d="M5,2.5 C5,2.224040985107422 5.2240447998046875,2 5.5,2 C5.7759552001953125,2 6,2.224040985107422 6,2.5 L6,5.5 C6,5.7759552001953125 5.7759552001953125,6 5.5,6 L3.5,6 C3.2240447998046875,6 3,5.7759552001953125 3,5.5 C3,5.2240447998046875 3.2240447998046875,5 3.5,5 L5,5 L5,2.5Z"/>
+  </defs>
+  <g opacity="1">
+    <g opacity="1">
+      <use xlink:href="#ellipse-1" fill-opacity="0" stroke="rgb(145,145,145)" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" mask="url(#mask-2)"/>
+    </g>
+    <g>
+      <use xlink:href="#path-3" fill="rgb(145,145,145)" fill-opacity="1"/>
+    </g>
+  </g>
+</svg>

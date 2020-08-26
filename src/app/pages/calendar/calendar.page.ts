@@ -206,6 +206,7 @@ export class CalendarPage implements OnInit {
       }
     },
     (error: any) => {
+      console.error(error);
     });
   }
 

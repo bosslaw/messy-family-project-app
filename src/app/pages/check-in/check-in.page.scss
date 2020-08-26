@@ -1,0 +1,36 @@
+ion-list-header{
+    ion-label {
+        color: #4F4F4F;
+        display: flex;
+        align-items: center;
+        span {
+            font-size: 14px;
+            margin-left: 20px;
+        }
+    }
+}
+.reminder { 
+    margin: 5px !important;
+    padding: 9px 0;
+    margin-bottom: 20px !important;
+    
+    ion-label {
+        white-space: normal !important;
+        display: flex;
+        .icon-start {
+            width: 30px;
+            font-size: 23px;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+    }
+    h4 {
+        font-size: 16px;
+        font-weight: bold;
+        padding-top: 7px;
+    }
+    p {
+        font-size: 14px;
+        font-weight: 300;
+    }
+}
