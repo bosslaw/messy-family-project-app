@@ -15,8 +15,8 @@ export class CheckinService {
     return this.httpService.post('checkin', checkinData);
   }
 
-  getCheckins(uid: number): Observable<any> {
-    return this.httpService.post('checkin/'+uid, {});
+  getCheckins(uid: number, intentionId: number): Observable<any> {
+    return this.httpService.post('checkin/'+uid+'/'+intentionId, {});
   }
 
   getIntentions(): Observable<any> {

@@ -11,7 +11,7 @@
   <ion-item>
     <ion-label>Rosary</ion-label>
     <ion-select>
-      <ion-select-option  *ngFor="let intention of intentions" [value]="intention.id" selected="intention.id == 1" > {{intention.name}}</ion-select-option>
+      <ion-select-option  *ngFor="let intention of intentions" [value]="intention.id" selected="intention.id == intentionId" > {{intention.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 

@@ -14,6 +14,7 @@ export class CheckInPage implements OnInit {
   user: any;
   checkins = [];
   intentions = [];
+  intentionId: any;
 
   constructor(
     public modalCtrl: ModalController,
@@ -33,7 +34,7 @@ export class CheckInPage implements OnInit {
   getUser() {
     this.authService.userData$.subscribe((res: any) => {
       this.user = res;
-      if(this.user) this.getCheckins(this.user.Id);
+      if(this.user) this.getCheckins(this.user.Id, this.intentionId);
     })
   }
 
@@ -46,8 +47,8 @@ export class CheckInPage implements OnInit {
     return await modal.present();
   }
 
-  getCheckins(uid) {
-    this.checkinService.getCheckins(uid).subscribe((res: any) => {
+  getCheckins(uid, intentionId) {
+    this.checkinService.getCheckins(uid, intentionId).subscribe((res: any) => {
       this.checkins = res;
     },
     (error: any) => {
@@ -58,6 +59,7 @@ export class CheckInPage implements OnInit {
   getIntentions() {
     this.checkinService.getIntentions().subscribe((res: any) => {
       this.intentions = res;
+      this.intentionId = res[0].id;
       console.log('intentions', res)
     },
     (error: any) => {
