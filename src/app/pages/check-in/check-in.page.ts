@@ -13,6 +13,7 @@ export class CheckInPage implements OnInit {
 
   user: any;
   checkins = [];
+  intentions = [];
 
   constructor(
     public modalCtrl: ModalController,
@@ -22,6 +23,7 @@ export class CheckInPage implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.getIntentions();
   }
 
   formatTime(time) {
@@ -47,6 +49,16 @@ export class CheckInPage implements OnInit {
   getCheckins(uid) {
     this.checkinService.getCheckins(uid).subscribe((res: any) => {
       this.checkins = res;
+    },
+    (error: any) => {
+      console.error(error);
+    });
+  }
+
+  getIntentions() {
+    this.checkinService.getIntentions().subscribe((res: any) => {
+      this.intentions = res;
+      console.log('intentions', res)
     },
     (error: any) => {
       console.error(error);

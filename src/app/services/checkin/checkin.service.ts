@@ -18,4 +18,8 @@ export class CheckinService {
   getCheckins(uid: number): Observable<any> {
     return this.httpService.post('checkin/'+uid, {});
   }
+
+  getIntentions(): Observable<any> {
+    return this.httpService.get('intentions');
+  }
 }

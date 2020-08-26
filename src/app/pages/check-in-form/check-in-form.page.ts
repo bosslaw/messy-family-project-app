@@ -11,11 +11,12 @@ import { CheckinService } from 'src/app/services/checkin/checkin.service';
 export class CheckInFormPage implements OnInit {
 
   form: any;
-  devotions = [
-    { id: 1, name: 'Praying'},
-    { id: 2, name: 'Family Fun'},
-    { id: 3, name: 'Date Night'}
-  ];
+  devotions = [];
+  // devotions = [
+  //   { id: 1, name: 'Praying'},
+  //   { id: 2, name: 'Family Fun'},
+  //   { id: 3, name: 'Date Night'}
+  // ];
   user: any;
 
   constructor(
@@ -31,6 +32,8 @@ export class CheckInFormPage implements OnInit {
       details: ''
     };
 
+    this.getIntentions();
+
   }
 
   ngOnInit() {
@@ -41,6 +44,16 @@ export class CheckInFormPage implements OnInit {
 
   dismiss() {
     this.modalCtrl.dismiss();
+  }
+
+  getIntentions() {
+    this.checkinService.getIntentions().subscribe((res: any) => {
+      this.devotions = res;
+      console.log('intentions', res)
+    },
+    (error: any) => {
+      console.error(error);
+    });
   }
 
   newCheckin() {
