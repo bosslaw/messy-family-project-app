@@ -48,7 +48,12 @@ export class ProfilesPage implements OnInit {
           text: 'Update Profile',
           handler: () => {
             this.router.navigate(['home/account-edit']);
-            // this.nav.navigateForward('home/account-edit');
+          }
+        },
+        {
+          text: 'Update Profile Image',
+          handler: () => {
+            this.selectImage();
           }
         },
         {

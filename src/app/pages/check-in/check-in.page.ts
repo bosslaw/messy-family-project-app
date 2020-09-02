@@ -14,7 +14,7 @@ export class CheckInPage implements OnInit {
   user: any;
   checkins = [];
   intentions = [];
-  intentionId: any;
+  intentionId = 1;
 
   constructor(
     public modalCtrl: ModalController,
@@ -65,6 +65,10 @@ export class CheckInPage implements OnInit {
     (error: any) => {
       console.error(error);
     });
+  }
+
+  updateFilter() {
+    this.getCheckins(this.user.Id, this.intentionId);
   }
 
 }

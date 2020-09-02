@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Camera } from '@ionic-native/camera/ngx';
+import { Camera, PictureSourceType, CameraOptions } from '@ionic-native/camera/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { File, FileEntry } from '@ionic-native/file/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, LoadingController } from '@ionic/angular';
 import { HttpService } from '../http/http.service';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { finalize } from 'rxjs/operators';
 
 declare var cordova: any;
 @Injectable({
@@ -19,13 +21,15 @@ export class UploadImageService {
     private platform: Platform,
     private filePath: FilePath,
     private file: File,
-    private http: HttpService
+    private http: HttpService,
+    private loader: LoadingController,
+    private webview: WebView
   ) { }
 
-  takePicture(sourceType, uid) {
+  takePicture(sourceType: PictureSourceType, uid) {
     this.uid = uid;
     // Create options for the Camera Dialog
-    const options = {
+    const options: CameraOptions = {
       quality: 100,
       sourceType,
       saveToPhotoAlbum: false,
@@ -73,16 +77,31 @@ export class UploadImageService {
   pathForImage(img: string) {
     let result = '';
     if (img !== null) {
-      result = cordova.file.dataDirectory + img;
+      result = this.webview.convertFileSrc(img);
     }
     return result;
   }
 
   uploadPhoto(imageName: string) {
     this.lastImage = imageName;
-    const targetPath = this.pathForImage(imageName);
-    this.file.resolveLocalFilesystemUrl(targetPath)
-    .then(entry => (entry as FileEntry).file(file => this.readFile(file)))
+    // const targetPath = this.pathForImage(imageName);
+
+    const filePath = this.file.dataDirectory + imageName;
+    const resPath = this.pathForImage(filePath);
+
+    const imageEntry = {
+      name: imageName,
+      path: resPath,
+      filePath
+   };
+
+    this.file.resolveLocalFilesystemUrl(imageEntry.filePath)
+    .then(
+      entry => (entry as FileEntry)
+        .file(
+          file => this.readFile(file)
+        )
+    )
     .catch(err => {
       console.log(err);
     });
@@ -102,11 +121,24 @@ export class UploadImageService {
     reader.readAsArrayBuffer(file);
   }
 
-  postData(formData: FormData) {
+  async postData(formData: FormData) {
 
-    this.http.post('upload', formData).subscribe(data => {
-      console.log(data);
-    })
+    const loading = await this.loader.create({
+      message: 'Uploading image...'
+    });
+
+    await loading.present();
+
+    return this.http.post('upload', formData)
+          .pipe(finalize(() => {
+            loading.dismiss();
+          }))
+          .subscribe(data => {
+            console.log(data);
+            console.log('File upload complete.');
+          }, err => {
+            console.error('Error uploading the file')
+          })
 
   }
 }

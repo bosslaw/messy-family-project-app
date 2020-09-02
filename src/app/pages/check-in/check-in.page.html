@@ -10,8 +10,8 @@
 <ion-content>
   <ion-item>
     <ion-label>Rosary</ion-label>
-    <ion-select>
-      <ion-select-option  *ngFor="let intention of intentions" [value]="intention.id" selected="intention.id == intentionId" > {{intention.name}}</ion-select-option>
+    <ion-select [(ngModel)]="intentionId" (ngModelChange)="updateFilter()">
+      <ion-select-option  *ngFor="let intention of intentions" [value]="intention.id" > {{intention.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 
