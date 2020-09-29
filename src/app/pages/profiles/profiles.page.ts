@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Camera } from '@ionic-native/camera/ngx';
-import { ActionSheetController, ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController, Platform } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FamilyService } from 'src/app/services/family/family.service';
 import { UploadImageService } from 'src/app/services/upload-image/upload-image.service';
 import { FamilyMemberFormPage } from '../family-member-form/family-member-form.page';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+const { Camera } = Plugins;
+import { environment } from 'src/environments/environment';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-profiles',
@@ -13,9 +16,11 @@ import { FamilyMemberFormPage } from '../family-member-form/family-member-form.p
   styleUrls: ['./profiles.page.scss'],
 })
 export class ProfilesPage implements OnInit {
-
+  imageUrl = environment.imageUrl;
+  profileImage = '';
   user: any;
   familyMembers: any;
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
 
   constructor(
     private authService: AuthService,
@@ -23,8 +28,9 @@ export class ProfilesPage implements OnInit {
     private familyService: FamilyService,
     public actionsheetCtrl: ActionSheetController,
     public uploadImage: UploadImageService,
-    private camera: Camera,
-    public router: Router
+    private plt: Platform,
+    public router: Router,
+    private toast: ToastService
   ) { }
 
   ngOnInit() {
@@ -34,11 +40,23 @@ export class ProfilesPage implements OnInit {
   getUserData() {
     this.authService.userData$.subscribe((res: any) => {
       this.user = res;
+      this.profileImage = this.imageUrl +this.user.Id + '/' + (new Date()).getTime();
 
       if(this.user) {
         this.loadFamilyMembers();
       }
     })
+  }
+
+  uploadFile(event: EventTarget) {
+    const eventObj: MSInputMethodContext = event as MSInputMethodContext;
+    const target: HTMLInputElement = eventObj.target as HTMLInputElement;
+    const file: File = target.files[0];
+
+    this.uploadImage.uploadImageFile(file, this.user.Id).then(data => {
+      console.log('upload complete')
+      this.profileImage = this.imageUrl + this.user.Id + '/' + (new Date()).getTime();
+    });
   }
 
   async showProfileOptions() {
@@ -75,26 +93,56 @@ export class ProfilesPage implements OnInit {
   }
 
   async selectImage() {
+    const buttons = [{
+      text: 'Choose From Photos Photo',
+      handler: () => {
+        this.addImage(CameraSource.Photos, this.user.Id)
+      }
+   },
+   {
+    text: 'Take Photo',
+    handler: () => {
+      this.addImage(CameraSource.Camera, this.user.Id);
+     }
+   }
+  ];
+
+    if (!this.plt.is('hybrid')) {
+      buttons.push({
+        text: 'Choose a File',
+        handler: () => {
+          this.fileInput.nativeElement.click();
+        }
+      });
+    }
+
     const actionSheet = await this.actionsheetCtrl.create({
       header: 'Select Image source',
-      buttons: [{
-        text: 'Load from Library',
-        handler: () => {
-          this.uploadImage.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY, this.user.Id);
-        }
-     },
-     {
-      text: 'Use Camera',
-      handler: () => {
-        this.uploadImage.takePicture(this.camera.PictureSourceType.CAMERA, this.user.Id);
-       }
-     },
-     {
-      text: 'Cancel',
-      role: 'cancel'
-     }]
+      buttons
    });
+
    await actionSheet.present();
+  }
+
+  async addImage(source: CameraSource, uid) {
+    const image = await Camera.getPhoto({
+      quality: 60,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      source
+    });
+
+    const blobData = this.uploadImage.b64toBlob(image.base64String, `image/${image.format}`);
+    const imageName = this.uploadImage.createFileName();
+
+     this.uploadImage.postData(blobData, imageName,image.format, uid)
+     .subscribe((data: any) => {
+      console.log(data);
+      if(data.success) {
+        this.toast.presentToast('Successfully upload');
+        this.profileImage = this.imageUrl +this.user.Id+'/'+(new Date()).getTime();
+      }
+    });
   }
 
   async updateMember(member) {
@@ -129,5 +177,4 @@ export class ProfilesPage implements OnInit {
     });
     return await modal.present();
   }
-
 }

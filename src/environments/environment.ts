@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://messyfamily.api/api/'
+  apiUrl: 'http://api.messyfamilyproject.org/api/',
+  imageUrl: 'http://api.messyfamilyproject.org/profile_image/'
 };
 
 /*

@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://messyfamily.api/api/'
+  apiUrl: 'http://api.messyfamilyproject.org/api/',
+  imageUrl: 'http://api.messyfamilyproject.org/profile_image/'
 };

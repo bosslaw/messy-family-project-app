@@ -10,7 +10,7 @@
       <ion-row>
         <ion-col size="2">
           <ion-avatar>
-            <img src="https://via.placeholder.com/500">
+            <img [src]="profileImage" height="200" width="200">
           </ion-avatar>
         </ion-col>
         <ion-col class="ion-text-left profile-name">
@@ -27,7 +27,15 @@
 <ion-content>
   <div class="profile">
     <ion-list-header>
-      <ion-label color="medium"> <ion-icon name="person-outline"></ion-icon> <span>PROFILE</span></ion-label>
+      <ion-label color="medium"> <ion-icon name="person-outline"></ion-icon> <span>PROFILE</span>
+        <input
+      type="file"
+      #fileInput
+      (change)="uploadFile($event)"
+      hidden="true"
+      accept="image/*"
+    />
+      </ion-label>
     </ion-list-header> 
 
     <ion-list *ngIf="user">
