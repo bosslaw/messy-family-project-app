@@ -9,6 +9,7 @@ import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 const { Camera } = Plugins;
 import { environment } from 'src/environments/environment';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-profiles',
@@ -19,8 +20,16 @@ export class ProfilesPage implements OnInit {
   imageUrl = environment.imageUrl;
   profileImage = '';
   user: any;
+  userDetails: any;
   familyMembers: any;
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
+
+  relationships = [
+    {id: 1, name: 'Mother'},
+    {id: 2, name: 'Father'},
+    {id: 3, name: 'Son'},
+    {id: 4, name: 'Daughter'}
+  ];
 
   constructor(
     private authService: AuthService,
@@ -44,8 +53,13 @@ export class ProfilesPage implements OnInit {
 
       if(this.user) {
         this.loadFamilyMembers();
+        this.getUserDetails();
       }
     })
+  }
+
+  formatDate(date) {
+    return moment(date).format('LL');
   }
 
   uploadFile(event: EventTarget) {
@@ -59,15 +73,13 @@ export class ProfilesPage implements OnInit {
     });
   }
 
+  updateProfile() {
+    this.router.navigate(['home/account-edit']);
+  }
+
   async showProfileOptions() {
     const actionSheet = await this.actionsheetCtrl.create({
       buttons: [
-        {
-          text: 'Update Profile',
-          handler: () => {
-            this.router.navigate(['home/account-edit']);
-          }
-        },
         {
           text: 'Update Profile Image',
           handler: () => {
@@ -162,6 +174,12 @@ export class ProfilesPage implements OnInit {
   loadFamilyMembers() {
     this.familyService.getMembers(this.user.Id).subscribe(res => {
       this.familyMembers = res;
+    });
+  }
+
+  getUserDetails() {
+    this.familyService.getMemberDetails(this.user.Id).subscribe(res => {
+      this.userDetails = res;
     });
   }
 

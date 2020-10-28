@@ -23,4 +23,9 @@ export class FamilyService {
     return this.httpService.get('family-members/'+uid);
   }
 
+  getMemberDetails(uid: number): Observable<any> {
+    return this.httpService.get('family-member-details/'+uid);
+  }
+
+  
 }

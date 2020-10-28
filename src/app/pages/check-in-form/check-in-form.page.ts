@@ -12,6 +12,8 @@ export class CheckInFormPage implements OnInit {
 
   form: any;
   devotions = [];
+  latitude: any;
+  longitude: any;
   // devotions = [
   //   { id: 1, name: 'Praying'},
   //   { id: 2, name: 'Family Fun'},
@@ -26,7 +28,7 @@ export class CheckInFormPage implements OnInit {
   ) {
     this.form = {
       devotion: 1,
-      location: 'Steubeville',
+      location: '',
       time: new Date().toISOString(),
       uid: null,
       details: ''
@@ -62,6 +64,8 @@ export class CheckInFormPage implements OnInit {
       uid: this.user.Id,
       location: this.form.location,
       time: this.form.time,
+      latitude: this.latitude,
+      longitude: this.longitude,
       details: this.form.details
     }
 

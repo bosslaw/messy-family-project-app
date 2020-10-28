@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CheckinService } from 'src/app/services/checkin/checkin.service';
 import { CheckInFormPage } from '../check-in-form/check-in-form.page';
+import { Plugins } from '@capacitor/core';
+import { MapService } from 'src/app/services/map/map.service';
+
+
+const { Geolocation } = Plugins;
+
+declare var google;
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.page.html',
@@ -11,20 +18,54 @@ import { CheckInFormPage } from '../check-in-form/check-in-form.page';
 })
 export class CheckInPage implements OnInit {
 
+  @ViewChild('map', { static: false }) mapElement: ElementRef;
+  map: any;
+  address: string;
+
   user: any;
   checkins = [];
   intentions = [];
   intentionId = 1;
 
+  latitude: number;
+  longitude: number;
+
   constructor(
     public modalCtrl: ModalController,
     public checkinService: CheckinService,
-    public authService: AuthService
-  ) { }
+    public authService: AuthService,
+    public mapService: MapService
+  ) {
+  }
 
   ngOnInit() {
     this.getUser();
     this.getIntentions();
+    this.loadMap();
+
+    
+  }
+
+  loadMap() {
+    Geolocation.getCurrentPosition().then((resp) => {
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+
+      let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+      this.mapService.getAddressFromCoords(this.latitude, this.longitude);
+
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
   }
 
   formatTime(time) {
@@ -42,6 +83,8 @@ export class CheckInPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: CheckInFormPage,
       componentProps: {
+        latitude: this.latitude,
+        longitude: this.longitude
       }
     });
     return await modal.present();

@@ -14,6 +14,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
     WebView,
     File,
     FilePath,
+    NativeGeocoder,
     LocalNotifications,
     Camera
   ],

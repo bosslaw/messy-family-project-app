@@ -14,6 +14,20 @@
       <ion-label position="stacked">Email</ion-label>
       <ion-input autocomplete="off" name="email" type="text" [(ngModel)]="postData.email"></ion-input>
       </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Birthday</ion-label>
+        <ion-datetime [(ngModel)]="postData.unformatted_date" name="unformatted_date" display-timezone="utc"></ion-datetime>
+        <!-- <ion-input disabled autocomplete="off" name="email" type="text" [(ngModel)]="memberData.birth_date"></ion-input> -->
+        </ion-item>
+        
+        <ion-item>
+        <ion-label position="stacked">Relationship</ion-label>
+        <ion-select placeholder="" name="rid" [(ngModel)]="postData.rid">
+          <ion-select-option  *ngFor="let r of relationships" [value]="r.id">{{r.name}}</ion-select-option>
+        </ion-select>
+        
+        </ion-item>
       
       <ion-item>
       <ion-label position="stacked">Password</ion-label>

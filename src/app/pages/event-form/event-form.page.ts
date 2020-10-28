@@ -32,9 +32,20 @@ export class EventFormPage implements OnInit {
 
   ngOnInit() {
     if(this.navParams.data.preselectedDate) {
-      this.preselectedDate = new Date(this.navParams.data.preselectedDate).toISOString();
+      this.preselectedDate = new Date(this.navParams.data.preselectedDate);
+
+      let curDate = new Date();
+      this.preselectedDate.setHours(curDate.getHours());
+      this.preselectedDate.setMinutes(curDate.getMinutes());
+
+      this.preselectedDate = this.preselectedDate.toISOString();
       this.event.start_date = this.preselectedDate;
       this.event.end_date = this.preselectedDate;
+
+      console.log("hehehe")
+      console.log(this.preselectedDate);
+      console.log(this.event.start_date);
+      console.log(this.event.end_date);
     }
 
     if(this.navParams.data.eventData) {
