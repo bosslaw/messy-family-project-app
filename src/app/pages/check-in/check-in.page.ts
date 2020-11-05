@@ -42,8 +42,6 @@ export class CheckInPage implements OnInit {
     this.getUser();
     this.getIntentions();
     this.loadMap();
-
-    
   }
 
   loadMap() {
@@ -51,8 +49,8 @@ export class CheckInPage implements OnInit {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
 
-      let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-      let mapOptions = {
+      const latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      const mapOptions = {
         center: latLng,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
