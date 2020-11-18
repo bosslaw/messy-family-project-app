@@ -96,7 +96,7 @@ export class CheckInFormPage implements OnInit {
       longitude: (this.nlongitude) ? this.nlongitude :  this.longitude,
       details: this.form.details
     };
-    
+
     this.mapService.getCoordsFromAddress(location)
     .then((result: NativeGeocoderResult[]) => {
       params.latitude = result[0].latitude;
