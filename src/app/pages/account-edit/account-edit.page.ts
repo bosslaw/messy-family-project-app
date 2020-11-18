@@ -33,6 +33,7 @@ export class AccountEditPage implements OnInit {
 
   getUserData() {
     this.storageService.get(AuthConstants.AUTH).then((res: any) => {
+      console.log(res);
       this.userData.id = res.Id;
       this.userData.email = res.Email;
       this.userData.first_name = res.FirstName;

@@ -87,6 +87,12 @@ export class ProfilesPage implements OnInit {
           }
         },
         {
+          text: 'Edit Account',
+          handler: () => {
+            this.updateProfile();
+          }
+        },
+        {
           text: 'Logout',
           handler: () => {
             this.authService.logout();

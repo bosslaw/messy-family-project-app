@@ -14,9 +14,18 @@ export class MapService {
         useLocale: true,
         maxResults: 5
     };
+    console.log(latitude, longitude, '--->cool<------')
+    return this.nativeGeocoder.reverseGeocode(latitude, longitude, options);
+      // .then((result: NativeGeocoderResult[]) => console.log('the location-> ',JSON.stringify(result[0])))
+      // .catch((error: any) => console.log(error));
+  }
 
-    this.nativeGeocoder.reverseGeocode(latitude, longitude, options)
-      .then((result: NativeGeocoderResult[]) => console.log(JSON.stringify(result[0])))
-      .catch((error: any) => console.log(error));
+  getCoordsFromAddress(address) {
+    const options: NativeGeocoderOptions = {
+        useLocale: true,
+        maxResults: 5
+    };
+    return this.nativeGeocoder.forwardGeocode(address, options);
+    
   }
 }

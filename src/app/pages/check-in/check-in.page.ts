@@ -6,7 +6,7 @@ import { CheckinService } from 'src/app/services/checkin/checkin.service';
 import { CheckInFormPage } from '../check-in-form/check-in-form.page';
 import { Plugins } from '@capacitor/core';
 import { MapService } from 'src/app/services/map/map.service';
-
+import { mapStyle } from 'src/app/shared/map-styles/style';
 
 const { Geolocation } = Plugins;
 
@@ -40,8 +40,12 @@ export class CheckInPage implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.getIntentions();
     this.loadMap();
+  }
+
+  ionViewDidEnter() {
+    console.log('cool')
+    this.getIntentions();
   }
 
   loadMap() {
@@ -49,20 +53,56 @@ export class CheckInPage implements OnInit {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
 
-      const latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      const POSITION = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+
       const mapOptions = {
-        center: latLng,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        zoom: 11,
+        center: POSITION,
+        mapTypeControl: false,
+        streetViewControl: false,
+        zoomControl: false,
+        styles: mapStyle,
+        fullscreenControl: false
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
+      const icon = {
+        url: '/assets/icon/pin2.png',
+        // size: {
+        //   width: 50,
+        //   height: 80.9
+        // }
+      };
+
+      const config = {
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: this.map.getCenter(),
+        icon
+      };
+
+      const content = '<p>This is your current position !</p>';
+      const marker = this.addMarker(config);
+      this.addInforWindow(marker, content);
       this.mapService.getAddressFromCoords(this.latitude, this.longitude);
 
 
     }).catch((error) => {
       console.log('Error getting location', error);
+    });
+  }
+
+  addMarker(config) {
+    return new google.maps.Marker(config);
+  }
+
+  addInforWindow(marker, content) {
+    const infoWindow = new google.maps.InfoWindow({
+      content
+    });
+    google.maps.event.addListener(marker, 'click', () => {
+      infoWindow.open(this.map, marker);
     });
   }
 
@@ -84,13 +124,31 @@ export class CheckInPage implements OnInit {
         latitude: this.latitude,
         longitude: this.longitude
       }
-    });
+    })
     return await modal.present();
   }
 
   getCheckins(uid, intentionId) {
     this.checkinService.getCheckins(uid, intentionId).subscribe((res: any) => {
       this.checkins = res;
+      this.checkins.forEach(a => {
+        const icon = {
+          url: '/assets/icon/pin.png',
+          // size: {
+          //   width: 50,
+          //   height: 80.9
+          // }
+        };
+        const config = {
+          map: this.map,
+          animation: google.maps.Animation.DROP,
+          position:  new google.maps.LatLng(a.latitude, a.longitude),
+          icon
+        };
+
+        const marker = this.addMarker(config);
+        this.addInforWindow(marker, 'At ' + this.formatTime(a.time) + ', in ' + a.location);
+      });
     },
     (error: any) => {
       console.error(error);
@@ -101,7 +159,6 @@ export class CheckInPage implements OnInit {
     this.checkinService.getIntentions().subscribe((res: any) => {
       this.intentions = res;
       this.intentionId = res[0].id;
-      console.log('intentions', res)
     },
     (error: any) => {
       console.error(error);
