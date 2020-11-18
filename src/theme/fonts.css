@@ -1,0 +1,41 @@
+  @font-face {
+     font-family: 'Nexa Slab';
+     src: url('../assets/fonts/NexaSlabFamily/Fontfabric-NexaSlab-Regular.otf')  format('opentype');
+     font-style: normal;
+     font-weight: normal;
+  }
+
+  @font-face {
+    font-family: 'Nexa Slab';
+    src: url('../assets/fonts/NexaSlabFamily/Fontfabric-NexaSlab-Bold.otf')  format('opentype');
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bold;
+    src: url('../assets/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: bold;
+    src: url('../assets/fonts/Montserrat/Montserrat-BoldItalic.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: normal;
+    src: url('../assets/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+  }

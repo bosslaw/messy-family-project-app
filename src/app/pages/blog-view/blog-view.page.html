@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/home"></ion-back-button>
+    </ion-buttons> -->
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title > messy family blog </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <div class="blog-header">
+    <h3 class="title ion-text-center ion-no-padding ion-no-margin" [innerHTML]="post?.title.rendered"></h3>
+    <p class="author ion-text-center ion-no-padding ion-no-margin" *ngIf="post">
+      <ion-icon name="person-outline"></ion-icon>
+      {{post._embedded.author[0].name}}
+    </p>
+  </div>
+  <div class="blog-tags ion-padding-horizontal" *ngIf="post">
+    <p class="date">
+      {{post.date_gmt | date}}
+    </p>
+    <p class="separator" *ngIf="categories.length">|</p>
+    <ion-badge *ngFor="let category of categories" color="medium">{{category}}</ion-badge>
+  </div>
+  
+  <div class="ion-padding" *ngIf="post">
+    <!-- <img [src]="post.media_url" [style.width]="'100%'"> -->
+    <div class="blog-content" [innerHTML]="post.content.rendered" padding></div>
+  </div>
+</ion-content>

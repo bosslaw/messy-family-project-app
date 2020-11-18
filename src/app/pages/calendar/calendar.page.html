@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="calendarViewOptions()" icon-only><ion-icon name="menu-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>{{viewTitle}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="today()" icon-only><ion-icon name="calendar-outline"></ion-icon></ion-button>
+      <ion-button icon-only small (click)="addEventModal()">
+        <ion-icon name="add-outline" ></ion-icon>
+      </ion-button>
+      <ion-button icon-only small (click)="showCalendarOptions()">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="displayMode=='event'">
+    <ion-grid *ngIf="sortedEvents">
+      <ion-row *ngFor="let date of getKeys(sortedEvents)">
+        <ion-col size="2" class="ion-text-center">
+          <h1 class="ion-no-margin">{{date | slice:0:2}}</h1>
+          <p class="ion-no-margin">{{date | slice:3:date.length}}</p>
+        </ion-col>
+        <ion-col size="10">
+          <ion-card *ngFor="let event of sortedEvents[date]" class="ion-no-margin event" (click)="onEventSelected(event)">
+            <ion-card-header>
+              <ion-card-subtitle> {{event.title}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              {{event.description}}
+            </ion-card-content>
+          </ion-card>
+         
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="displayMode=='calendar'">
+      <calendar 
+      [eventSource]="eventSource" 
+      [calendarMode]="calendar.mode" 
+      [currentDate]="calendar.currentDate"
+      (onEventSelected)="onEventSelected($event)"
+      (onTitleChanged)="onViewTitleChanged($event)"
+      (onTimeSelected)="onTimeSelected($event)" 
+      startHour="01"
+      endHour="24"
+      step="10"
+      startingDayWeek="1">
+      </calendar>
+  </div>
+  
+</ion-content>

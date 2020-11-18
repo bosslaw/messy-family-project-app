@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Import Events</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Upload ICS File</h1>
+  <ion-input type="file" name="file"  (change)="upload($event)">Upload! </ion-input>
+  <br><br><br>
+  <div lines="none" *ngIf="events">
+    <div *ngFor="let event of events">
+      <b>{{event.title}}</b>
+      
+      <p *ngIf="event.start_date"><b>Start: </b> {{event.start_date}}</p>
+      <p *ngIf="event.end_date"><b>End: </b> {{event.end_date}}</p>
+      <p *ngIf="event.description"><b>Description: </b> {{event.description}}</p>
+      <p *ngIf="event.location"><b>Location: </b> {{event.location}}</p>
+      
+    </div>
+    <ion-button *ngIf="events.length" (click)="importEvent()">Import</ion-button>
+  </div>
+   
+</ion-content>

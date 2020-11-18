@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>devotion check in</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Rosary</ion-label>
+    <ion-select [(ngModel)]="intentionId" (ngModelChange)="updateFilter()">
+      <ion-select-option  *ngFor="let intention of intentions" [value]="intention.id" > {{intention.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div #map id="map"></div>
+
+  <!-- <img  src="/assets/images/map.png"> -->
+
+  <ion-list-header>
+    <ion-label color="medium"> <ion-icon  name="pulse-outline"></ion-icon> <span>NEW CONTENT</span></ion-label>
+  </ion-list-header>
+
+  <div class="ion-padding-horizontal" *ngIf="checkins">
+      
+    <ion-card class="reminder" *ngFor="let checkin of checkins">
+      <ion-item lines="none">
+        
+        <ion-label color="medium">
+          <ion-icon class="icon-start" name="time-outline" color="medium" slot="start"></ion-icon>
+          <div>
+            <p >At {{formatTime(checkin.time)}}, in {{checkin.location}}</p>
+            <h4 class="color-primary">{{checkin.details}}</h4>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <!-- <ion-card class="reminder">
+      <ion-item lines="none">
+        
+        <ion-label color="medium">
+          <ion-icon class="icon-start" name="time-outline" color="medium" slot="start"></ion-icon>
+          <div>
+            <p >At 4:05pm CT, in Peninsula FL</p>
+            <h4 class="color-primary">The Robins prayed the rosary.</h4>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-card> -->
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="newCheckinModal()"  color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

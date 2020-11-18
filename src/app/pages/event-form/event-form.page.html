@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{title}} Event</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  
+    <ion-item>
+      <ion-input type="text" name="title" placeholder="Title" [(ngModel)]="event.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" name="description" placeholder="Description" [(ngModel)]="event.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" name="location" placeholder="Location" [(ngModel)]="event.location"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Start</ion-label>
+      <ion-datetime displayFormat="DDD MMM DD YYYY h:mm A" name="start_date" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.start_date" [min]="minDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End</ion-label>
+      <ion-datetime displayFormat="DDD MMM DD YYYY h:mm A" name="end_date" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.end_date" [min]="minDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>All Day?</ion-label>
+      <ion-checkbox name="allDay" [(ngModel)]="event.allDay"></ion-checkbox>
+    </ion-item>
+    <ion-button fill="outline" expand="block" (click)="addEvent()" type="submit">{{title}} Event</ion-button>
+  
+    
+
+</ion-content>

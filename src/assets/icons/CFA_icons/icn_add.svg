@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <rect id="rect-1" width="56" height="56" x="4" y="1"/>
+    <ellipse id="ellipse-2" cx="32" cy="29" rx="28" ry="28"/>
+    <filter id="filter-3" width="200%" height="200%" x="-50%" y="-50%" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="3" in="SourceAlpha" result="shadow-1-feOffset-shadow"/>
+      <feGaussianBlur in="shadow-1-feOffset-shadow" result="shadow-1-feGaussianBlur-shadow" stdDeviation="2.41"/>
+      <feColorMatrix in="shadow-1-feGaussianBlur-shadow" result="shadow-1-feColorMatrix-shadow" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.26 0"/>
+    </filter>
+  </defs>
+  <g>
+    <g>
+      <use fill="black" stroke="black" stroke-opacity="0" stroke-width="0" filter="url(#filter-3)" xlink:href="#ellipse-2"/>
+      <use fill="rgb(255,255,255)" xlink:href="#ellipse-2"/>
+    </g>
+    <path fill="rgb(244,170,0)" fill-opacity=".8" fill-rule="evenodd" d="M32 1c15.45361328 0 28 12.54638672 28 28S47.45361328 57 32 57 4 44.45361328 4 29 16.54638672 1 32 1zm0 12.13336182c1.54537964 0 2.80001831 1.25463867 2.80001831 2.79998779v10.2666626h10.2666626c1.54534912 0 2.7999878 1.25463867 2.7999878 2.79998779 0 1.54534912-1.25463868 2.7999878-2.7999878 2.7999878H34.8000183v10.26672363c0 1.54534912-1.25463867 2.79998779-2.80001831 2.79998779-1.54534912 0-2.7999878-1.25463867-2.7999878-2.7999878V31.7999878H18.9333496c-1.54537963 0-2.8000183-1.25463867-2.8000183-2.79998779 0-1.54534912 1.25463867-2.7999878 2.8000183-2.7999878h10.2666626V15.9333496c0-1.54534911 1.25463868-2.79998778 2.7999878-2.79998778z"/>
+  </g>
+</svg>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,48 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  public appPages: any;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
+
+    this.appPages = [
+      {
+        title: 'Marriage Toolkit',
+        url: '/home/interest-list/20'
+      },
+      {
+        title: 'Parenting Corner',
+        url: '/home/interest-list/21'
+      },
+      {
+        title: 'Family Cultre',
+        url: '/home/interest-list/102',
+      },
+      {
+        title: 'Prayer Resources',
+        url: '/home/interest-list/68'
+      },
+      {
+        title: 'Messy Family Neighborhood',
+        url: '/home/interest-list/20',
+      },
+      // {
+      //   title: 'Settings',
+      //   url: '/home/settings',
+      //   icon: 'settings'
+      // },
+      // {
+      //   title: 'Update Account',
+      //   url: '/home/account-edit',
+      //   icon: 'pencil-outline'
+      // }
+    ];
+
     this.initializeApp();
   }
 

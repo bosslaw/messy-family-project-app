@@ -1,0 +1,69 @@
+<ion-content class="interest">
+ 
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button color="secondary"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Marriage Toolkit</ion-title>
+    </ion-toolbar>
+
+    <h1 class="page-slogan ion-text-center color-light">
+      If you want to go fast, go<br> alone. But if you want to<br> go the distance,<br> <span class="color-secondary">go together.</span>
+    </h1>
+    
+    <div class="ion-padding-horizontal">
+      
+      <ion-card class="reminder">
+        <ion-item lines="none">
+          
+          <ion-label color="primary">
+            <ion-icon class="icon-start" name="notifications-outline" color="primary" slot="start"></ion-icon>
+            <div>
+              <h1>NEXT DATE NIGHT</h1>
+              <p class="color-secondary">Not Set! Add a reminder now</p>
+            </div>
+          </ion-label>
+          <ion-button icon-only fill="clear" size="large" slot="end"><ion-icon color="secondary" name="chevron-forward-outline"></ion-icon></ion-button>
+        </ion-item>
+      </ion-card>
+  
+      <ion-card class="reminder">
+        <ion-item lines="none">
+          <ion-label color="primary">
+            <ion-icon class="icon-start" name="checkmark-circle-outline" color="primary" slot="start"></ion-icon>
+            <div>
+              <h1>NEXT DATE NIGHT</h1>
+              <p class="color-dark italic">Not Set! Add a reminder now</p>
+            </div>
+          </ion-label>
+          <ion-button icon-only fill="clear" size="large" slot="end"><ion-icon color="secondary" name="chevron-forward-outline"></ion-icon></ion-button>
+        </ion-item>
+      </ion-card>
+
+      <ion-card class="reminder">
+        <ion-item lines="none" routerLink="/home/profiles" detail="false">
+          <ion-label color="primary">
+            <ion-icon class="icon-start" name="person-outline" color="primary" slot="start"></ion-icon>
+            <div>
+              <h1>SPOUSE PROFILE</h1>
+              <p class="color-dark italic">Learn anything new about your spouse recently? Make a note</p>
+            </div>
+          </ion-label>
+          <ion-button icon-only fill="clear" size="large" slot="end"><ion-icon color="secondary" name="chevron-forward-outline"></ion-icon></ion-button>
+        </ion-item>
+      </ion-card>
+
+      <ion-card class="reminder">
+        <ion-item lines="none">
+          <ion-label color="primary">
+            <ion-icon class="icon-start" name="wifi-outline" color="primary" slot="start"></ion-icon>
+            <div>
+              <h1>PODCAST</h1>
+              <p class="color-dark italic">Listen now to find inspiration</p>
+            </div>
+          </ion-label>
+          <ion-button icon-only fill="clear" size="large" slot="end"><ion-icon color="secondary" name="chevron-forward-outline"></ion-icon></ion-button>
+        </ion-item>
+      </ion-card>
+    </div>
+</ion-content>

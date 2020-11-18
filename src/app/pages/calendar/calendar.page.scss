@@ -1,0 +1,27 @@
+.create-event{
+    ion-card-title {
+        font-size: 16px;
+        
+    }
+}
+
+.monthview-eventdetail-timecolumn{
+    font-size: 13px !important;
+}
+
+.event-detail{
+    font-size: 13px !important;
+}
+
+.event{
+    border-left: 4px solid #ff9200;
+    margin-bottom: 5px;
+    ion-card-header{
+        padding: 8px 10px;
+        padding-bottom: 0px;
+    }
+    ion-card-content{
+        padding: 5px 10px;
+        padding-top: 0px;
+    }
+}

@@ -1,0 +1,43 @@
+.blog-thumbnail {
+    margin: 10px 5px !important;
+    ion-img {
+        img {
+            border-radius: 3px !important;
+        }
+    }
+    ion-item {
+        --padding-start: 5px !important;
+        ion-label {
+            white-space: pre-wrap;
+            h1 {
+                font-size: 14px;
+                font-weight: bold;
+                padding-bottom: 10px;
+                font-family: Montserrat;
+                white-space: pre-wrap;
+            }
+            p {
+                font-size: 10px;
+                display: flex;
+                align-items: center;
+                ion-icon {
+                    margin-right: 5px;
+                }
+                ion-badge {
+                    font-style: normal !important;
+                    font-weight: normal;
+                    margin-left: 10px;
+                    font-size: 10px;
+                }
+            }
+            ion-buttons {
+                margin-top: 10px;
+                ion-button {
+                    font-size: 12px;
+                    padding: 2px 5px !important;
+                }
+            }
+            
+        }
+    }
+}
