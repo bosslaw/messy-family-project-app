@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-signup',
@@ -19,6 +19,14 @@ export class SignupPage implements OnInit {
     unformatted_date: new Date(),
     birth_date: '',
     rid: null,
+
+    address_1: '',
+    address_2: '',
+    city: '',
+    state: '',
+    country: '',
+    gender: '',
+    religion: ''
   }
 
   relationships = [
@@ -55,6 +63,7 @@ export class SignupPage implements OnInit {
     if(this.validateInputs()) {
       const birthDate = moment(this.postData.unformatted_date).format('YYYY-MM-DD 00:00:00')
       this.postData.birth_date = birthDate;
+
       this.authService.signup(this.postData).subscribe((res: any) => {
         if(res.userData) {
           this.router.navigate(['login'])
