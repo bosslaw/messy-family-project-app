@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { FamilyService } from 'src/app/services/family/family.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-family-member-form',
@@ -17,7 +18,15 @@ export class FamilyMemberFormPage implements OnInit {
     rid: null,
     first_name: null,
     birth_date: null,
-    last_name: null
+    last_name: null,
+
+    address_1: '',
+    address_2: '',
+    city: '',
+    state: '',
+    country: '',
+    gender: '',
+    religion: ''
   }
 
   relationships = [
@@ -35,7 +44,8 @@ export class FamilyMemberFormPage implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private familyService: FamilyService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -51,6 +61,15 @@ export class FamilyMemberFormPage implements OnInit {
       this.memberData.first_name = this.member.first_name;
       this.memberData.birth_date = new Date(this.member.birth_date).toISOString();
       this.memberData.last_name = this.member.last_name;
+
+      this.memberData.address_1 = this.member.address_1;
+      this.memberData.address_2 = this.member.address_2;
+      this.memberData.city = this.member.city;
+      this.memberData.state = this.member.state;
+      this.memberData.country = this.member.country;
+      this.memberData.gender = this.member.gender;
+      this.memberData.religion = this.member.religion;
+
     } else {
       this.memberData.birth_date = new Date();
     }
@@ -67,7 +86,7 @@ export class FamilyMemberFormPage implements OnInit {
 
   saveMember() {
     const formattedMember: any = this.memberData;
-    const birthDate = moment(formattedMember.birth_date).format('YYYY-MM-DD 00:00:00')
+    const birthDate = moment(formattedMember.birth_date).format('YYYY-MM-DD 00:00:00');
     formattedMember.birth_date = birthDate;
 
     if (this.memberData.id) {
@@ -77,6 +96,13 @@ export class FamilyMemberFormPage implements OnInit {
       },
       (error: any) => {
       });
+
+      this.userService.updateUser(this.memberData).subscribe((res: any) => {
+        // this.toastService.presentToast('Information successfully updated'); 
+      },
+      (error: any) => {
+        this.toastService.presentToast('Network Connection Error');
+      })
     } else {
       delete this.memberData.id;
       this.familyService.addMember(this.memberData).subscribe((res: any) => {

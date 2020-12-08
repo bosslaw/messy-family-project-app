@@ -6,8 +6,10 @@ export const environment = {
   production: false,
   // apiUrl: 'http://api.messyfamilyproject.org/api/',
   // imageUrl: 'http://api.messyfamilyproject.org/profile_image/',
-  apiUrl: 'http://messyfamily.api/api/',
-  imageUrl: 'http://messyfamily.api/profile_image/'
+  // apiUrl: 'http://messyfamily.api/api/',
+  // imageUrl: 'http://messyfamily.api/profile_image/'
+  apiUrl: 'http://api.test/api/',
+  imageUrl: 'http://api.test/profile_image/'
 };
 
 /*

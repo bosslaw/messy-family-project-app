@@ -7,14 +7,20 @@
       <ion-title>Marriage Toolkit</ion-title>
     </ion-toolbar>
 
-    <h1 class="page-slogan ion-text-center color-light">
-      If you want to go fast, go<br> alone. But if you want to<br> go the distance,<br> <span class="color-secondary">go together.</span>
-    </h1>
+    <div class="slogan-container">
+      <div class="backdrop">
+        <h1 class="page-slogan ion-text-center color-light">
+          If you want to go fast, go<br> alone. But if you want to<br> go the distance,<br> <span class="color-secondary">go together.</span>
+        </h1>
+      </div>
+    </div>
+
+    
     
     <div class="ion-padding-horizontal">
       
       <ion-card class="reminder">
-        <ion-item lines="none">
+        <ion-item lines="none" (click)="addEventModal()">
           
           <ion-label color="primary">
             <ion-icon class="icon-start" name="notifications-outline" color="primary" slot="start"></ion-icon>
@@ -28,7 +34,7 @@
       </ion-card>
   
       <ion-card class="reminder">
-        <ion-item lines="none">
+        <ion-item lines="none" (click)="addEventModal()">
           <ion-label color="primary">
             <ion-icon class="icon-start" name="checkmark-circle-outline" color="primary" slot="start"></ion-icon>
             <div>
@@ -54,7 +60,7 @@
       </ion-card>
 
       <ion-card class="reminder">
-        <ion-item lines="none">
+        <ion-item lines="none" routerLink="/home/podcast">
           <ion-label color="primary">
             <ion-icon class="icon-start" name="wifi-outline" color="primary" slot="start"></ion-icon>
             <div>

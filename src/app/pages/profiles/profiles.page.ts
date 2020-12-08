@@ -1,15 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { CameraResultType, CameraSource, Plugins } from '@capacitor/core';
 import { ActionSheetController, ModalController, Platform } from '@ionic/angular';
+import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FamilyService } from 'src/app/services/family/family.service';
-import { UploadImageService } from 'src/app/services/upload-image/upload-image.service';
-import { FamilyMemberFormPage } from '../family-member-form/family-member-form.page';
-import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
-const { Camera } = Plugins;
-import { environment } from 'src/environments/environment';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import * as moment from 'moment';
+import { UploadImageService } from 'src/app/services/upload-image/upload-image.service';
+import { environment } from 'src/environments/environment';
+import { FamilyMemberFormPage } from '../family-member-form/family-member-form.page';
+const { Camera } = Plugins;
 
 @Component({
   selector: 'app-profiles',
@@ -89,7 +89,11 @@ export class ProfilesPage implements OnInit {
         {
           text: 'Edit Account',
           handler: () => {
-            this.updateProfile();
+            if(this.userDetails) {
+              this.updateMember(this.userDetails);
+            }
+            // this.updateProfile();
+            // this.updateMember();
           }
         },
         {
@@ -186,6 +190,7 @@ export class ProfilesPage implements OnInit {
   getUserDetails() {
     this.familyService.getMemberDetails(this.user.Id).subscribe(res => {
       this.userDetails = res;
+      // console.log('wee', res);
     });
   }
 
