@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Plugins } from '@capacitor/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CheckinService } from 'src/app/services/checkin/checkin.service';
-import { CheckInFormPage } from '../check-in-form/check-in-form.page';
-import { Plugins } from '@capacitor/core';
 import { MapService } from 'src/app/services/map/map.service';
 import { mapStyle } from 'src/app/shared/map-styles/style';
+import { CheckInFormPage } from '../check-in-form/check-in-form.page';
 
 const { Geolocation } = Plugins;
 
@@ -54,6 +54,7 @@ export class CheckInPage implements OnInit {
       this.longitude = resp.coords.longitude;
 
       const POSITION = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      console.log('POSITION', POSITION);
 
       const mapOptions = {
         zoom: 11,
@@ -66,6 +67,8 @@ export class CheckInPage implements OnInit {
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+      console.log('themap->', this.map);
 
       const icon = {
         url: '/assets/icon/pin2.png',
