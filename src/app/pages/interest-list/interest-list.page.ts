@@ -32,24 +32,33 @@ export class InterestListPage implements OnInit {
   }
 
   loadPosts() {
-    this.wp.getPostsByTag(this.page, this.tagId).subscribe(res => {
-      this.count = this.wp.totalPosts;
-      this.posts = res;
+    // this.wp.getPostsByTag(this.page, this.tagId).subscribe(res => {
+    //   this.count = this.wp.totalPosts;
+    //   this.posts = res;
+    // });
+
+    this.wp.getPostsByTag(this.page, this.tagId).then((data: any) => {
+      this.posts = data;
     });
   }
 
   loadMore(event) {
     this.page++;
 
-    this.wp.getPostsByTag(this.page, this.tagId).subscribe(res => {
-      this.posts = [...this.posts, ...res];
+    this.wp.getPostsByTag(this.page, this.tagId).then((data: any) => {
+      this.posts = [...this.posts, ...data];
       event.target.complete();
-      
-      // Disable infinite loading when maximum reached
-      if (this.page === this.wp.pages) {
-        event.target.disabled = true;
-      }
     });
+
+    // this.wp.getPostsByTag(this.page, this.tagId).subscribe(res => {
+    //   this.posts = [...this.posts, ...res];
+    //   event.target.complete();
+      
+    //   // Disable infinite loading when maximum reached
+    //   if (this.page === this.wp.pages) {
+    //     event.target.disabled = true;
+    //   }
+    // });
   }
 
 }

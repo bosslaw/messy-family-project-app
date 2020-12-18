@@ -8,6 +8,7 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
+    <allow-navigation href="data:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
@@ -16,10 +17,13 @@
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="FadeSplashScreenDuration" value="300" />
+    <!-- <preference name="FadeSplashScreenDuration" value="300" /> -->
+    <preference name="FadeSplashScreenDuration" value="0" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
-    <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreen" value="none" />
+    <!-- <preference name="SplashScreen" value="screen" /> -->
+    <preference name="SplashScreenDelay" value="0" />
+    <!-- <preference name="SplashScreenDelay" value="3000" /> -->
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:usesCleartextTraffic="true" />
@@ -52,6 +56,10 @@
         </config-file>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <feature name="CDVWKWebViewEngine">
+            <param name="ios-package" value="CDVWKWebViewEngine" />
+        </feature>
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
         <icon height="29" src="resources/ios/icon/icon-small.png" width="29" />
