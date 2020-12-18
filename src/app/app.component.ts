@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
@@ -12,7 +12,8 @@ import { Platform } from '@ionic/angular';
 export class AppComponent {
 
   public appPages: any;
-
+  public routerHidden = true;
+  @ViewChild('splash') splash: ElementRef;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -59,6 +60,11 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      setTimeout(() => {
+        this.routerHidden = false;
+        this.splash.nativeElement.style.display = 'none';
+      }, 3000);
     });
   }
 }

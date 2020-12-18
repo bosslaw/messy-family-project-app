@@ -1,5 +1,10 @@
 <ion-app>
-  <ion-split-pane contentId="main">
+
+  <div class="splash-container" #splash [hidden]="!routerHidden">
+    <img  src="/assets/images/CFA-loading.gif">
+  </div>
+
+  <ion-split-pane contentId="main" [hidden]="routerHidden">
     <!--  our side menu  -->
     <ion-menu contentId="main">
       <ion-header>
