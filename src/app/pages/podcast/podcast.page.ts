@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthConstants } from 'src/app/config/auth-constants';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-podcast',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./podcast.page.scss'],
 })
 export class PodcastPage implements OnInit {
+  user: any;
+  isLogged = false;
 
-  constructor() { }
+  constructor(private storageService: StorageService) { }
 
   ngOnInit() {
+    this.getUserdata();
+  }
+
+  getUserdata() {
+    this.storageService.get(AuthConstants.AUTH).then(res => {
+      this.user = res;
+      if(this.user) {
+        this.isLogged = true;
+      }
+    });
   }
 
 }

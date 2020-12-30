@@ -9,8 +9,15 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./public/public.module').then( m => m.PublicPageModule)
+  },
+  {
+    path: 'public',
+    loadChildren: () => import('./public/public.module').then( m => m.PublicPageModule)
   }
-
 ];
 @NgModule({
   imports: [

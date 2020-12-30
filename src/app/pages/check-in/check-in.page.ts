@@ -7,6 +7,8 @@ import { CheckinService } from 'src/app/services/checkin/checkin.service';
 import { MapService } from 'src/app/services/map/map.service';
 import { mapStyle } from 'src/app/shared/map-styles/style';
 import { CheckInFormPage } from '../check-in-form/check-in-form.page';
+import { map } from "rxjs/operators";
+import { HttpClient } from '@angular/common/http';
 
 const { Geolocation } = Plugins;
 
@@ -34,7 +36,8 @@ export class CheckInPage implements OnInit {
     public modalCtrl: ModalController,
     public checkinService: CheckinService,
     public authService: AuthService,
-    public mapService: MapService
+    public mapService: MapService,
+    private http: HttpClient
   ) {
   }
 
@@ -44,17 +47,25 @@ export class CheckInPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    console.log('cool')
     this.getIntentions();
   }
 
-  loadMap() {
-    Geolocation.getCurrentPosition().then((resp) => {
+  async loadMap() {
+    console.log('loading map async and cool')
+
+    
+    await Geolocation.getCurrentPosition({enableHighAccuracy: true, timeout: 5000, maximumAge: 0}).then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
 
+
       const POSITION = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-      console.log('POSITION', POSITION);
+      
+
+    //   this.getAddress(resp.coords.latitude, resp.coords.longitude).subscribe(decodedAddress => {
+    //     this.address = decodedAddress;
+    //     console.log('my address +>', this.address);
+    //   });
 
       const mapOptions = {
         zoom: 11,
@@ -68,7 +79,7 @@ export class CheckInPage implements OnInit {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-      console.log('themap->', this.map);
+      
 
       const icon = {
         url: '/assets/icon/pin2.png',
@@ -94,6 +105,21 @@ export class CheckInPage implements OnInit {
     }).catch((error) => {
       console.log('Error getting location', error);
     });
+  }
+
+  private getAddress (lat: number, lan: number) {
+    return this.http
+    .get<any>(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lan}&key=AIzaSyBv2VBkwTC8ywTDyU7RA-rY7ZX_CjfeR4I`
+    )
+    .pipe(
+      map((geoData: any) => {
+        if (!geoData || !geoData.results || geoData.results === 0) {
+          return null;
+        }
+        return geoData.results[0].formatted_address;
+      })
+    );
   }
 
   addMarker(config) {
