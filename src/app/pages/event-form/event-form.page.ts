@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-form',
@@ -48,15 +49,14 @@ export class EventFormPage implements OnInit {
     }
 
     if(this.navParams.data.eventData) {
-      console.log(this.eventData);
       this.title = 'Update';
       this.eventData = this.navParams.data.eventData;
 
       this.event.id = this.eventData.id;
       this.event.title = this.eventData.title;
       this.event.description = this.eventData.description;
-      this.event.start_date = new Date(this.eventData.start_date).toISOString();
-      this.event.end_date = new Date(this.eventData.end_date).toISOString();
+      this.event.start_date = moment(this.eventData.start_date).toISOString();
+      this.event.end_date = moment(this.eventData.end_date).toISOString();
       this.event.location = this.eventData.location;
     }
   }
