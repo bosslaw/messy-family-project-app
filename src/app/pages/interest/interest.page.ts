@@ -27,7 +27,8 @@ export class InterestPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: EventFormPage,
       componentProps: {
-        preselectedDate:this.currentDay
+        preselectedDate:this.currentDay,
+        eventTitle: 'Date Night'
       }
     });
 

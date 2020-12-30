@@ -30,8 +30,8 @@ export class SignupPage implements OnInit {
   }
 
   relationships = [
-    {id: 1, name: 'Mother'},
-    {id: 2, name: 'Father'},
+    {id: 1, name: 'Myself'},
+    {id: 2, name: 'Spouse'},
     {id: 3, name: 'Son'},
     {id: 4, name: 'Daughter'}
   ];

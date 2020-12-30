@@ -13,8 +13,8 @@ export class WordpressService {
 
   constructor(private http: HttpClient) { }
 
-  getPosts(page=1) {
-    const route = this.url + 'posts?_embed&per_page=5&page=' + page;
+  getPosts(page=1, per_page = 5) {
+    const route = this.url + 'posts?_embed&per_page='+per_page+'&page=' + page;
 
     return new Promise((resolve, reject) => {
 
