@@ -111,12 +111,6 @@ export class HomePage implements OnInit {
     this.wp.getPosts().then((data: any) => {
       this.posts = data;
     });
-    // console.log('POSTS', posts)
-    // this.wp.getPosts().subscribe(res => {
-    //   console.log(res);
-    //   this.count = this.wp.totalPosts;
-    //   this.posts = res;
-    // });
   }
 
   loadMore(event) {
@@ -126,16 +120,6 @@ export class HomePage implements OnInit {
       this.posts = [...this.posts, ...data];
       event.target.complete();
     });
-
-    // this.wp.getPosts(this.page).subscribe(res => {
-    //   this.posts = [...this.posts, ...res];
-    //   event.target.complete();
-
-    //   // Disable infinite loading when maximum reached
-    //   if (this.page == this.wp.pages) {
-    //     event.target.disabled = true;
-    //   }
-    // });
   }
 
 }

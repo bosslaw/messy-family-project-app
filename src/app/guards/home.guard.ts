@@ -16,7 +16,7 @@ export class HomeGuard implements CanActivate {
         if(res) {
           resolve(true);
         } else {
-          this.router.navigate(['']);
+          this.router.navigate(['public']);
           resolve(false);
         }
       }).catch(err => {

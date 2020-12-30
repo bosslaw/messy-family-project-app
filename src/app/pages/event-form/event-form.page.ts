@@ -22,6 +22,7 @@ export class EventFormPage implements OnInit {
   minDate = new Date().toISOString();
   preselectedDate: any;
   eventData: any;
+  eventTitle: any;
 
   constructor(
     private modalCtrl: ModalController,
@@ -34,6 +35,7 @@ export class EventFormPage implements OnInit {
     if(this.navParams.data.preselectedDate) {
       this.preselectedDate = new Date(this.navParams.data.preselectedDate);
 
+
       let curDate = new Date();
       this.preselectedDate.setHours(curDate.getHours());
       this.preselectedDate.setMinutes(curDate.getMinutes());
@@ -41,11 +43,8 @@ export class EventFormPage implements OnInit {
       this.preselectedDate = this.preselectedDate.toISOString();
       this.event.start_date = this.preselectedDate;
       this.event.end_date = this.preselectedDate;
+      this.event.title = this.eventTitle;
 
-      console.log("hehehe")
-      console.log(this.preselectedDate);
-      console.log(this.event.start_date);
-      console.log(this.event.end_date);
     }
 
     if(this.navParams.data.eventData) {
