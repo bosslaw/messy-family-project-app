@@ -9,8 +9,8 @@
 
 <ion-content class="ion-padding">
   <h1>{{event.title}}</h1>
-  <p *ngIf="event.start_date"><b>Start: </b> {{event.start_date | date}}</p>
-  <p *ngIf="event.end_date"><b>End: </b> {{event.end_date | date}}</p>
+  <p *ngIf="event.start_date"><b>Start: </b> {{ formatToDate(event.start_date) }}</p>
+  <p *ngIf="event.end_date"><b>End: </b> {{ formatToDate(event.end_date) }}</p>
   <p *ngIf="event.description"><b>Description: </b> {{event.description}}</p>
   <p *ngIf="event.location"><b>Location: </b> {{event.location}}</p>
 
