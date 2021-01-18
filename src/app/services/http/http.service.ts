@@ -9,7 +9,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  post(serviceName: string, data: any) {
+  post2(serviceName: string, data: any) {
 
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
@@ -30,5 +30,24 @@ export class HttpService {
 
     return this.http.get(url + '?'+ params)
 
+  }
+
+
+  post(serviceName: string, data: any) {
+    return new Promise((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Accept','application/json');
+
+      const options = { header: headers, withCredentials: false};
+
+      const url = environment.apiUrl + serviceName;
+
+      return this.http.post(url, data, options).subscribe(data=>{
+        resolve(data);
+      }, error  =>{
+        reject(error);
+      });
+    });
   }
 }

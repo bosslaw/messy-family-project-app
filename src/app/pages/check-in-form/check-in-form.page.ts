@@ -105,7 +105,7 @@ export class CheckInFormPage implements OnInit {
     })
     .catch((error: any) => console.log(error));
 
-    this.checkinService.newCheckin(params).subscribe((res: any) => {
+    this.checkinService.newCheckin(params).then((res: any) => {
       this.dismiss();
     },
     (error: any) => {

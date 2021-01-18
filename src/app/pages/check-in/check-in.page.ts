@@ -158,7 +158,7 @@ export class CheckInPage implements OnInit {
   }
 
   getCheckins(uid, intentionId) {
-    this.checkinService.getCheckins(uid, intentionId).subscribe((res: any) => {
+    this.checkinService.getCheckins(uid, intentionId).then((res: any) => {
       this.checkins = res;
       this.checkins.forEach(a => {
         const icon = {

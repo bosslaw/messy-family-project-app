@@ -97,7 +97,7 @@ export class HomePage implements OnInit {
       status: 'Upcoming'
     };
 
-    this.eventService.addEvent(formattedEvent).subscribe((res: any) => {
+    this.eventService.addEvent(formattedEvent).then((res: any) => {
       if(res.success) {
         this.loadLatestEvents();
       }

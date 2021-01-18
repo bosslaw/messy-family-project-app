@@ -20,12 +20,26 @@ export class AuthService {
     })
   }
 
-  signup(postData: any): Observable<any> {
-    return this.httpService.post('signup', postData);
+  signup(postData: any) {
+    return new Promise((resolve, reject) => {
+      return this.httpService.post('signup', postData).then((data: any) => {
+        resolve(data);
+      }, error=> {
+        reject(error);
+      });
+    });
   }
 
-  login(postData: any): Observable<any> {
-    return this.httpService.post('login', postData);
+  login(postData: any) {
+
+    return new Promise((resolve, reject) => {
+      return this.httpService.post('login', postData).then((data: any) => {
+        resolve(data);
+      }, error=> {
+        reject(error);
+      });
+    });
+    
   }
 
   logout() {

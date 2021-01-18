@@ -11,15 +11,29 @@ export class CheckinService {
     private httpService: HttpService
   ) { }
 
-  newCheckin(checkinData: any): Observable<any> {
-    return this.httpService.post('checkin', checkinData);
+  newCheckin(checkinData: any) {
+    return new Promise((resolve, reject) => {
+      return this.httpService.post('checkin', checkinData).then((data: any) => {
+        resolve(data);
+      }, error=> {
+        reject(error);
+      });
+    });
   }
 
-  getCheckins(uid: number, intentionId: number): Observable<any> {
-    return this.httpService.post('checkin/'+uid+'/'+intentionId, {});
+  getCheckins(uid: number, intentionId: number) {
+    return new Promise((resolve, reject) => {
+      return this.httpService.post('checkin/'+uid+'/'+intentionId, {}).then((data: any) => {
+        resolve(data);
+      }, error=> {
+        reject(error);
+      });
+    });
   }
 
   getIntentions(): Observable<any> {
     return this.httpService.get('intentions');
   }
 }
+
+

@@ -53,17 +53,16 @@ export class LoginPage implements OnInit {
   loginAction() {
 
     if(this.validateInputs()) {
-      this.authService.login(this.postData).subscribe((res: any) => {
-        if(res.userData.length) {
-          this.storageService.store(AuthConstants.AUTH, res.userData[0]);
-          this.router.navigate(['home'])
-        } else {
-          this.toastService.presentToast('Invalid credentials');
-        }
-      },
-      (error: any) => {
+      this.authService.login(this.postData).then((data: any)=>{
+          if(data.userData.length) {
+            this.storageService.store(AuthConstants.AUTH, data.userData[0]);
+            this.router.navigate(['home'])
+          } else {
+            this.toastService.presentToast('Invalid credentials');
+          }
+      }, error => {
         this.toastService.presentToast('Network Connection Error');
-      })
+      });
     } else {
       this.toastService.presentToast('Please give some information');
     }

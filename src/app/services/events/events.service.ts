@@ -11,12 +11,24 @@ export class EventsService {
     private httpService: HttpService
   ) { }
 
-  addEvent(eventData: any): Observable<any> {
-    return this.httpService.post('events', eventData);
+  addEvent(eventData: any) {
+    return new Promise((resolve, reject) => {
+      return this.httpService.post('events', eventData).then((data: any) => {
+        resolve(data);
+      }, error=> {
+        reject(error);
+      });
+    });
   }
 
-  updateEvent(eventData): Observable<any> {
-    return this.httpService.post('events/' + eventData.id, eventData);
+  updateEvent(eventData) {
+    return new Promise((resolve, reject) => {
+      return this.httpService.post('events/' + eventData.id, eventData).then((data: any) => {
+        resolve(data);
+      }, error=> {
+        reject(error);
+      });
+    });
   }
 
   getEvents(): Observable<any> {

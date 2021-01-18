@@ -59,7 +59,7 @@ export class EventDetailsPage implements OnInit {
       id: event.id
     };
 
-    this.eventService.updateEvent(formattedEvent).subscribe((res: any) => {
+    this.eventService.updateEvent(formattedEvent).then((res: any) => {
       this.event.title = event.title;
       this.event.start_date = new Date(event.start_date);
       this.event.end_date = new Date(event.end_date);
