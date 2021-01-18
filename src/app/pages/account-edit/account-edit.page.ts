@@ -51,7 +51,7 @@ export class AccountEditPage implements OnInit {
       delete this.userData.password;
     }
 
-    this.userService.updateUser(this.userData).subscribe((res: any) => {
+    this.userService.updateUser(this.userData).then((res: any) => {
       if(res.userData) {
         this.toastService.presentToast('Information successfully updated');
       } else {

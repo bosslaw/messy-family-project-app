@@ -90,14 +90,14 @@ export class FamilyMemberFormPage implements OnInit {
     formattedMember.birth_date = birthDate;
 
     if (this.memberData.id) {
-      this.familyService.updateMember(this.memberData).subscribe((res: any) => {
+      this.familyService.updateMember(this.memberData).then((res: any) => {
         this.toastService.presentToast('Successfully updated member');
         this.dismiss();
       },
       (error: any) => {
       });
 
-      this.userService.updateUser(this.memberData).subscribe((res: any) => {
+      this.userService.updateUser(this.memberData).then((res: any) => {
         // this.toastService.presentToast('Information successfully updated'); 
       },
       (error: any) => {
@@ -105,7 +105,7 @@ export class FamilyMemberFormPage implements OnInit {
       })
     } else {
       delete this.memberData.id;
-      this.familyService.addMember(this.memberData).subscribe((res: any) => {
+      this.familyService.addMember(this.memberData).then((res: any) => {
         this.toastService.presentToast('Successfully added member');
         this.dismiss();
       },

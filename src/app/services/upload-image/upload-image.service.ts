@@ -27,7 +27,7 @@ export class UploadImageService {
     formData.append('file', file, `myimage.${ext}`);
     formData.append('uid', uid);
 
-    return this.http.post('upload', formData).pipe(finalize(() => {
+    return this.http.post2('upload', formData).pipe(finalize(() => {
     }))
     .subscribe(data => {
     }, err => {

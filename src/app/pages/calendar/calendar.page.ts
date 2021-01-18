@@ -199,7 +199,7 @@ export class CalendarPage implements OnInit {
       status: 'Upcoming'
     };
 
-    this.eventService.addEvent(formattedEvent).subscribe((res: any) => {
+    this.eventService.addEvent(formattedEvent).then((res: any) => {
       if(res.success) {
         this.eventSource.push(this.formatEvent(res.data));
         this.myCal.loadEvents();

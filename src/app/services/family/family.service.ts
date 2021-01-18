@@ -11,12 +11,24 @@ export class FamilyService {
     private httpService: HttpService
   ) { }
 
-  addMember(memberData: any): Observable<any> {
-    return this.httpService.post('family-member', memberData);
+  addMember(memberData: any) {
+    return new Promise((resolve, reject) => {
+      return this.httpService.post('family-member', memberData).then((data: any) => {
+        resolve(data);
+      }, error=> {
+        reject(error);
+      });
+    });
   }
 
-  updateMember(memberData: any): Observable<any> {
-    return this.httpService.post('family-member/' + memberData.id, memberData);
+  updateMember(memberData: any) {
+    return new Promise((resolve, reject) => {
+      return this.httpService.post('family-member/' + memberData.id, memberData).then((data: any) => {
+        resolve(data);
+      }, error=> {
+        reject(error);
+      });
+    });
   }
 
   getMembers(uid: number): Observable<any> {
@@ -25,7 +37,5 @@ export class FamilyService {
 
   getMemberDetails(uid: number): Observable<any> {
     return this.httpService.get('family-member-details/'+uid);
-  }
-
-  
+  }  
 }

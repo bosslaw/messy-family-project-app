@@ -158,7 +158,7 @@ export class ProfilesPage implements OnInit {
     const imageName = this.uploadImage.createFileName();
 
      this.uploadImage.postData(blobData, imageName,image.format, uid)
-     .subscribe((data: any) => {
+     .then((data: any) => {
       console.log(data);
       if(data.success) {
         this.toast.presentToast('Successfully upload');

@@ -64,7 +64,7 @@ export class SignupPage implements OnInit {
       const birthDate = moment(this.postData.unformatted_date).format('YYYY-MM-DD 00:00:00')
       this.postData.birth_date = birthDate;
 
-      this.authService.signup(this.postData).subscribe((res: any) => {
+      this.authService.signup(this.postData).then((res: any) => {
         if(res.userData) {
           this.router.navigate(['login'])
         } else {
