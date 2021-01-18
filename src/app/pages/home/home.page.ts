@@ -46,6 +46,9 @@ export class HomePage implements OnInit {
     })
   }
 
+  formatToDate(date) {
+    return moment(date).format('LL');
+  }
 
   loadLatestEvents() {
     this.eventService.getLatestEvents(this.user.Id).subscribe(res => {

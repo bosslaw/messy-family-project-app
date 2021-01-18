@@ -27,6 +27,10 @@ export class EventDetailsPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  formatToDate(date) {
+    return moment(date).format('LL');
+  }
+
   async editEvent() {
     const modal = await this.modalCtrl.create({
       component: EventFormPage,

@@ -70,13 +70,17 @@ export class CalendarPage implements OnInit {
         event = this.formatEvent(event);
       })
       this.eventSource = res;
+      console.log(this.eventSource);
     },
     (error: any) => {})
   }
 
   formatEvent(event) {
-    event.startTime = new Date(event.start_date);
-    event.endTime = new Date(event.end_date);
+    const start = moment(event.start_date);
+    const end = moment(event.end_date);
+
+    event.startTime = start.toDate();
+    event.endTime = end.toDate();
 
     return event;
   }
@@ -113,14 +117,15 @@ export class CalendarPage implements OnInit {
   formatEvents() {
     const finalObj = []
     this.eventSource.forEach((event) => {
-      const date = moment(event.startTime).format('DD ddd')
+      const date = moment(event.start_date).format('DD ddd');
       if (finalObj[date]) {
         finalObj[date].push(event);
       } else {
         finalObj[date] = [event];
       }
     })
-    this.sortedEvents = finalObj.sort()
+    this.sortedEvents = finalObj.sort();
+   
   }
 
   async calendarViewOptions() {

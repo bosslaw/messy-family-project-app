@@ -28,7 +28,7 @@
       <ion-item lines="none" >
         <ion-label color="primary">
           <h1>{{event.title}}</h1>
-          <p class="color-dark italic">{{event.start_date | date}}</p>
+          <p class="color-dark italic">{{formatToDate(event.start_date)}}</p>
         </ion-label>
         <ion-button icon-only fill="clear" size="large" slot="end" (click)="showEvent(event)"><ion-icon color="secondary" name="chevron-forward-outline"></ion-icon></ion-button>
       </ion-item>
