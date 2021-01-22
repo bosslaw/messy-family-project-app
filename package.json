@@ -21,7 +21,7 @@
     "@angular/router": "~9.1.6",
     "@capacitor/android": "^2.1.0",
     "@capacitor/core": "^2.2.0",
-    "@capacitor/ios": "^2.2.0",
+    "@capacitor/ios": "^2.4.6",
     "@ionic-native/calendar": "^5.26.0",
     "@ionic-native/camera": "^5.27.0",
     "@ionic-native/core": "^5.26.0",
