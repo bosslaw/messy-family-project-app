@@ -59,6 +59,13 @@ export class EventFormPage implements OnInit {
       this.event.end_date = moment(this.eventData.end_date).toISOString();
       this.event.location = this.eventData.location;
     }
+    console.log(this.event);
+  }
+
+  startTimeUpdated(event) {
+    if(moment(event).toISOString() > this.event.end_date) {
+      this.event.end_date = moment(event).toISOString();
+    }
   }
 
   dismiss() {
